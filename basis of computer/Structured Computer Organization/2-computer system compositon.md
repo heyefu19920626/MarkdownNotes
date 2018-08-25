@@ -95,3 +95,8 @@
     - 分体缓存(哈佛结构)：指令用一个高速缓存而数据用另一个
         - 支持并行访问
         - 流水线的应用
+- 内存封装及其类型
+    - 内存都是以芯片位单位制造，销售和安装的
+    - 单面接入内存组件(Single Inline Memory Module, SIMM)和双面接入内存组件(Dual Inline Memory Module, DIMM)
+    - 小型DIMM(Small Outline..., SO-DIMM):一般用于笔记本
+    - 内存平均出错率很低，一般可以省略检错和纠错位
