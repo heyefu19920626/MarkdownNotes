@@ -119,3 +119,8 @@
     - EIDE(Extend IDE)
 - SCSI(Small Computer System Interface,小型计算机系统接口)盘
 - RAID（Redundant Array of Independent(Inexpensive,廉价的) Disks,独立磁盘的冗余阵列）盘,SLED(Single Large Expensive Disk,单个昂贵大磁盘)
+
+#### 2.4 输入/输出设备
+- 总线
+    - 直接内存访问（Direct Memory Access）
+    - 总线仲裁器， 周期窃取
