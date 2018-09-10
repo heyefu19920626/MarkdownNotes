@@ -173,6 +173,35 @@ $ git checkout -b <branchname>
 $ git merge <branchname>
 ```
 
+#### 合并某个分支上的单个commit
+```bash
+git checkout master  
+git cherry-pick 82ecb31
+```
+
+#### 合并某个分支上的一系列commits
+```bash
+# 首先需要基于feature创建一个新的分支，并指明新分支的最后一个commit
+git checkout featuregit 
+git checkout -b newbranch 62ecb3k
+# 然后，rebase这个新分支的commit到master（--ontomaster）。76cada^ 指明你想从哪个特定的commit开始
+git rebase --ontomaster 76cada^
+# 得到的结果就是feature分支的commit 76cada ~62ecb3 都被合并到了master分支
+```
+#### 合并单个文件到分支
+```bash
+# 只想将feature分支的某个文件f.txt合并到master分支上
+git checkout feature 
+git checkout --patch master f.txt
+# 合并master分支上f文件到feature分支上，将master分支上 f 文件追加补丁到feature分支上 f文件。你可以接受或者拒绝补丁内容
+```
+
+#### 复制文件到分支
+```bash
+git checkout master
+git checkout feature f.txt
+```
+
 #### 删除分支
 ```bash
 $ git branch -d <branchname>
