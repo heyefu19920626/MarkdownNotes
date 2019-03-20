@@ -1,7 +1,7 @@
 
 #### CentOS7安装python3
 -  先安装一些依赖
-    - yum install zlib-devel libffi-devel redline-devel -y
+    - yum install zlib-devel libffi-devel sqlite-devel redline-devel -y
         - redline-devel模块解决删除，方向键乱码
 -  配置
     - ./configure --prefix=/usr/local/python3Dir
