@@ -23,6 +23,7 @@ IPV6INIT=yes #是否执行IPv6 yes:支持IPv6 no:不支持IPv6
 ```
 
 #### 开机自启
+- centos：在/etc/rc.d/rc.local中写入命令,并赋予权限
 > /usr/lib/systemd/system #service文件目录(centos)
 > /etc/systemd/system #service文件目录(ubuntu)
 > systemctl enable  httpd

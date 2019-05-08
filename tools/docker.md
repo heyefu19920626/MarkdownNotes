@@ -9,7 +9,7 @@
 docker pull how2j/tmall
 
 ### 运行镜像
-> docker run -dit --privileged -p21:21 -p80:80 -p8080:8080 -p30000-30010:30000-30010 --name how2jtmall how2j/tmall:latest /usr/sbin/init
+> docker run -dit --privileged -p21:21 -p80:80 -p8080:8080 -p30000-30010:30000-30010 -v /root/webapps/:/opt/tomcat/webapps/ --name how2jtmall how2j/tmall:latest /usr/sbin/init
 
 - docker run 表示运行一个镜像
 - -dit 是 -d -i -t 的缩写。 -d ，表示 detach，即在后台运行。 -i 表示提供交互接口，这样才可以通过 docker 和 跑起来的操作系统交互。 -t 表示提供一个 tty (伪终端)，与 -i 配合就可以通过 ssh 工具连接到 这个容器里面去了
@@ -18,6 +18,7 @@ docker pull how2j/tmall
 - -p80:80 和 21一个道理
 - -p8080:8080 和21 一个道理，在本例里，访问的地址是 http://192.168.84.128:8080/tmall/， 这个 192.168.84.128 是CentOS 的ip地址，8080是 CentOS 的端口，但是通过-p8080:8080 这么一映射，就访问到容器里的8080端口上的 tomcat了
 - -p30000-30010 和21也是一个道理，这个是ftp用来传输数据的
+- -v：表示需要将本地哪个目录挂载到容器中，格式：-v <宿主机目录>:<容器目录>
 - --name how2jtmall 给容器取了个名字，叫做 how2jtmall，方便后续管理
 - how2j/tmall:latest how2j/tmall就是镜像的名称， latest是版本号，即最新版本
 - /usr/sbin/init: 表示启动后运行的程序，即通过这个命令做初始化
@@ -40,6 +41,7 @@ docker pull how2j/tmall
 - ps 查看所有的容器
 - 检查某个具体的容器
 - rm 删除容器
+- inspect 容器名称 查看容器信息
 - commit，对容器做了修改后，把改动后的容器，再次转换为镜像
     - > docker commit -m "state" 容器id 仓库名:tag
 
@@ -48,3 +50,20 @@ docker pull how2j/tmall
 >  docker inspect -f '{{.Id}}' 容器名称/短id
 - 本机与容器传文件,或相反
 > docker cp 本地文件路径 id全称:容器路径
+
+### 推送镜像至https://hub.docker.com
+- 登录账号
+> docker login
+- 规范命名镜像
+> docker tag 镜像id 新id(docker.io/用户名/镜像名)
+- 推送
+> docker push 镜像
+
+### 镜像与文件
+- 镜像导出为文件
+> docker save -o 要保存的文件名 要保存的镜像
+- 文件载入为镜像
+> docker load --input 文件名
+> docker load < 文件名
+
+### volumn卷的挂载
