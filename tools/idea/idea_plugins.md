@@ -17,3 +17,5 @@
 - Rainbow Brackets： 彩色括号
 - NyanProgressBar: loading条
 - Markdown Support: markdown
+- SonarLint: bug检查
+- Docker intergration
