@@ -52,7 +52,9 @@
 
 
 <div id="web-xml"></div>
-#### [web.xml的加载顺序](https://blog.csdn.net/ahou2468/article/details/79015251)
+
+#### [web.xml的加载顺序](https://blog.csdn.net/ahou2468/article/details/79015251)  
+
 > context-param -> listener -> filter -> servlet
 
 - 读取web.xml配置
@@ -70,6 +72,7 @@ DispatcherServlet就是其中一个servlet
 ```
 
 <div id="cross-domain"></div>
+
 #### [跨域设置](https://www.cnblogs.com/asfeixue/p/4363372.html)
 
 - spring4.0+
@@ -80,6 +83,7 @@ DispatcherServlet就是其中一个servlet
 ```
 
 <div id="spring-start"></div>
+
 #### [Spring的启动关键](https://blog.csdn.net/u010013573/article/details/86547687)
 
 - ContextLoaderListener | load-on-startup Servlet -> ContextLoadServlet
