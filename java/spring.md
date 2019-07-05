@@ -1,8 +1,8 @@
 ### 目录
 - [Spring事务](#spring-transactional)
 - [web.xml的加载顺序](#web-xml)
+- [跨域设置](#cross-domain)
 - [Spring的启动关键](#spring-start)
-- [测试](./spring-mvc.md)
 
 
 
@@ -66,6 +66,16 @@
 这样其实也是实现了一种代码的解耦；
 其次是创建配置的servlet列表，调用servlet的init方法，这样servlet可以自定义初始化逻辑，
 DispatcherServlet就是其中一个servlet
+```
+
+<div id="cross-domain"></div>
+#### [跨域设置](https://www.cnblogs.com/asfeixue/p/4363372.html)
+
+- spring4.0+
+```
+<mvc:cors>
+        <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800" allowed-methods="GET,POST,OPTIONS"/>
+</mvc:cors>
 ```
 
 <div id="spring-start"></div>

@@ -1,6 +1,15 @@
-### java中三元运算符与if-else的区别
+### 目录
+- [代码块](#code-block)
+- [三元表达式与if-else](#ternary)
 
-本文参考了[java三元运算符详解](#https://www.cnblogs.com/itmlt1029/p/4756331.html)
+<div id="code-block"></div>
+#### 代码块
+- 静态代码块，构造代码块，普通代码块
+> 静态代码块 > 构造代码块 > 构造函数
+
+
+<div id="ternary"></div>
+#### [java中三元运算符与if-else的区别](https://www.cnblogs.com/itmlt1029/p/4756331.html)
 
 ##### 两者之间的区别：
 - 返回值要求不同：三元运算符必须要有返回值,if-else不必
