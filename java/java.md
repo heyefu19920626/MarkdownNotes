@@ -3,12 +3,14 @@
 - [三元表达式与if-else](#ternary)
 
 <div id="code-block"></div>
+
 #### 代码块
 - 静态代码块，构造代码块，普通代码块
 > 静态代码块 > 构造代码块 > 构造函数
 
 
 <div id="ternary"></div>
+
 #### [java中三元运算符与if-else的区别](https://www.cnblogs.com/itmlt1029/p/4756331.html)
 
 ##### 两者之间的区别：
