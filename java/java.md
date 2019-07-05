@@ -1,4 +1,4 @@
-### 目录
+### [目录](./java.md)
 - [代码块](#code-block)
 - [三元表达式与if-else](#ternary)
 
