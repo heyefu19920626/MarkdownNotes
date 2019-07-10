@@ -1,4 +1,4 @@
 
 ### 目录
 
-- [Mysql](#./mysql.md)
+- [Mysql](./mysql.md)
