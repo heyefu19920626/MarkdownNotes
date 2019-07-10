@@ -2,5 +2,5 @@
 
 ### 目录
 
-- [Database](./java/catalog)
+- [Database](./database/catalog.md)
 - [Java](./java/catalog.md)
