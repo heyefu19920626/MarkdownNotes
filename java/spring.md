@@ -3,6 +3,7 @@
 - [web.xml的加载顺序](#web-xml)
 - [跨域设置](#cross-domain)
 - [Spring的启动关键](#spring-start)
+- [mybatis打印sql语句](#mybatis-show-sql)
 
 
 
@@ -76,7 +77,7 @@ DispatcherServlet就是其中一个servlet
 #### [跨域设置](https://www.cnblogs.com/asfeixue/p/4363372.html)
 
 - spring4.0+
-```
+```xml
 <mvc:cors>
         <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800" allowed-methods="GET,POST,OPTIONS"/>
 </mvc:cors>
@@ -88,3 +89,18 @@ DispatcherServlet就是其中一个servlet
 
 - ContextLoaderListener | load-on-startup Servlet -> ContextLoadServlet
 - DispatcherServlet
+
+
+<div id="mybatis-show-sql"></div>
+
+#### mybatis打印Sql语句
+
+- 在mybatis-config.xml中配置加一个setting
+```xml
+<configuration>
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+    </settings>
+</configuration>
+```
