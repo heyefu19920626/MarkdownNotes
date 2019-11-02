@@ -1,3 +1,13 @@
+
+#### 命令行自动补全
+
+- 安装bash-completion,退出重启登陆，或者重载配置文件即可
+```
+yum install epel-release -y
+yum install bash-completion -y
+```
+
+
 #### IP设置
 
 > systemctl status network #查看网络服务状态

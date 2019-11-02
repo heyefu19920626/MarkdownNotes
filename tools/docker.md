@@ -34,6 +34,12 @@ docker pull how2j/tmall
 - 修改本地镜像名称
 - push , 把镜像提交到仓库
 
+### 镜像删除
+- service docker stop
+- rm -rf /var/lib/docker 删除所有镜像
+- service docker start
+
+
 ### 容器管理
 - 运行 run
 - 进入 exec
