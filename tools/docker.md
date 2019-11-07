@@ -30,7 +30,7 @@ docker pull how2j/tmall
 - search 查看仓库里有些什么镜像
 - pull 拉取镜像
 - images 查看本地有些什么镜像
-- rmi 删除本地镜像
+- rmi 删除本地镜像 -f 强制删除
 - 修改本地镜像名称
 - push , 把镜像提交到仓库
 
@@ -38,7 +38,6 @@ docker pull how2j/tmall
 - service docker stop
 - rm -rf /var/lib/docker 删除所有镜像
 - service docker start
-
 
 ### 容器管理
 - 运行 run

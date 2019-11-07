@@ -1,4 +1,11 @@
 
+
+#### 仓库缓存等问题
+- Not using downloaded repomd.xml because it is older than what we have
+    + yum clean all
+    + 若还是有问题 可以 yum check-update
+    + 如果之后执行yum有问题，删除var/cache/yum/下所有文件，再执行yum repolist all,yum makecache,yum update
+
 #### 命令行自动补全
 
 - 安装bash-completion,退出重启登陆，或者重载配置文件即可
