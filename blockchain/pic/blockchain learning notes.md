@@ -1,0 +1,18 @@
+- double spending attack
+- 防止输入声明的哈希被伪造，输入中的哈希与来源中的哈希相等
+- block header：version；hash of previous block header； merkle root hash，taget， noce
+- UTXO：每笔交易必须说明输入的来源
+- sybil attack 女巫攻击
+- forking attack
+- UTXO:Unspent Transaction Output 未花费交易输出
+- transaction-based Ledger；account-based ledger
+- 随机数nonce与con base的调整
+- progress free, mamaryless
+- geometric series
+- confirmation，六个确认,zero confirmation
+- selfish mining
+- appliation layer: bitcoin block chain
+- network layer: p2p overlay network
+- simple, robust, but not efficient
+- 等待上链集合
+- best effort
