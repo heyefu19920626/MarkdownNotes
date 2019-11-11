@@ -16,3 +16,12 @@
 - simple, robust, but not efficient
 - 等待上链集合
 - best effort
+- H(block header) <= target 难度与target成反比;2016个块调整一次，每次调整范围不超过4倍
+- 难度越低，出块时间越短，越容易分叉，总算力被分散，更容易被攻击
+- nBits,4位；恶意节点调整的不会被诚实节点认可
+- 全节点
+![](./pic/all_peer_bitcoin.png)
+- 轻节点
+![](./pic/qin_peer_bitcoin.png)
+- memoryless挖矿无记忆性
+- 矿池中的POW：sahre，almost valid block
