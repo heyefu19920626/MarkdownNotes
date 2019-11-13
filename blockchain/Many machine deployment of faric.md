@@ -1,9 +1,7 @@
 # fabric的多机部署
 
-- order peer出问题
-- 背书节点出问题
-- 智能合约的节点不全部背书
-- API|SDK|CLI
+- [集群内部手动启动](#shoudong)
+- [运行chaincode](#shilihua)
 
 #### 环境准备
 
@@ -99,7 +97,7 @@ bash network_setup.sh down
 bash generateArtifacts.sh mychannel
 将生成channel-artifacts和crypto-config目录拷贝到其他服务器e2e_cli目录下
 目录里有orderer和peer的证书、私钥和用于通信加密的tls证书等文件，它通过configex.yaml配置文件生成
-scp channel-artifacts root@ip:/opt/gopath/src/github.com/hyperledger/fabric/examples/e2e_cli/
+scp -r channel-artifacts root@ip:/opt/gopath/src/github.com/hyperledger/fabric/examples/e2e_cli/
 ```
 
 #### peer0.org1.example.com节点的docker-compose文件
@@ -239,6 +237,7 @@ orderer.example.com:
 > docker exec -it cli bash  
 > ./scripts/script.sh mychannel
 
+<div id='shoudong'></div>
 
 ## 集群内部手动启动
 
@@ -279,6 +278,10 @@ peer channel update -o orderer.example.com:7050 -c mychannel -f ./channel-artifa
 ```
 peer chaincode install -nmycc -v 1.0 -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
 ```
+
+- docker cp cli:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block .
+- scp root@192.168.11.101:/opt/gopath/src/github.com/hyperledger/fabric/examples/e2e_cli/mychannel.block .
+- docker cp mychannel.block cli:/opt/gopath/src/github.com/hyperledger/fabric/peer/
 
 #### peer1.org1.example.com 节点
 
@@ -326,19 +329,25 @@ peer channel join -b mychannel.block
 - 安装 chaincode_example02 到 peer1.org2.example.com
 
 ```
-peer chaincode install -n mycc -v 1.0 -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
+peer chaincode install -nmycc -v 1.0 -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
 ```
 
+
+<div id="shilihua"></div>
 
 #### 运行chaincode
 
 - 实例化chaincode
 
 ```
-peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile $ORDERER_CA -C mychannel-nmycc -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Org1MSP.member','Org2MSP.member')"
+peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile $ORDERER_CA -C mychannel -nmycc -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Org1MSP.member','Org2MSP.member')"
 或者
-peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile $ORDERER_CA -C mychannel -n mycc -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR      ('Org1MSP.member','Org2MSP.member')"
+peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile $ORDERER_CA -C mychannel -nmycc -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Org1MSP.member','Org2MSP.member')"
 ```
+
+
+- 如果实例化出错有可能有以下问题
+  + 链码的旧镜像没有删除
 
 - 在peer0.org1.example.com上查看chaincode的状态，登录到VM1上并进入cli容器内部执行：
 
