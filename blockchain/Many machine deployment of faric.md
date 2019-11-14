@@ -2,12 +2,16 @@
 
 - [集群内部手动启动](#shoudong)
 - [运行chaincode](#shilihua)
+- [问题](#problems)
 
 #### 环境准备
 
 - linux内核升级，最好4.12+
 
 - docker-ce 安装
+
+> windows 运行docker exec -it cli bash出错  
+> 在前面添加参数 winpty docker exec -it cli bash
 
 ```sh
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
@@ -23,6 +27,17 @@ service docker start
 chkconfig docker on
 ```
 
+```sh
+安装能够让apt通过https使用仓库的包
+sudo apt-get install  apt-transport-https  ca-certificates  curl gnupg-agent software-properties-common
+添加docker官方GPG密钥
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+添加docker仓库地址
+sudo add-apt-repository  "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
+sudo apt-get update
+sudo apt-get install docker-ce 
+ ```
+
 - crul 安装
 
 ```sh
@@ -31,10 +46,9 @@ yum install curl
 
 - docker-compose 安装
 
-```sh
-如果有问题，去github仓库找对应的release
-curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose
-```
+> 如果有问题，去github仓库找对应的release  
+> curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose  
+> chmod +x /usr/local/bin/docker-compose
 
 - go 安装与配置
 
@@ -279,6 +293,12 @@ peer channel update -o orderer.example.com:7050 -c mychannel -f ./channel-artifa
 peer chaincode install -nmycc -v 1.0 -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
 ```
 
+- 参数解析
+> -n：指定链码名称  
+> -v：指定链码版本号  
+> -l：指定链码使用的语言，可以是 golang, java, nodejs  
+> -p：指定链码源码目录
+
 - docker cp cli:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block .
 - scp root@192.168.11.101:/opt/gopath/src/github.com/hyperledger/fabric/examples/e2e_cli/mychannel.block .
 - docker cp mychannel.block cli:/opt/gopath/src/github.com/hyperledger/fabric/peer/
@@ -345,6 +365,15 @@ peer chaincode instantiate -o orderer.example.com:7050 --tls --cafile $ORDERER_C
 peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile $ORDERER_CA -C mychannel -nmycc -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Org1MSP.member','Org2MSP.member')"
 ```
 
+- 参数解析：
+> -n：指定链码名称  
+> -v：指定链码版本号  
+> -l：指定链码使用的语言，可以是 golang, java, nodejs  
+> -o：指定排序节点  
+> -C：指定通道名  
+> -c：指定初始化参数  
+> -P：指定背书策略，上例中的背书策略是，两个组织必须都参与链码 invoke 或 query，chaincode 执行才能生效。这个参数可为空，则任意安装了链码的节点无约束地调用链码
+
 
 - 如果实例化出错有可能有以下问题
   + 链码的旧镜像没有删除
@@ -355,9 +384,32 @@ peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile $ORDE
 peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
 ```
 
+- 参数解析：
+> -n：指定链码名称  
+> -C：指定通道名  
+> -c：指定链码执行地参数，如上例中有四个参数，invoke 是方法，表示写入
+> 链码的查询是不会记录在链上的，只会从账本中读取记录返回给用户  
+> 链码查询其实也可以用 invoke 来执行，这样就需要背书，且记录上链
+
 - 转账,把a账户的10元转给b
 ```
 ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
 
 peer chaincode invoke -o orderer.example.com:7050  --tls true --cafile $ORDERER_CA -C mychannel -n mycc -c '{"Args":["invoke","a","b","10"]}'
 ```
+
+- 参数解析：
+> -n：指定链码名称  
+> -o：指定排序节点  
+> -C：指定通道名  
+> -c：指定链码执行地参数，如上例中有四个参数，invoke 是方法，表示写入，Alice 是学生名称，98，92 是分数  
+> 指令执行会失败，并不会记录在链上
+
+<div id="problems"></div>
+
+## 问题
+
+- “/bin/bash^M: bad interpreter: No such file or directory”
+  + 在执行shell脚本时提示这样的错误主要是由于shell脚本文件是dos格式，即每一行结尾以\r\n来标识，而unix格式的文件行尾则以\n来标识
+  + vi filename打开文件，执行 : set ff，如果文件为dos格式在显示为fileformat=dos，如果是unxi则显示为fileformat=unix
+  + vi filename打开文件，执行 : set ff=unix 设置文件为unix，然后执行:wq，保存成unix格式
