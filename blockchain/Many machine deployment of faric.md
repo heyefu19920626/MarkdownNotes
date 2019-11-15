@@ -219,11 +219,11 @@ peer1.org2.example.com:
     depends_on:
       - peer1.org2.example.com
     extra_hosts:
-     - "orderer.example.com:10.130.116.8"
-     - "peer0.org1.example.com:10.130.116.9"
-     - "peer1.org1.example.com:10.130.116.10"
-     - "peer0.org2.example.com:10.130.116.25"
-     - "peer1.org2.example.com:10.130.116.27"
+     - "orderer.example.com:192.168.11.105"
+     - "peer0.org1.example.com:192.168.11.101"
+     - "peer1.org1.example.com:192.168.11.102"
+     - "peer0.org2.example.com:192.168.11.103"
+     - "peer1.org2.example.com:192.168.11.104"
 ```
 
 #### 设置order节点的docker-compose文件
@@ -413,3 +413,7 @@ peer chaincode invoke -o orderer.example.com:7050  --tls true --cafile $ORDERER_
   + 在执行shell脚本时提示这样的错误主要是由于shell脚本文件是dos格式，即每一行结尾以\r\n来标识，而unix格式的文件行尾则以\n来标识
   + vi filename打开文件，执行 : set ff，如果文件为dos格式在显示为fileformat=dos，如果是unxi则显示为fileformat=unix
   + vi filename打开文件，执行 : set ff=unix 设置文件为unix，然后执行:wq，保存成unix格式
+
+peer chaincode instantiate -o orderer.example.com:7050 --tls true --cafile $ORDERER_CA -C mychannel -n test -v 0 -c '{"Args":["a","aaaaa"]}'
+
+ peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n test  -v 0 -c '{"Args":["a","aaaaaa"]}'

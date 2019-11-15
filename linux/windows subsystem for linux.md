@@ -23,3 +23,9 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
 deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
 ```
+
+### 安装go
+
+- 略
+- root用户每次都要重新source /etc/profile
+    + 在~/.bashrc或~/.profile中添加环境变量
