@@ -29,3 +29,14 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted univer
 - 略
 - root用户每次都要重新source /etc/profile
     + 在~/.bashrc或~/.profile中添加环境变量
+
+### 使用docker
+> export DOCKER_HOST=tcp://localhost:2375
+
+对于运行在WSL中的Docker而言，它会采用类似/mnt/c/Users/Payne/这样的更符合Linux习惯的路径，而Docker for Windows则会使用类似/c/Users/Payne/这样更符合Windows习惯的路径。因此，如果你在使用Docker的过程中，需要处理分区挂载相关的东西，一个比较好的建议是修改WSL的配置文件(如果不存在需要自行创建)
+```
+sudo nano /etc/wsl.conf
+[automount]
+root = /
+options = "metadata"
+```
