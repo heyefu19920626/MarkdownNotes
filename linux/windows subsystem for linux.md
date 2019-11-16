@@ -7,6 +7,19 @@
 - 在Microsoft store安装Uubuntu 18.04LTS
 - 在启用或关闭windows功能勾选适用于Linux的Windows子系统
 
+### 升级至WSL2
+
+- 加入预览版体验计划,更新到最新系统
+- 管理员运行在powershell中执行
+```
+#启用虚拟机平台可选组件
+Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
+#查看当前版本
+wsl -l -v
+#升级
+wsl --set-version Uubuntu-18.04 2
+```
+
 ### 更换阿里源
 
 - 备份/etc/apk/source.list,编辑并替换为阿里源
