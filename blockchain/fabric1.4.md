@@ -1,7 +1,7 @@
 # fabric1.4集群部署，及智能合约部署
 
 ## 在开发模式编译智能合约
-> 将代码文件夹拷贝至$GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/chaincode目录下,我这为game文件夹  
+> 将代码文件夹拷贝至``$GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/chaincode``目录下,我这为game文件夹  
 > 进入$GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/chaincode-docker-devmode目录下  
 > docker-compose -f docker-compose-simple.yaml up -d  
 > 进入链码容器docker exec -it chaincode bash  
