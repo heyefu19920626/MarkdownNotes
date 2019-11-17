@@ -5,12 +5,12 @@
       "clients": {
         "client-1": {
           "tlsEnable": true,
-          "organization": "Org1MSP",
+          "organization": "Org2",
           "channel": "mychannel",
           "credentialStore": {
-            "path": "./tmp/credentialStore_Org1/credential",
+            "path": "./tmp/credentialStore_Org2/credential",
             "cryptoStore": {
-              "path": "./tmp/credentialStore_Org1/crypto"
+              "path": "./tmp/credentialStore_Org2/crypto"
             }
           }
         }
@@ -18,7 +18,10 @@
       "channels": {
         "mychannel": {
           "peers": {
-            "peer0.org1.example.com": {}
+            "peer0.org1.example.com": {},
+            "peer1.org1.example.com": {},
+            "peer0.org2.example.com": {},
+            "peer1.org2.example.com": {}
           },
           "connection": {
             "timeout": {
@@ -32,7 +35,7 @@
         }
       },
       "organizations": {
-        "Org1MSP": {
+        "Org1": {
           "mspid": "Org1MSP",
           "fullpath": false,
           "adminPrivateKey": {
@@ -43,13 +46,13 @@
           },
           "peers": ["peer0.org1.example.com", "peer1.org1.example.com"]
         },
-        "Org2MSP": {
+        "Org2": {
           "mspid": "Org2MSP",
           "adminPrivateKey": {
             "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore"
           },
           "signedCert": {
-            "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/balance-transfer/artifacts/channel/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts"
+            "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts"
           },
           "peers": ["peer0.org2.example.com", "peer1.org2.example.com"]
         },
@@ -65,8 +68,8 @@
           "tlsCACerts": {
             "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
           },
-          "url": "grpcs://192.168.11.101:7051",
-          "eventUrl": "grpcs://192.168.11.101:7053",
+          "url": "grpcs://localhost:7051",
+          "eventUrl": "grpcs://localhost:7053",
           "grpcOptions": {
             "ssl-target-name-override": "peer0.org1.example.com"
           }
@@ -75,8 +78,8 @@
           "tlsCACerts": {
             "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt"
           },
-          "url": "grpcs://192.168.11.102:7051",
-          "eventUrl": "grpcs://192.168.11.102:7053",
+          "url": "grpcs://localhost:8051",
+          "eventUrl": "grpcs://localhost:8053",
           "grpcOptions": {
             "ssl-target-name-override": "peer1.org1.example.com"
           }
@@ -85,8 +88,8 @@
           "tlsCACerts": {
             "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
           },
-          "url": "grpcs://192.168.11.103:7051",
-          "eventUrl": "grpcs://192.168.11.103:7053",
+          "url": "grpcs://localhost:9051",
+          "eventUrl": "grpcs://localhost:9053",
           "grpcOptions": {
             "ssl-target-name-override": "peer0.org2.example.com"
           }
@@ -95,8 +98,8 @@
           "tlsCACerts": {
             "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt"
           },
-          "url": "grpcs://192.168.11.104:7051",
-          "eventUrl": "grpcs://192.168.11.104:7053",
+          "url": "grpcs://localhost:10051",
+          "eventUrl": "grpcs://localhost:10053",
           "grpcOptions": {
             "ssl-target-name-override": "peer1.org2.example.com"
           }
@@ -104,7 +107,7 @@
       },
       "orderers": {
         "orderer.example.com": {
-          "url": "grpcs://192.168.11.105:7050"
+          "url": "grpcs://localhost:7050"
         }
       }
     },
