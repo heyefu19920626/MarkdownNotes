@@ -38,7 +38,7 @@
    1. 将ident修改为trust
    2. 开启远程访问修改#listen_addresses = 'localhost'  为  listen_addresses='*'
 5. 命令行登录测试
-   1. psql -h 127.0.0.1 -p 5432 -U postgres -d dbname
+   1. ``psql -h 127.0.0.1 -p 5432 -U postgres -d dbname``
 6. 修改密码
    1. ``sudo -u postgres psql``
    2. ``ALTER USER postgres WITH PASSWORD 'admin'``

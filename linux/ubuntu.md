@@ -28,3 +28,18 @@ GRUB_TIMEOUT=10
     + \\# ：下达的第几个命令
     + \$ ：提示字符，如果是root时，提示符为：# ，普通用户则为：
     + {debian_chroot:+($debian_chroot)} 这句的意思是说，如果在/etc下有debian_chroot文件，则命令提示符前面就附加上debian_chroot文件的内容
+
+## oh-my-zsh安装与配置
+
+1. 安装：``sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"``
+2. 配置终端前缀显示
+   1. ``cd  ~/.oh-my-zsh/themes/``
+   2. 查看自己主题：``echo $ZSH_THEME``，此处为robbyrussell
+   3. ``cp robbyrussell.zsh-theme myrobbyrussell.zsh-theme``
+   4. 修改新主题: ``vim myrobbyrussell.zsh-theme``
+   5. 修改PROMPT的值
+      1. ``PROMPT='%{$fg_bold[red]%}%n -> %{$fg_bold[green]%}%p%{$fg[cyan]%}%1d %{$fg_bold[blue]%}$(git_prompt_info)% %{$reset_color%}~#:'``
+      2. %d表示目录，1表示层数
+   6. 修改.zshrc中的默认主题 ``vim ~/.zshrc``的ZSH_THEME的值
+      1. ``ZSH_THEME="myrobbyrussell"``
+   7. 保存退出,启动新终端
