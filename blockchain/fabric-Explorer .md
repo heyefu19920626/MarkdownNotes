@@ -109,3 +109,7 @@
 
 ## 查看错误
 1. 主要在blockchain-explorer/logs/文件夹下看相关日志，app，db，console，都看
+
+## module.js:549 throw err;
+> 先删除``node_modules``整个文件夹，然后``npm cache clean``或者``npm cache clean --force``,然后``npm install``
+

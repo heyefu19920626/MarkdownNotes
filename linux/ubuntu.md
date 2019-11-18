@@ -53,7 +53,7 @@ GRUB_TIMEOUT=10
 ### 报错
 1. 切换到root用户的时候很多环境变量不生效
    1. ``vim ~/.zshrc``
-   2. 在最前面加入``source $HOME/.bashrc``
+   2. 在最前面加入``source $HOME/.bashrc``或者``source /etc/profile``
    3. ``export PATH=$HOME/bin:/usr/local/bin:$PATH``
 2. ``/root/.bashrc:13: command not found: shopt``
    1. ``type shopt``
