@@ -5,12 +5,12 @@
       "clients": {
         "client-1": {
           "tlsEnable": true,
-          "organization": "Org2",
+          "organization": "Org1",
           "channel": "mychannel",
           "credentialStore": {
-            "path": "./tmp/credentialStore_Org2/credential",
+            "path": "./tmp/credentialStore_Org1/credential",
             "cryptoStore": {
-              "path": "./tmp/credentialStore_Org2/crypto"
+              "path": "./tmp/credentialStore_Org1/crypto"
             }
           }
         }
@@ -78,8 +78,8 @@
           "tlsCACerts": {
             "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt"
           },
-          "url": "grpcs://localhost:8051",
-          "eventUrl": "grpcs://localhost:8053",
+          "url": "grpcs://peer1.org1.example.com:7051",
+          "eventUrl": "grpcs://peer1.org1.example.com:7053",
           "grpcOptions": {
             "ssl-target-name-override": "peer1.org1.example.com"
           }
@@ -88,8 +88,8 @@
           "tlsCACerts": {
             "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
           },
-          "url": "grpcs://localhost:9051",
-          "eventUrl": "grpcs://localhost:9053",
+          "url": "grpcs://peer0.org2.example.com:7051",
+          "eventUrl": "grpcs://peer0.org2.example.com:7053",
           "grpcOptions": {
             "ssl-target-name-override": "peer0.org2.example.com"
           }
@@ -98,8 +98,8 @@
           "tlsCACerts": {
             "path": "/opt/gopath/src/github.com/hyperledger/fabric/scripts/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt"
           },
-          "url": "grpcs://localhost:10051",
-          "eventUrl": "grpcs://localhost:10053",
+          "url": "grpcs://peer1.org2.example.com:7051",
+          "eventUrl": "grpcs://peer1.org2.example.com:7053",
           "grpcOptions": {
             "ssl-target-name-override": "peer1.org2.example.com"
           }
@@ -107,7 +107,7 @@
       },
       "orderers": {
         "orderer.example.com": {
-          "url": "grpcs://localhost:7050"
+          "url": "grpcs://orderer.example.com:7050"
         }
       }
     },
