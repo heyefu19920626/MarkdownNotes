@@ -1,6 +1,19 @@
-### 常用命令
+# 常用命令
 
-#### ls
+
+- [常用命令](#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
+  - [ls](#ls)
+  - [tail](#tail)
+  - [netstat](#netstat)
+  - [find](#find)
+  - [xargs与exec,ok](#xargs%e4%b8%8eexecok)
+  - [dhclient](#dhclient)
+  - [chown](#chown)
+  - [chomd](#chomd)
+  - [查看CPU配置](#%e6%9f%a5%e7%9c%8bcpu%e9%85%8d%e7%bd%ae)
+  - [查看网络状况](#%e6%9f%a5%e7%9c%8b%e7%bd%91%e7%bb%9c%e7%8a%b6%e5%86%b5)
+
+## ls
 用来显示目标列表
 
 - >ls -l 文件名，文件类型、权限模式、硬连接数、所有者、组、文件大小和文件的最后修改时间
@@ -13,21 +26,21 @@
     - > -r 反转
 > ls -l --time-style='+%Y-%m-%d %H-%M-%S'
 
-#### tail
+## tail
 用于列出输入文件中的尾部内容,默认显示最后10行
 
 - >-f 显示文件最新追加内容
 - >-c <N>  输出文件尾部N个字节的内容,N可以有后缀b(512字节),k,m
 - >tail -n +20 file 输出从第20行至末尾的内容
 
-#### netstat
+## netstat
 用来打印Linux中网络系统的状态信息
 
 - > -a或--all 显示所有连线中的Socket
 - > -n或--numeric：直接使用ip地址，而不通过域名服务器
 - > -p或--programs：显示正在使用Socket的程序识别码和程序名称
 
-#### find
+## find
 用来在指定目录下查找文件
 
 linux中文件的时间有三种:
@@ -43,15 +56,15 @@ linux中文件的时间有三种:
 注意一定是{} \;别漏掉了分号。{}是指find . -type f -mtime +5的返回的结果，\;是指命令尾部标记
 ```
 
-#### xargs与exec,ok
+## xargs与exec,ok
 - exec对每一个结果执行一次命令
 - xargs全部塞给命令
 - xargs可以通过-n来控制每次传递参数的个数
 
-#### dhclient
+## dhclient
 - 动态获取IP
 
-#### chown
+## chown
 改变某个文件或目录的所有者和所属的组
 参数
 
@@ -59,5 +72,12 @@ linux中文件的时间有三种:
 - 文件：指定要改变所有者和工作组的文件列表。支持多个文件和目标，支持shell通配符
 > -R 递归处理
 
-#### chomd
+## chomd
 - 改变权限
+
+## 查看CPU配置
+> ``lscpu``
+
+## 查看网络状况
+> ``iftop``  
+> -i 网卡信息
