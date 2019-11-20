@@ -1,4 +1,11 @@
+# Windows
 
+## 将快捷方式固定到开始菜单
+
+将自己的快捷方式拖到``C:\ProgramData\Microsoft\Windows\Start Menu\Programs``
+
+
+## 配置无线网卡和有线网卡同时上内外网
 [参考CSDN博客](https://blog.csdn.net/qq_33819574/article/details/81026539)
 
 使用CMD:
