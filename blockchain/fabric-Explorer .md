@@ -1,15 +1,15 @@
 # Fabric浏览器
 
 
-- [Fabric浏览器](#fabric%e6%b5%8f%e8%a7%88%e5%99%a8)
+- [Fabric浏览器](#fabric浏览器)
   - [Requirement](#requirement)
-  - [node.js 8.11.4安装](#nodejs-8114%e5%ae%89%e8%a3%85)
-  - [PostgreSql安装](#postgresql%e5%ae%89%e8%a3%85)
-  - [Jq安装](#jq%e5%ae%89%e8%a3%85)
-  - [启动first-network](#%e5%90%af%e5%8a%a8first-network)
-  - [配置Fabric blockchain-explorer](#%e9%85%8d%e7%bd%aefabric-blockchain-explorer)
-- [错误处理](#%e9%94%99%e8%af%af%e5%a4%84%e7%90%86)
-  - [查看错误](#%e6%9f%a5%e7%9c%8b%e9%94%99%e8%af%af)
+  - [node.js 8.11.4安装](#nodejs-8114安装)
+  - [PostgreSql安装](#postgresql安装)
+  - [Jq安装](#jq安装)
+  - [启动first-network](#启动first-network)
+  - [配置Fabric blockchain-explorer](#配置fabric-blockchain-explorer)
+- [错误处理](#错误处理)
+  - [查看错误](#查看错误)
   - [module.js:549 throw err;](#modulejs549-throw-err)
 
 

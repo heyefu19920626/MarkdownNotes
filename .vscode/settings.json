@@ -1,0 +1,7 @@
+{
+    "vim.handleKeys": {
+        "<C-b>": false,
+        "<C-w>": false
+    },
+    "markdown.extension.toc.githubCompatibility": true
+}
