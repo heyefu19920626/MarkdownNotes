@@ -112,7 +112,7 @@ git checkout -b release-1.4 origin/release-1.4
 
 ## 使用脚本启动first-network
 1. 进入fabric-sample/first-network文件夹
-2. 启动first-network：``./byfn.sh up
+2. 启动first-network：``./byfn.sh up``
 
 ## 停止
 1. ``./byfn.sh down``  
