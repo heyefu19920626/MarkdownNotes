@@ -11,6 +11,9 @@
 - [错误处理](#错误处理)
   - [查看错误](#查看错误)
   - [module.js:549 throw err;](#modulejs549-throw-err)
+  - [psql: 致命错误: 用户 "postgres" Ident 认证失败](#psql-致命错误-用户-postgres-ident-认证失败)
+  - [locate: 未找到命令](#locate-未找到命令)
+  - [执行locate时报错“locate: can not stat () `/var/lib/mlocate/mlocate.db':](#执行locate时报错locate-can-not-stat--varlibmlocatemlocatedb)
 
 
 
@@ -61,11 +64,12 @@
    1. 将ident修改为trust
    2. 开启远程访问修改#listen_addresses = 'localhost'  为  listen_addresses='*'
 5. 命令行登录测试
-   1. ``psql -h 127.0.0.1 -p 5432 -U postgres -d dbname``
+   1. ``psql -h 127.0.0.1 -p 5432 -U postgres -d dbname(fabricexplorer)``
 6. 修改密码
    1. ``sudo -u postgres psql``
    2. ``ALTER USER postgres WITH PASSWORD 'admin'``
 7. 重启
+
    
 ## Jq安装 
 ``apt install jq``
@@ -113,4 +117,17 @@
 
 ## module.js:549 throw err;
 > 先删除``node_modules``整个文件夹，然后``npm cache clean``或者``npm cache clean --force``,然后``npm install``
+
+
+## psql: 致命错误: 用户 "postgres" Ident 认证失败
+> vim /var/lib/pgsql/(此处可能不为空)/data/pg_hba.conf  
+> 把这个配置文件中的认证 METHOD的ident修改为trust，可以实现用账户和密码来访问数据库
+
+## locate: 未找到命令
+> yum install mlocate
+
+## 执行locate时报错“locate: can not stat () `/var/lib/mlocate/mlocate.db':
+> 更新数据库  
+> updatedb
+
 

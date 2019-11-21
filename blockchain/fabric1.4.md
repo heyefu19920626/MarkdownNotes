@@ -8,12 +8,6 @@
   - [实例化智能合约game](#实例化智能合约game)
   - [调用智能合约game](#调用智能合约game)
   - [查询智能合约game](#查询智能合约game)
-- [PostgreSQL](#postgresql)
-  - [登录pg](#登录pg)
-  - [修改密码](#修改密码)
-  - [psql: 致命错误: 用户 "postgres" Ident 认证失败](#psql-致命错误-用户-postgres-ident-认证失败)
-  - [locate: 未找到命令](#locate-未找到命令)
-  - [执行locate时报错“locate: can not stat () `/var/lib/mlocate/mlocate.db':](#执行locate时报错locate-can-not-stat--varlibmlocatemlocatedb)
 
 ## 生成组织证件之类等（待完善）
 > ``cryptogen generate --config=./crypto-config.yaml``
@@ -41,24 +35,3 @@
 
 ## 查询智能合约game
 > ``peer chaincode query -n game -c '{"Args":["query",""]}' -C mychannel``
-
-
-# PostgreSQL
-
-## 登录pg
-> psql -h 127.0.0.1 -p 5432 -U postgres -d fabricexplorer
-
-## 修改密码
-> sudo -u postgres psql  
-> ALTER USER postgres WITH PASSWORD '930912'
-
-## psql: 致命错误: 用户 "postgres" Ident 认证失败
-> vim /var/lib/pgsql/(此处可能不为空)/data/pg_hba.conf  
-> 把这个配置文件中的认证 METHOD的ident修改为trust，可以实现用账户和密码来访问数据库
-
-## locate: 未找到命令
-> yum install mlocate
-
-## 执行locate时报错“locate: can not stat () `/var/lib/mlocate/mlocate.db':
-> 更新数据库  
-> updatedb
