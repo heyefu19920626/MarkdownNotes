@@ -2,10 +2,11 @@
 
 
 - [Ubuntu](#ubuntu)
-  - [修改win10 + ubuntu18.04启动顺序](#%e4%bf%ae%e6%94%b9win10--ubuntu1804%e5%90%af%e5%8a%a8%e9%a1%ba%e5%ba%8f)
-  - [ubuntu终端显示路径太长](#ubuntu%e7%bb%88%e7%ab%af%e6%98%be%e7%a4%ba%e8%b7%af%e5%be%84%e5%a4%aa%e9%95%bf)
-  - [oh-my-zsh安装与配置](#oh-my-zsh%e5%ae%89%e8%a3%85%e4%b8%8e%e9%85%8d%e7%bd%ae)
-    - [报错](#%e6%8a%a5%e9%94%99)
+  - [修改win10 + ubuntu18.04启动顺序](#修改win10--ubuntu1804启动顺序)
+  - [ubuntu终端显示路径太长](#ubuntu终端显示路径太长)
+  - [oh-my-zsh安装与配置](#oh-my-zsh安装与配置)
+  - [dpkg解决依赖问题](#dpkg解决依赖问题)
+    - [报错](#报错)
 
 ## 修改win10 + ubuntu18.04启动顺序
 - 修改grub文件``sudo vim /etc/default/grub``
@@ -49,6 +50,13 @@ GRUB_TIMEOUT=10
    6. 修改.zshrc中的默认主题 ``vim ~/.zshrc``的ZSH_THEME的值
       1. ``ZSH_THEME="myrobbyrussell"``
    7. 保存退出,启动新终端
+
+## dpkg解决依赖问题
+
+1. dpkg -i　安装包缺少依赖后
+2. 更新源``sudo apt-get update``
+3. 解决依赖关系``sudo apt-get -f install``
+4. 重新安装``sudo dpkg -i ...``
 
 ### 报错
 1. 切换到root用户的时候很多环境变量不生效
