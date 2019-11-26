@@ -1,6 +1,7 @@
 # 区块链技术与应用
 
 ## 比特币
+
 - double spending attack
 - 防止输入声明的哈希被伪造，输入中的哈希与来源中的哈希相等
 - block header：version；hash of previous block header； merkle root hash，taget， noce
@@ -40,3 +41,16 @@
 - 多重签名
 
 ## 以太坊
+
+- smart contract
+- 比特币必须每次将上一笔全部花出去,没有基于账户的账本,基于交易的账户
+- accout-based ledger
+- double spending attack, replay attack(重放攻击)
+- nonce 交易次数,发起交易后加入交易次数，签名
+- 外部账户
+  - balanec
+  - nonce
+- 合约账户
+  - 不能发起交易
+  - code
+  - storage
