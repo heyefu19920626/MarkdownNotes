@@ -54,3 +54,17 @@
   - 不能发起交易
   - code
   - storage
+
+### 账户
+
+- addr -> state
+- 160 bits 20位 一般表示为40个16进制数
+- 哈希表, merkle tree：证明账户的余额，如果以账户及余额构造merkle tree会被新的区块影响,且太多,账户数量与交易数不在一个数量级
+- trie 
+  - ge, gene, genens,...
+  - 不会出现碰撞,输入顺序不影响最终树的样子,更新局部性好
+  - 不必要的存储和查找
+- patricia tree
+  - en 压缩
+  - 路径压缩
+- MPT Merkle Patricia tree
