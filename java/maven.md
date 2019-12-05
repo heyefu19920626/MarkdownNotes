@@ -1,6 +1,31 @@
 # Maven的一些配置
 
 
+## maven配置spring仓库与阿里云仓库 
+
+在pom中添加
+
+```xml
+    <repository>
+        <id>alimaven</id>
+        <name>aliyun maven</name>
+        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        <layout>default</layout>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+
+    <repository>
+        <id>spring-milestones</id>
+        <name>Spring Milestones</name>
+        <url>https://repo.spring.io/libs-milestone</url>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+```
+
 
 ## IDEAZ中maven编译可执行jar包
 
