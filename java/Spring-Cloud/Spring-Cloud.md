@@ -1,12 +1,21 @@
 # Spring Cloud
 
 - [Spring Cloud](#spring-cloud)
+  - [Spring boot配置文件顺序](#spring-boot配置文件顺序)
   - [父子项目](#父子项目)
   - [Eureka 服务注册中心](#eureka-服务注册中心)
   - [Ribbon](#ribbon)
   - [Feign](#feign)
   - [zipkin服务链追踪](#zipkin服务链追踪)
-  - [配置服务](#配置服务)
+  - [配置服务器](#配置服务器)
+
+## Spring boot配置文件顺序
+
+后加载的会覆盖先加载的
+
+1. application.yml
+2. application.yaml
+3. application.properties
 
 ## 父子项目
 
@@ -148,9 +157,10 @@ eureka:
 4. 下载并运行zipkin的可执行jar包
 5. 访问http://localhost:9411/zipkin/查看链路
 
-## 配置服务
+## 配置服务器
 
-1. 准备好git，引入jar
+1. 准备好git上的配置文件，为properties或yml文件,必须按照约定的命名{application}-{profile}.properties或{application}-{profile}.yml,之后可以通过{application}/{profile}访问配置文件(如果配置文件有多个-，则以最后一个-分隔)
+3. 准备好git，引入jar
 ```xml
 <dependency>
   <groupId>org.springframework.cloud</groupId>
@@ -160,14 +170,14 @@ eureka:
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
-<!--配置服务-->
+<!--配置服务器-->
 <dependency>
   <groupId>org.springframework.cloud</groupId>
   <artifactId>spring-cloud-config-server</artifactId>
 </dependency>
 ```
-2. 启动类添加@EnableConfigServer注解,表示该Spring boot这是个配置服务器
-3. 修改application.yaml,添加配置服务器信息与注册中心信息
+3. 启动类添加@EnableConfigServer注解,表示该Spring boot这是个配置服务器
+4. 修改application.yaml,添加配置服务器信息与注册中心信息
 ```yaml
 spring:
   application:
@@ -187,4 +197,4 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 ```
-
+5. 访问配置文件localhost:config-port/{application}/{profile}
