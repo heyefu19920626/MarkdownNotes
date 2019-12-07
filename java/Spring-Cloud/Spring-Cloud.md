@@ -252,4 +252,4 @@ management:
         include: refresh
 ```
 3. 在希望能够进行配置更新的地方，添加注解 @RefreshScope
-4. 修改git上的配置文件后，在本地调用http://localhost:port/actuator/refresh来刷新配置文件
+4. 修改git上的配置文件后，在本地使用$\color{red}{POST}$调用http://localhost:port/actuator/refresh来刷新配置文件
