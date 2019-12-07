@@ -6,15 +6,16 @@
   - [Ribbon](#ribbon)
   - [Feign](#feign)
   - [zipkin服务链追踪](#zipkin服务链追踪)
+  - [配置服务](#配置服务)
 
 ## 父子项目
 
 1.子项目pom.xml中添加parent信息与自己的信息
 ```xml
 <parent>
-    <artifactId>springcloud</artifactId>
-    <groupId>com.heyefu.springcloud</groupId>
-    <version>1.0-SNAPSHOT</version>
+  <artifactId>springcloud</artifactId>
+  <groupId>com.heyefu.springcloud</groupId>
+  <version>1.0-SNAPSHOT</version>
 </parent>
 <artifactId>view-service</artifactId>
 <name>view-service</name>
@@ -22,9 +23,9 @@
 2. 在父项目中添加子项目信息
 ```xml
 <modules>
-    <module>eureka-server</module>
-    <module>data-service</module>
-    <module>view-service</module>
+  <module>eureka-server</module>
+  <module>data-service</module>
+  <module>view-service</module>
 </modules>
 ```
 
@@ -33,10 +34,10 @@
 1. 在子项目Eureka注册中心中添加依赖
 ```xml
 <dependencies>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-    </dependency>
+  <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+  </dependency>
 </dependencies>
 ```
 2. 在启动类上添加@EnableEurekaServer注解，表示这是个Enreka Server
@@ -65,15 +66,15 @@ spring:
 1. 引入相关依赖
 ```xml
 <dependencies>
-    <!-- eureka 客户端 -->
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
+  <!-- eureka 客户端 -->
+  <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+  </dependency>
 </dependencies>
 ```
 2. 在启动类上添加@EnableEurekaClient激活Eureka 客户端
@@ -113,8 +114,8 @@ Feign是对Ribbon的封装，使用注解的方式
 1. 引入jar包
 ```xml
 <dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-openfeign</artifactId>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-openfeign</artifactId>
 </dependency>
 ```
 2. 创建Feign客户端接口
@@ -146,4 +147,44 @@ eureka:
 3. 在启动类中配置Sample抽样策略
 4. 下载并运行zipkin的可执行jar包
 5. 访问http://localhost:9411/zipkin/查看链路
+
+## 配置服务
+
+1. 准备好git，引入jar
+```xml
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<!--配置服务-->
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+```
+2. 启动类添加@EnableConfigServer注解,表示该Spring boot这是个配置服务器
+3. 修改application.yaml,添加配置服务器信息与注册中心信息
+```yaml
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      #      label表示分支
+      label: master
+      server:
+        git:
+          #          uri表示git地址
+          uri: https://github.com/heyefu19920626/MarkdownNotes/
+          #          目录
+          searchPaths: java/Spring-Cloud
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+```
 
