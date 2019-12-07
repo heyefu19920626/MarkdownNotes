@@ -8,6 +8,8 @@
   - [Feign](#feign)
   - [zipkin服务链追踪](#zipkin服务链追踪)
   - [配置服务器](#配置服务器)
+  - [配置客户端](#配置客户端)
+  - [配置客户端手动更新](#配置客户端手动更新)
 
 ## Spring boot配置文件顺序
 
@@ -198,3 +200,56 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 ```
 5. 访问配置文件localhost:config-port/{application}/{profile}
+
+
+## 配置客户端
+
+1. 添加依赖
+```xml
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-config</artifactId>
+</dependency> 
+```
+2. 新建bootstrap.yml文件，并配置相关属性,该文件会先于application.yml加载,删除application中的注册中心信息
+```yml
+spring:
+  cloud:
+    config:
+      # label 表示 git上的分支
+      label: master
+      discovery:
+        enabled:  true
+        # 对应配置中心的 spring.application.name
+        serviceId:  config-server
+      #  name 表示配置文件的 {application} 部分
+      name: spring
+      # profile 表示配置文件的 {profile}部分
+      profile: cloud
+# bootstrap中有了注册中心就删除application中的
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+```
+3. 重启服务就可以在其中使用@Value("${属性名}")来给变量赋值了@RefreshScope
+
+## 配置客户端手动更新
+
+1. 添加依赖
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+2. 在application.yml中暴露更新接口
+```yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+```
+3. 在希望能够进行配置更新的地方，添加注解 @RefreshScope
+4. 修改git上的配置文件后，在本地调用http://localhost:port/actuator/refresh来刷新配置文件
