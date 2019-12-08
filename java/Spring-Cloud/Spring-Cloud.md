@@ -11,6 +11,7 @@
   - [配置客户端](#配置客户端)
   - [配置客户端手动更新](#配置客户端手动更新)
   - [消息总线bus](#消息总线bus)
+  - [断路器 Hystrix](#断路器-hystrix)
 
 ## Spring boot配置文件顺序
 
@@ -298,6 +299,27 @@ management:
 5. 增加rabbit后zipkin不能追踪调用链，启动zipkin的jar包时增加rabbitmq参数即可``--zipkin.collector.rabbitmq.addresses=localhost``
 ```cmd
 java -jar zipkin-server-2.10.1-exec.jar --zipkin.collector.rabbitmq.addresses=localhost
+```
+
+## 断路器 Hystrix
+
+当被访问的微服务无法使用的时候，当前服务能够感知这个现象，并且提供一个备用的方案.
+
+1. 引入依赖
+```xml
+<!--断路器Hystrix支持-->
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+</dependency>
+```
+2. 创建一个实现了Feign客户端接口的实现类,例如此处新建为FeignClientHystrix，并实现其中的函数
+3. 修改Feign客户端接口的@FeignClient注解的参数,添加属性fallback为第2步创建的实现类的FeignClientHystrix.class
+4. 在application.yml中开启断路器,对应类HystrixFeignConfiguration
+```yml
+feign:
+  hystrix:
+    enabled: true
 ```
 
 
