@@ -10,6 +10,7 @@
   - [配置服务器](#配置服务器)
   - [配置客户端](#配置客户端)
   - [配置客户端手动更新](#配置客户端手动更新)
+  - [消息总线bus](#消息总线bus)
 
 ## Spring boot配置文件顺序
 
@@ -253,3 +254,50 @@ management:
 ```
 3. 在希望能够进行配置更新的地方，添加注解 @RefreshScope
 4. 修改git上的配置文件后，在本地使用$\color{red}{POST}$调用http://localhost:port/actuator/refresh来刷新配置文件
+
+## 消息总线bus
+
+基于上一步手动更新客户端
+
+1. 引入依赖，注意此包版本，要与spring boot匹配，不然不能启动，经测试spring boot 2.0.3与spring cloud Finchley.RELEASE版本的才能正常启动
+```xml
+<!-- 支持rabbitmq -->
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+</dependency>  
+```
+2. 在bootstrap.yml中新增bus总线配置支持
+```yml
+spring:
+  cloud:
+    bus:
+      enabled: true
+      trace:
+        enabled: true
+```
+3. 在application.yml中新增rabbit支持与接口路径访问支持
+```yml
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+management:
+  endpoints:
+    web:
+      exposure:
+        # * 这个符号暴露所有接口
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"  
+```
+4. 启动多个服务后采用$\color{red}{POST}$任意服务的/acturtor/bus-refresh访问即可刷新配置信息
+5. 增加rabbit后zipkin不能追踪调用链，启动zipkin的jar包时增加rabbitmq参数即可``--zipkin.collector.rabbitmq.addresses=localhost``
+```cmd
+java -jar zipkin-server-2.10.1-exec.jar --zipkin.collector.rabbitmq.addresses=localhost
+```
+
+
