@@ -14,6 +14,7 @@
   - [断路器 Hystrix](#断路器-hystrix)
   - [断路器监控 Hystrix Dashboard](#断路器监控-hystrix-dashboard)
   - [断路器聚合监控 Hystrix Turbine](#断路器聚合监控-hystrix-turbine)
+  - [微服务网关 Zuul](#微服务网关-zuul)
 
 ## Spring boot配置文件顺序
 
@@ -408,5 +409,46 @@ eureka:
 4. 启动多个开启信息共享的微服务，启动上面的单个断路器监控Hystrix Dashboard与当前的Turbine
 5. 写一个测试类，持续访问第4步开启的多个微服务
 6. 访问http://localhost:dashboard-port/hystrix，在地址栏输入http://localhost:turbine-port/turbine.stream，点击Monitor Stream即可查看监控
+
+## 微服务网关 Zuul
+
+将所有对外微服务封装，访客只需要访问统一地址的不同接口就可以访问不同的微服务
+
+1. 创建Model，引入依赖
+```xml
+  <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+  </dependency>
+  <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+  </dependency>
+```
+2. 在启动类上添加@EnableZuulProxy,开启网关代理
+3. 配置application.yml,主要配置注册中心地址，对其余微服务做路由映射
+```
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: product-service-zuul
+zuul:
+  routes:
+    api-a:
+      path: /api-data/**
+      serviceId: PRODUCT-DATA-SERVICE
+    api-b:
+      path: /api-view/**
+      serviceId: PRODUCT-VIEW-SERVICE-FEIGN
+```
+4. 启动所有微服务后启动zuul，访问``http://localhost:zuul-port/api-view/*``或``http://localhost:zuul-port/api-data/*``(*就是原来微服务的接口)就可以访问原来的微服务了
+
 
 
