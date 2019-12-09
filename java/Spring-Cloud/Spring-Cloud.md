@@ -12,6 +12,7 @@
   - [配置客户端手动更新](#配置客户端手动更新)
   - [消息总线bus](#消息总线bus)
   - [断路器 Hystrix](#断路器-hystrix)
+  - [断路器监控](#断路器监控)
 
 ## Spring boot配置文件顺序
 
@@ -321,5 +322,41 @@ feign:
   hystrix:
     enabled: true
 ```
+
+## 断路器监控
+
+1. 引入依赖
+```xml
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+</dependency>
+```
+2. 启动类添加@EnableHystrixDashboard,表示这是个断路器监控类
+3. application.yml
+```yml
+spring:
+  application:
+    name: hystrix-dashboard
+```
+4. 在开启断路器的微服务的启动类上添加@EnableCircuitBreaker注解,将信息共享给监控中心
+5. 写一个测试类，不间断地访问启动断路器的微服务
+6. 访问http://localhost:断路器监控端口/hystrix，在地址栏输入http://localhost:你微服务的端口/actuator/hystrix.stream，点击Monitor Stream即可查看监控
 
 
