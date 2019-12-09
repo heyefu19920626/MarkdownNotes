@@ -12,7 +12,8 @@
   - [配置客户端手动更新](#配置客户端手动更新)
   - [消息总线bus](#消息总线bus)
   - [断路器 Hystrix](#断路器-hystrix)
-  - [断路器监控](#断路器监控)
+  - [断路器监控 Hystrix Dashboard](#断路器监控-hystrix-dashboard)
+  - [断路器聚合监控 Hystrix Turbine](#断路器聚合监控-hystrix-turbine)
 
 ## Spring boot配置文件顺序
 
@@ -323,9 +324,9 @@ feign:
     enabled: true
 ```
 
-## 断路器监控
+## 断路器监控 Hystrix Dashboard
 
-1. 引入依赖
+1. 新建Moudle,引入依赖
 ```xml
 <dependency>
   <groupId>org.springframework.cloud</groupId>
@@ -358,5 +359,54 @@ spring:
 4. 在开启断路器的微服务的启动类上添加@EnableCircuitBreaker注解,将信息共享给监控中心
 5. 写一个测试类，不间断地访问启动断路器的微服务
 6. 访问http://localhost:断路器监控端口/hystrix，在地址栏输入http://localhost:你微服务的端口/actuator/hystrix.stream，点击Monitor Stream即可查看监控
+
+## 断路器聚合监控 Hystrix Turbine
+
+1. 新建Moudle，引入依赖
+```xml
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+</dependency>
+<dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+</dependency>
+```
+2. 在启动类上添加注解@EnableTurbine,说明这是个聚合监控服务
+3. 配置application.yml,在注册中心注册，并说明要监控哪些服务
+```yml
+spring:
+  application.name: turbine
+turbine:
+  aggregator:
+    clusterConfig: default
+  # 配置Eureka中的serviceId列表，表明监控哪些服务
+  appConfig: product-view-service
+  clusterNameExpression: new String("default")
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+```
+4. 启动多个开启信息共享的微服务，启动上面的单个断路器监控Hystrix Dashboard与当前的Turbine
+5. 写一个测试类，持续访问第4步开启的多个微服务
+6. 访问http://localhost:dashboard-port/hystrix，在地址栏输入http://localhost:turbine-port/turbine.stream，点击Monitor Stream即可查看监控
 
 
