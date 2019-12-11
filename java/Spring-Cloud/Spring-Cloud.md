@@ -449,7 +449,3 @@ zuul:
       serviceId: PRODUCT-VIEW-SERVICE-FEIGN
 ```
 4. 启动所有微服务后启动zuul，访问``http://localhost:zuul-port/api-view/*``或``http://localhost:zuul-port/api-data/*``(*就是原来微服务的接口)就可以访问原来的微服务了
-
-
-
-

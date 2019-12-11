@@ -308,5 +308,4 @@ under the License.
     <activeProfile>jdk-8</activeProfile>
     <activeProfile>jdk-11</activeProfile>
   </activeProfiles>
-
 </settings>
