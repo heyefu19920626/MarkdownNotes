@@ -21,6 +21,8 @@ NOT BEING EXPIRED JUST TO BE SAFE.
 c.在配置上，自我保护机制关闭了，但是一分钟内的续约数没有达到85% ， 可能发生了网络分区，会有如下提示
 THE SELF PRESERVATION MODE IS TURNED OFF.THIS MAY NOT PROTECT INSTANCE EXPIRY IN CASE OF NETWORK/OTHER PROBLEMS.
 
+eureka.server.enable-self-preservation=true开启自我保护机制
+
 解决方式：[Stackoverflow](https://stackoverflow.com/questions/33921557/understanding-spring-cloud-eureka-server-self-preservation-and-renew-threshold)
 
 1. Deploy two Eureka server and enable registerWithEureka.
