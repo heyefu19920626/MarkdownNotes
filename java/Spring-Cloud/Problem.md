@@ -3,6 +3,7 @@
 - [问题](#问题)
   - [Eureka Server](#eureka-server)
     - [自我保护机制](#自我保护机制)
+  - [Spring Boot 警告：非法的发射访问操作](#spring-boot-警告非法的发射访问操作)
 
 
 ## Eureka Server
@@ -27,3 +28,14 @@ c.在配置上，自我保护机制关闭了，但是一分钟内的续约数没
 
 1. Deploy two Eureka server and enable registerWithEureka.
 2. If you just want to deploy in demo/dev environment, you can set eureka.server.renewalPercentThreshold to 0.49, so when you start up a Eureka server alone, threshold will be 0.
+
+## Spring Boot 警告：非法的发射访问操作
+
+```
+WARNING: An illegal reflective access operation has occurred   
+...
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations  
+WARNING: All illegal access operations will be denied in a future release
+```
+
+原因： jdk版本过高

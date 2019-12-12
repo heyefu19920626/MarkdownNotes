@@ -1,5 +1,6 @@
+# Linux中各种环境变量设置
 
-### java环境变量
+## java环境变量
 > vim /etc/profile
 > source /etc/profile
 - jdk
