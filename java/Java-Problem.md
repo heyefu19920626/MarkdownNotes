@@ -3,6 +3,7 @@
 - [问题](#问题)
   - [Thread中start()与run()](#thread中start与run)
   - [三种代理模式](#三种代理模式)
+  - [Java对象不再使用时，赋值为null](#java对象不再使用时赋值为null)
 
 ## Thread中start()与run()
 
@@ -28,3 +29,19 @@ static Object newProxyInstance(ClassLoader loader,
             Class[] interfaces,InvocationHandler h )
 ```
 3. Cglib代理,子类代理
+
+## Java对象不再使用时，赋值为null
+
+如何确定对象可以被回收/如何确定对象是存活的？  
+可达性分析算法  
+JVM: 栈中引用的对象。只要堆中的对象，在栈中还存在引用，就是存活的。  
+赋值操作会对栈中进行读写，会擦掉已失效的引用。
+```java
+if(true){
+    byte[] placeHolder = new byte[64 * 1024 * 1024]
+    System.out.println(placeHolder.length / 1024);
+}
+//或者换位其它的赋值操作,如int replace = 1;也能达到同样效果
+placeHolder = null;
+System.gc()
+```
