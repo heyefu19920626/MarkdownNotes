@@ -68,3 +68,12 @@
   - en 压缩
   - 路径压缩
 - MPT Merkle Patricia tree
+  - Modified MPT 以太坊,一个大的MPT包含很多小的MPT
+![](./pic/mmpt.png)
+![](./pic/mmpt2.png)
+- roll back
+  - 分叉的回滚，智能合约的支持，导致简单的回滚几乎不可能，所以要保持历史状态方便回滚
+![](pic/construction.png)
+- 账户(key, value)中value的存储
+  - 序列化RLP(Recursive Length Prefix)
+  - netsted array of bytes
