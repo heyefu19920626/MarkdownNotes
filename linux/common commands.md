@@ -1,17 +1,17 @@
 # 常用命令
 
-
-- [常用命令](#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4)
+- [常用命令](#常用命令)
   - [ls](#ls)
   - [tail](#tail)
   - [netstat](#netstat)
   - [find](#find)
-  - [xargs与exec,ok](#xargs%e4%b8%8eexecok)
+  - [xargs与exec,ok](#xargs与execok)
   - [dhclient](#dhclient)
   - [chown](#chown)
   - [chomd](#chomd)
-  - [查看CPU配置](#%e6%9f%a5%e7%9c%8bcpu%e9%85%8d%e7%bd%ae)
-  - [查看网络状况](#%e6%9f%a5%e7%9c%8b%e7%bd%91%e7%bb%9c%e7%8a%b6%e5%86%b5)
+  - [查看CPU配置](#查看cpu配置)
+  - [查看网络状况](#查看网络状况)
+
 
 ## ls
 用来显示目标列表

@@ -2,11 +2,19 @@
 
 
 - [Ubuntu](#ubuntu)
+  - [修改gnome3的快捷键](#修改gnome3的快捷键)
   - [修改win10 + ubuntu18.04启动顺序](#修改win10--ubuntu1804启动顺序)
   - [ubuntu终端显示路径太长](#ubuntu终端显示路径太长)
   - [oh-my-zsh安装与配置](#oh-my-zsh安装与配置)
   - [dpkg解决依赖问题](#dpkg解决依赖问题)
     - [报错](#报错)
+
+## 修改gnome3的快捷键
+
+1. 使用命令讲所有gnome3快捷命令输出到文件``gsettings list-keys org.gnome.desktop.wm.keybindings | awk ' {printf "%s  %s\n", "gsettings get org.gnome.desktop.wm.keybindings",$1}' > t.sh``
+2. 执行１的sh文件，获取所有快捷键``sh t.sh > t.txt``
+3. 在t.txt中寻找要修改的快捷键，在t.sh中找到对应的命令
+4. 使用命令修改对应快捷的``gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "[]"``
 
 ## 修改win10 + ubuntu18.04启动顺序
 - 修改grub文件``sudo vim /etc/default/grub``

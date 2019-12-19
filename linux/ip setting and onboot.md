@@ -1,12 +1,20 @@
 
 
-#### 仓库缓存等问题
+- [仓库缓存等问题](#仓库缓存等问题)
+- [命令行自动补全](#命令行自动补全)
+- [IP设置](#ip设置)
+  - [ifcfg-eth0](#ifcfg-eth0)
+- [开机自启](#开机自启)
+- [日志文件](#日志文件)
+
+
+## 仓库缓存等问题
 - Not using downloaded repomd.xml because it is older than what we have
     + yum clean all
     + 若还是有问题 可以 yum check-update
     + 如果之后执行yum有问题，删除var/cache/yum/下所有文件，再执行yum repolist all,yum makecache,yum update
 
-#### 命令行自动补全
+## 命令行自动补全
 
 - 安装bash-completion,退出重启登陆，或者重载配置文件即可
 ```
@@ -15,14 +23,14 @@ yum install bash-completion -y
 ```
 
 
-#### IP设置
+## IP设置
 
 > systemctl status network #查看网络服务状态
 > /etc/sysconfig/network-scripts #网卡配置在该目录下
 > ifcfg-网卡名称
 > systemctl start network
 
-##### ifcfg-eth0
+### ifcfg-eth0
 ```
 TYPE=Ethernet #网卡协议类型
 DEVICE=eth0 #物理设备名称（这里只是一个逻辑名）
@@ -39,7 +47,7 @@ USERCTL=yes #非ROOT用户是否允许控制整个设备 yes|no
 IPV6INIT=yes #是否执行IPv6 yes:支持IPv6 no:不支持IPv6
 ```
 
-#### 开机自启
+## 开机自启
 - centos：在/etc/rc.d/rc.local中写入命令,并赋予权限
 > /usr/lib/systemd/system #service文件目录(centos)
 > /etc/systemd/system #service文件目录(ubuntu)
@@ -101,5 +109,5 @@ PrivateTmp=true                                                                 
 WantedBy=multi-user.target                                               //服务用户的模式
 ```
 
-#### 日志文件
+## 日志文件
 > /var/log/
