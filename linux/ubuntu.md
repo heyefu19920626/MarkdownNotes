@@ -19,13 +19,17 @@
 2. 将以下内容写入文件
 
 ```
-[Desktop Entry]                                           
-Version=2019.3
+[Desktop Entry]
 Type=Application
+Exec=/home/heyefu/tools/jetbrains/idea/bin/idea.sh
+Icon=/home/heyefu/tools/jetbrains/idea/bin/idea.png 
 Terminal=false
-Exec=//home/heyefu/tools/jetbrains/idea/bin/idea.sh
 Name=idea
-Icon=/home/heyefu/tools/jetbrains/idea/bin/idea.png
+Version=2019.3
+Encoding=UTF-8
+StartupNotify=true
+Comment=Rayn-IDEA-IU
+Categories=Developer;
 ```
 
 3. 将文件修改为可执行
