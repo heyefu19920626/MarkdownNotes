@@ -1,6 +1,7 @@
 # 常用命令
 
 - [常用命令](#常用命令)
+  - [三种将前一命令结果作为后一命令参数](#三种将前一命令结果作为后一命令参数)
   - [ls](#ls)
   - [tail](#tail)
   - [netstat](#netstat)
@@ -11,6 +12,12 @@
   - [chomd](#chomd)
   - [查看CPU配置](#查看cpu配置)
   - [查看网络状况](#查看网络状况)
+
+## 三种将前一命令结果作为后一命令参数
+
+1. find / -name “test*” |xargs rm -rf 
+2. find / -name “test*” -exec rm -rf {} \; 
+3. rm -rf $(find / -name “test”)
 
 
 ## ls
@@ -49,7 +56,7 @@ linux中文件的时间有三种:
 > atime：文件最后被读取时间，也可以叫access，use。可使用-u代替。
 
 - > find -type f -ctime -1|xargs ls -l 列出1天内最后属性改变的文件
-- > find -type f -mtime +5 -exec ls -l {} \; 列出5分钟以前内容修改的文件
+- > find -type f -mtime +5 -exec ls -l {} \\; 列出5分钟以前内容修改的文件
 - 时间之前不带符号刚好5天之前的文件
 - exec 可以换成ok,会给出提示
 ```

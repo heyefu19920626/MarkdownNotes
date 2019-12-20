@@ -1,30 +1,26 @@
 # Ubuntu
 
-
 - [Ubuntu](#ubuntu)
   - [修改gnome3的快捷键](#修改gnome3的快捷键)
   - [修改win10 + ubuntu18.04启动顺序](#修改win10--ubuntu1804启动顺序)
   - [ubuntu终端显示路径太长](#ubuntu终端显示路径太长)
   - [oh-my-zsh安装与配置](#oh-my-zsh安装与配置)
   - [dpkg解决依赖问题](#dpkg解决依赖问题)
-    - [报错](#报错)
+  - [报错](#报错)
 
 ## 修改gnome3的快捷键
 
-1. 使用命令讲所有gnome3快捷命令输出到文件``gsettings list-keys org.gnome.desktop.wm.keybindings | awk ' {printf "%s  %s\n", "gsettings get org.gnome.desktop.wm.keybindings",$1}' > t.sh``
+1. 使用命令将所有gnome3快捷命令输出到文件``gsettings list-keys org.gnome.desktop.wm.keybindings | awk ' {printf "%s  %s\n", "gsettings get org.gnome.desktop.wm.keybindings",$1}' > t.sh``
 2. 执行１的sh文件，获取所有快捷键``sh t.sh > t.txt``
 3. 在t.txt中寻找要修改的快捷键，在t.sh中找到对应的命令
 4. 使用命令修改对应快捷的``gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "[]"``
 
 ## 修改win10 + ubuntu18.04启动顺序
-- 修改grub文件``sudo vim /etc/default/grub``
-```
-#更改数字设置默认启动项，想要改为第N项默认就把0改成N-1看到启动界面是第几项N就是几，将数字减去1
-GRUB_DEFAULT=0
-#选项是设定菜单等待时间，默认为10秒，设置为-1取消倒计时，这个选项也可以一起更改。
-GRUB_TIMEOUT=10
-```
-- 更新grub.cfg``sudo update-grub``,重启电脑
+
+1. 修改grub文件``sudo vim /etc/default/grub``  
+   1. 更改数字设置默认启动项，想要改为第N项默认就把0改成N-1看到启动界面是第几项N就是几，将数字减去1: ``GRUB_DEFAULT=0``
+   2. 选项是设定菜单等待时间，默认为10秒，设置为-1取消倒计时，这个选项也可以一起更改: ``GRUB_TIMEOUT=10``
+2. 更新grub.cfg``sudo update-grub``,重启电脑
 
 ## ubuntu终端显示路径太长
 
@@ -66,13 +62,13 @@ GRUB_TIMEOUT=10
 3. 解决依赖关系``sudo apt-get -f install``
 4. 重新安装``sudo dpkg -i ...``
 
-### 报错
+## 报错
 1. 切换到root用户的时候很多环境变量不生效
    1. ``vim ~/.zshrc``
    2. 在最前面加入``source $HOME/.bashrc``或者``source /etc/profile``
    3. ``export PATH=$HOME/bin:/usr/local/bin:$PATH``
 2. ``/root/.bashrc:13: command not found: shopt``
    1. ``type shopt``
-   2. ``echo "#! /bin/bash\n\nshopt \$*\n" > /usr/local/bin/shopt``
+   2. ``echo "#! /bin/bash\n\nshopt \$*\n"> /usr/local/bin/shopt``
    3. ``chmod +x /usr/local/bin/shopt``
    4. ``ln -s /usr/local/bin/shopt /usr/bin/shopt``
