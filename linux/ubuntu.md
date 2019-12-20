@@ -1,6 +1,9 @@
 # Ubuntu
 
 - [Ubuntu](#ubuntu)
+  - [创建启动图标并添加到开始菜单](#创建启动图标并添加到开始菜单)
+  - [gnome桌面美化](#gnome桌面美化)
+  - [网易云需要root权限才能打开](#网易云需要root权限才能打开)
   - [修改gnome3的快捷键](#修改gnome3的快捷键)
   - [修改win10 + ubuntu18.04启动顺序](#修改win10--ubuntu1804启动顺序)
   - [ubuntu终端显示路径太长](#ubuntu终端显示路径太长)
@@ -8,12 +11,63 @@
   - [dpkg解决依赖问题](#dpkg解决依赖问题)
   - [报错](#报错)
 
+## 创建启动图标并添加到开始菜单
+
+开始菜单里的图标位置：/usr/share/applications/
+
+1. 创建idea.desktop文件
+2. 将以下内容写入文件
+
+```
+[Desktop Entry]                                           
+Version=2019.3
+Type=Application
+Terminal=false
+Exec=//home/heyefu/tools/jetbrains/idea/bin/idea.sh
+Name=idea
+Icon=/home/heyefu/tools/jetbrains/idea/bin/idea.png
+```
+
+3. 将文件修改为可执行
+4. 把创建好的.desktop文件复制到/usr/share/applications
+
+## gnome桌面美化
+
+[参考](http://www.r9it.com/20190418/ubuntu-18.04-gnome-optimize.html)
+
+1. 安装 gnome-tweaks
+   1. ``sudo apt install gnome-tweak-tool``
+2. 在谷歌浏览器中安装扩展[GNOME Shell integration](https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep)
+3. 安装主机连接器
+   1. ``sudo apt install chrome-gnome-shell``
+4. 推荐扩展
+   1. Dash to Panel
+   2. Random Walls
+   3. TopIcons
+   4. User Themes
+   5. Workspace Grid
+5. 推荐主题与图标
+   1. vimix 主题项目: https://github.com/vinceliuice/vimix-gtk-themes
+   2. vimix 图标项目: https://github.com/vinceliuice/vimix-icon-theme
+
+## 网易云需要root权限才能打开
+
+[参考](http://www.r9it.com/20190419/neteasy-cloud-music-run-as-root.html)
+
+1. 第一步，修改 /etc/sudoers 文件，在最后面加一行
+   1. {user} ALL = NOPASSWD: /usr/bin/netease-cloud-music
+   2. 这里的 {user} 就是你当前登录系统的用户，如果不知道请在终端运行 whoami 命令
+2. 第二步，sudo vim /usr/share/applications/netease-cloud-music.desktop
+3. 修改 Exec=netease-cloud-music %U 为 Exec=sudo netease-cloud-music %U
+
+
 ## 修改gnome3的快捷键
 
 1. 使用命令将所有gnome3快捷命令输出到文件``gsettings list-keys org.gnome.desktop.wm.keybindings | awk ' {printf "%s  %s\n", "gsettings get org.gnome.desktop.wm.keybindings",$1}' > t.sh``
 2. 执行１的sh文件，获取所有快捷键``sh t.sh > t.txt``
 3. 在t.txt中寻找要修改的快捷键，在t.sh中找到对应的命令
-4. 使用命令修改对应快捷的``gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "[]"``
+4. 使用命令修改对应快捷的``gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "[]"``为空
+5. 使用命令修改切换工作空间的快捷键``gsettings set org.gnome.desktop.wm.keybindings  move-to-workspace-left "['<Super><Control>Left']"``
 
 ## 修改win10 + ubuntu18.04启动顺序
 
