@@ -15,24 +15,23 @@
 
 开始菜单里的图标位置：/usr/share/applications/
 
-1. 创建idea.desktop文件
+1. 创建code.desktop文件
 2. 将以下内容写入文件
 
 ```
 [Desktop Entry]
+Version=1.0
 Type=Application
-Exec=/home/heyefu/tools/jetbrains/idea/bin/idea.sh
-Icon=/home/heyefu/tools/jetbrains/idea/bin/idea.png 
+Name=Visual Studio Code
+Icon=/home/heyefu/tools/vscode/resources/app/resources/linux/code.png
+Exec="/home/heyefu/tools/vscode/bin/code" %f
+Comment=Visual Studio Code
+Categories=Development;IDE;
 Terminal=false
-Name=idea
-Version=2019.3
-Encoding=UTF-8
-StartupNotify=true
-Comment=Rayn-IDEA-IU
-Categories=Developer;
+StartupWMClass=code
 ```
 
-3. 将文件修改为可执行
+3. 将文件修改为可执行(此步可以不用)
 4. 把创建好的.desktop文件复制到/usr/share/applications
 
 ## gnome桌面美化
