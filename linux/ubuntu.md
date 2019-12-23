@@ -20,6 +20,7 @@
   - [ubuntu提示/boot空间不足](#ubuntu提示boot空间不足)
   - [The package *** needs to be reinstalled, but I can't find an archive for it](#the-package--needs-to-be-reinstalled-but-i-cant-find-an-archive-for-it)
   - [Shadowsocks开机自启](#shadowsocks开机自启)
+  - [7zip](#7zip)
 
 ## SSH客户端
 
@@ -244,3 +245,8 @@ nohup sslocal -c /home/heyefu/configs/shadowsocks/config.json > /home/heyefu/con
 exit 0
 ```
 5. `chmod 755 /etc/rc.local` 
+
+## 7zip
+
+1. 安装`sudo apt install p7zip-full p7zip-rar`
+2. 之后可以通过图形界面提取
