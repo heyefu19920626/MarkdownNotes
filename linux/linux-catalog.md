@@ -1,6 +1,6 @@
 # Linux 目录
 
-
+- [..](../README.md)
 - [Ubuntu](ubuntu.md)
 - [WSL](windows&#32;subsystem&#32;for&#32;linux.md)
 - [Enviromment](environment.md)
