@@ -1,5 +1,7 @@
 # Redis
 
+- [..](database-catalog.md)
+
 ## 非本机不能连接Redis
 
 通过修改redis.conf文件解决，一般在/etc/redis.conf，也可以通过``find / -name /etc/redis.conf``寻找

@@ -1,5 +1,7 @@
 # Ubuntu
 
+- [..](linux-catalog.md)
+
 - [Ubuntu](#ubuntu)
   - [V2Ray客户端](#v2ray客户端)
   - [更改登录输入密码界面壁纸](#更改登录输入密码界面壁纸)

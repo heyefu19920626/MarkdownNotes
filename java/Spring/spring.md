@@ -1,8 +1,8 @@
 # Spring
 
-## [目录](./catalog.md)
+- [..](../java-catalog.md)
+
 - [Spring](#spring)
-  - [目录](#目录)
   - [SpringMVC的运行流程](#springmvc的运行流程)
   - [SpringMVC九大组件](#springmvc九大组件)
   - [Spring事务](#spring事务)

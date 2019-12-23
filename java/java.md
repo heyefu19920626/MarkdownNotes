@@ -1,19 +1,18 @@
-### [目录](./catalog.md)
-- [代码块](#code-block)
-- [三元表达式与if-else](#ternary)
 
-<div id="code-block"></div>
+- [..](java-catalog.md)
 
-#### 代码块
+- [代码块](#代码块)
+- [java中三元运算符与if-else的区别](#java中三元运算符与if-else的区别)
+  - [两者之间的区别：](#两者之间的区别)
+  - [实例](#实例)
+
+## 代码块
 - 静态代码块，构造代码块，普通代码块
 > 静态代码块 > 构造代码块 > 构造函数
 
+## [java中三元运算符与if-else的区别](https://www.cnblogs.com/itmlt1029/p/4756331.html)
 
-<div id="ternary"></div>
-
-#### [java中三元运算符与if-else的区别](https://www.cnblogs.com/itmlt1029/p/4756331.html)
-
-##### 两者之间的区别：
+### 两者之间的区别：
 - 返回值要求不同：三元运算符必须要有返回值,if-else不必
 - 性能不同：三元运算符稍快
 - 使用范围不同
@@ -24,7 +23,7 @@
     - jvm在给数值分配数据类型的时候会选取刚好能装下该数据大小精度的数据类型进行分配
     - java中常见数据类型其范围从小到大（精度由高到低）：byte<short<char<int<float<double
 
-##### 实例
+### 实例
 ```java
 char a='a';
 int i=96;

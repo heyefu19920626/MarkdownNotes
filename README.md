@@ -2,7 +2,8 @@
 
 ### 目录
 
-- [Database](./database/catalog.md)
-- [Java](./java/catalog.md)
+- [Database](./database/database-catalog.md)
+- [Java](java/java-catalog.md)
 - [Linux](linux/linux-catalog.md)
 - [Go](go/catalog.md)
+- [Blockchain](blockchain/blockchain-catalog.md)

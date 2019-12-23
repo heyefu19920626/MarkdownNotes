@@ -1,5 +1,7 @@
 # Linux中各种环境变量设置
 
+- [..](linux-catalog.md)
+
 - [Linux中各种环境变量设置](#linux中各种环境变量设置)
   - [java环境变量](#java环境变量)
   - [Go环境变量](#go环境变量)
