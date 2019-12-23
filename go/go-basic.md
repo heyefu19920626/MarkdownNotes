@@ -5,6 +5,7 @@
     - [函数作为实参](#函数作为实参)
     - [函数闭包](#函数闭包)
     - [函数方法](#函数方法)
+  - [defer](#defer)
 
 ## Go 函数
 
@@ -52,10 +53,8 @@ package main
 
 import "fmt"
 
-func getSequence() func() int {
-   i:=0
-   return func() int {
-      i+=1
+func getSequence() func() int { i:=0
+   return func() int { i+=1
      return i  
    }
 }
@@ -111,4 +110,39 @@ func (c Circle) getArea() float64 {
   //c.radius 即为 Circle 类型对象中的属性
   return 3.14 * c.radius * c.radius
 }
+```
+
+## defer
+
+defer后面的函数在defer语句所在的函数执行结束的时候会被调用
+
+1. 如何让defer函数在宿主函数的执行中间执行
+   1. 将函数拆分
+   2. 使用匿名函数,在匿名函数中使用defer
+2. 多个defer的执行顺序
+   1. 后定义的defer先执行
+3. defer函数参数的计算时间点
+   1. defer函数的参数是在defer语句出现的位置做计算的，而不是在函数运行的时候做计算的
+4. 在defer语句里面使用多条语句
+   1. 使用函数或匿名函数
+5. defer函数会影响宿主函数的返回值
+   1. 对于传递的引用会影响返回值，如果只是值传递不会
+   2. 如下示例，传递的是i的地址，在返回i的值给r后，又修改了i地址的内容，所以i变为300，r还是100
+```go
+func foo(i *int) int{
+    *i += 100
+    defer func(){
+        *i += 200
+    }()
+    return *i
+}
+func main(){
+   i := 0
+   fmt.Printf("i = %d\n", i)
+   r := foo(&i)
+   fmt.Printf("i = %d; r = %d", i, r)
+}
+// 输出为:
+// i = 0
+// i = 300; r = 100
 ```
