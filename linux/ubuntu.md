@@ -5,6 +5,7 @@
 - [Ubuntu](#ubuntu)
   - [SSH客户端](#ssh客户端)
   - [V2Ray客户端](#v2ray客户端)
+    - [V2RayL](#v2rayl)
   - [更改登录输入密码界面壁纸](#更改登录输入密码界面壁纸)
   - [创建启动图标并添加到开始菜单](#创建启动图标并添加到开始菜单)
   - [gnome桌面美化](#gnome桌面美化)
@@ -44,6 +45,15 @@
  3. 通过脚本安装的只支持``systemctl start v2ray``方式启动，停止等
     1. 这样的脚本默认config文件在/etc/v2ray/config.json,要修改服务器等配置直接修改该文件
     2. 配置文件[config.json](../tools/scienceInternet/v2ray/v2ray-config.json)
+
+### V2RayL
+
+[v2ray linux 客户端，使用pyqt5编写GUI界面，核心基于v2ray-core(v2ray-linux-64)](https://github.com/jiangxufeng/v2rayL)
+
+1. 安装`bash <(curl -s -L http://dl.thinker.ink/install.sh)`
+2. 更新`bash <(curl -s -L http://dl.thinker.ink/update.sh)`
+3. 卸载`bash <(curl -s -L http://dl.thinker.ink/uninstall.sh)`
+
 
 ## 更改登录输入密码界面壁纸
 
