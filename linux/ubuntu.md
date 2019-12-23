@@ -3,6 +3,7 @@
 - [..](linux-catalog.md)
 
 - [Ubuntu](#ubuntu)
+  - [SSH客户端](#ssh客户端)
   - [V2Ray客户端](#v2ray客户端)
   - [更改登录输入密码界面壁纸](#更改登录输入密码界面壁纸)
   - [创建启动图标并添加到开始菜单](#创建启动图标并添加到开始菜单)
@@ -18,6 +19,16 @@
   - [ubuntu提示/boot空间不足](#ubuntu提示boot空间不足)
   - [The package *** needs to be reinstalled, but I can't find an archive for it](#the-package--needs-to-be-reinstalled-but-i-cant-find-an-archive-for-it)
   - [Shadowsocks开机自启](#shadowsocks开机自启)
+
+## SSH客户端
+
+1. putty：`apt install putty`
+2. FinalShell; [官网](http://www.hostbuf.com/)
+   1. `wget www.hostbuf.com/downloads/finalshell_install_linux.sh`
+   2. `chmod +x finalshell_install_linux.sh`
+   3. `./finalshell_install_linux.sh`
+   4. 安装路径`/usr/lib/FinalShell/`
+   5. 配置文件路径`/home/$USER/.finalshell/`
 
 ## V2Ray客户端
 
