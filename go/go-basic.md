@@ -8,6 +8,7 @@
     - [函数闭包](#函数闭包)
     - [函数方法](#函数方法)
   - [defer](#defer)
+  - [Struct Tag](#struct-tag)
 
 ## Go 函数
 
@@ -148,3 +149,13 @@ func main(){
 // i = 0
 // i = 300; r = 100
 ```
+
+## Struct Tag
+
+Struct tag 用来将结构体转化为json,Struct能被转化的字段都是首字母大写的字段
+
+1. tag中标识的名称将称为json数据中key的值
+2. tag可以设置为\`json:"-"\`来表示本字段不转换为json数据，即使这个字段名首字母大写
+   1. 如果想要json key的名称为字符"-"，则可以特殊处理\`json:"-,"\`，也就是加上一个逗号
+3. 如果tag中带有,omitempty选项，那么如果这个字段的值为0值，即false、0、""、nil等，这个字段将不会转换到json中
+4. 如果字段的类型为bool、string、int类、float类，而tag中又带有,string选项，那么这个字段的值将转换成json字符串
