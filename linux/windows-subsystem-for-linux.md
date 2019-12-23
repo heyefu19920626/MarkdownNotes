@@ -8,6 +8,7 @@
   - [更换阿里源](#更换阿里源)
   - [安装go](#安装go)
   - [使用docker](#使用docker)
+  - [闪退报错](#闪退报错)
 
 ## 安装
 
@@ -62,3 +63,18 @@ sudo nano /etc/wsl.conf
 root = /
 options = "metadata"
 ```
+
+## 闪退报错
+
+在powershell中输入wsl查看输出:
+
+1. 请启用虚拟机平台 Windows 功能并确保在 BIOS 中启用虚拟化
+   1. 开启hyper-v模式
+   2. 在管理员powershell中执行`bcdedit /set hypervisorlaunchtype auto`
+   3. 如果禁用了组策略里面的Device Guard虚拟化安全设置， 需要打开组策略管理
+   4. 本地计算机策略 > 计算机配置 > 管理模板>系统 > Device Guard, 打开 基于虚拟化的安全设置为“已开启”或者“未设置”
+
+2. 参考的对象类型不支持尝试的操作
+   1.  是使用VPN的原因
+   2.  cmd下管理员权限执行`netsh winsock reset`,然后重启即可
+
