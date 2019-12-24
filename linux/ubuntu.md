@@ -3,6 +3,7 @@
 - [..](linux-catalog.md)
 
 - [Ubuntu](#ubuntu)
+  - [snap安装软件太慢](#snap安装软件太慢)
   - [SSH客户端](#ssh客户端)
   - [V2Ray客户端](#v2ray客户端)
     - [V2RayL](#v2rayl)
@@ -21,6 +22,26 @@
   - [The package *** needs to be reinstalled, but I can't find an archive for it](#the-package--needs-to-be-reinstalled-but-i-cant-find-an-archive-for-it)
   - [Shadowsocks开机自启](#shadowsocks开机自启)
   - [7zip](#7zip)
+
+## snap安装软件太慢
+
+下载安装方式  
+
+1. 到 https://uappexplorer.com/snaps 搜索需要的 snap 包,然后下载
+2. 下载的时候选择对应的平台. 如 amd arm64 ..
+3. 到下载snap的目录里面执行 sudo snap install xxx.snap --dangerous
+
+设置代理
+
+1. `systemctl status snapd`查看服务配置文件地址
+2. `sudo vim /lib/systemd/system/snapd.service`修改该文件，在Service模块添加如下内容
+```
+[Service]
+Environment="http_proxy=http://代理ip:代理的端口"
+Environment="https_proxy=http://代理ip:代理的端口"
+```
+3. 让systemd重载配置`sudo systemctl daemon-reload`
+4. 重新启动snap服务`sudo systemctl restart snapd`
 
 ## SSH客户端
 
