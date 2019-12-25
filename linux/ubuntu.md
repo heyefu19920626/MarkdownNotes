@@ -105,10 +105,17 @@ Environment="https_proxy=http://代理ip:代理的端口"
 开始菜单里的图标位置：/usr/share/applications/
 
 1. 创建code.desktop文件
-2. 将以下内容写入文件
-
+2. 将以下内容写入文件  
 ```
-[Desktop Entry] Version=1.0 Type=Application Name=Visual Studio Code Icon=/home/heyefu/tools/vscode/resources/app/resources/linux/code.png Exec="/home/heyefu/tools/vscode/bin/code" %f Comment=Visual Studio Code Categories=Development;IDE; Terminal=false StartupWMClass=code
+[Desktop Entry] 
+Version=1.0 
+Type=Application 
+Name=Visual Studio Code 
+Icon=/home/heyefu/tools/vscode/resources/app/resources/linux/code.png 
+Exec="/home/heyefu/tools/vscode/bin/code" %f 
+Comment=Visual Studio Code Categories=Development;IDE; 
+Terminal=false 
+StartupWMClass=code
 ```
 
 3. 将文件修改为可执行(此步可以不用)
@@ -205,6 +212,7 @@ Environment="https_proxy=http://代理ip:代理的端口"
 4. 重新安装``sudo dpkg -i ...``
 
 ## 报错
+
 1. 切换到root用户的时候很多环境变量不生效
    1. ``vim ~/.zshrc``
    2. 在最前面加入``source $HOME/.bashrc``或者``source /etc/profile``
@@ -216,6 +224,7 @@ Environment="https_proxy=http://代理ip:代理的端口"
    4. ``ln -s /usr/local/bin/shopt /usr/bin/shopt``
 
 ## ubuntu提示/boot空间不足
+
 1. 查看安装的内核`dpkg --get-selections |grep linux-`
 2. 查看当前运行内核`uname -a`
 3. 将旧的内核删除并清理/usr/src文件,  一般以imgage开头
@@ -233,6 +242,7 @@ Environment="https_proxy=http://代理ip:代理的端口"
 2. `sudo apt-get update`
 
 ## Shadowsocks开机自启
+
 1. `ln -fs /lib/systemd/system/rc-local.service /etc/systemd/system/rc-local.service`  
 2. `cd /etc/systemd/system/`
 3. `cat rc-local.service`
@@ -257,7 +267,9 @@ Environment="https_proxy=http://代理ip:代理的端口"
 [Install]  
 # [Install] 区块，定义如何安装这个配置文件，即怎样做到开机启动 WantedBy=multi-user.target Alias=rc-local.service 
 ```
+
 4. `touch /etc/rc.local`,在rc.local文件中写入以下内容
+
 ```bash
 #!/bin/bash  
 
