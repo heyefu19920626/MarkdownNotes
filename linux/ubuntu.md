@@ -3,6 +3,7 @@
 - [..](linux-catalog.md)
 
 - [Ubuntu](#ubuntu)
+  - [mysql忘记密码](#mysql忘记密码)
   - [snap安装软件太慢](#snap安装软件太慢)
   - [SSH客户端](#ssh客户端)
   - [V2Ray客户端](#v2ray客户端)
@@ -22,6 +23,21 @@
   - [The package *** needs to be reinstalled, but I can't find an archive for it](#the-package--needs-to-be-reinstalled-but-i-cant-find-an-archive-for-it)
   - [Shadowsocks开机自启](#shadowsocks开机自启)
   - [7zip](#7zip)
+
+## mysql忘记密码
+
+1. `sudo cat /etc/mysql/debian.cnf`查看`debian-sys-maint`的密码
+2. `mysql -u debian-sys-maint -p `输入刚才发现的密码进入
+3. 修改root的密码
+```sql
+use mysql;
+// 下面这句命令有点长，请注意。
+update mysql.user set authentication_string=password('root') where user='root' and Host ='localhost';
+update user set plugin="mysql_native_password"; 
+flush privileges;
+quit;
+```
+4. `sudo service mysql restart`重启mysql
 
 ## snap安装软件太慢
 
