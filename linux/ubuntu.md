@@ -3,6 +3,7 @@
 - [..](linux-catalog.md)
 
 - [Ubuntu](#ubuntu)
+  - [IDEA不能输入中文](#idea不能输入中文)
   - [mysql忘记密码](#mysql忘记密码)
   - [snap安装软件太慢](#snap安装软件太慢)
   - [SSH客户端](#ssh客户端)
@@ -23,6 +24,11 @@
   - [The package *** needs to be reinstalled, but I can't find an archive for it](#the-package--needs-to-be-reinstalled-but-i-cant-find-an-archive-for-it)
   - [Shadowsocks开机自启](#shadowsocks开机自启)
   - [7zip](#7zip)
+
+## IDEA不能输入中文
+
+其他如谷歌浏览器都能输入中文，但IDEA不能  
+在系统设置 -> 区域与语言 -> 输入源中添加中文并并放置到最顶层，重启IDEA
 
 ## mysql忘记密码
 
