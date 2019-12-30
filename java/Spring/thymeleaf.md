@@ -112,6 +112,8 @@ Call  fragment which has implicit parameters
 
     <div th:replace="~{fragments/my-template2 :: greeting }"></div> 
 ```
+3. 使用~{}传递空参数
+4. 使用_使用模板中的参数作为默认值
 
 ### th:assert
 
