@@ -1,6 +1,6 @@
 # Java 目录
 
 - [..](../README.md)
-- [Spring](./spring/spring.md)
+- [Spring](./Spring/spring-catalog.md)
 - [java](./java.md)
 - [Java Problem](Java-Problem.md)

@@ -1,6 +1,6 @@
 # Spring
 
-- [..](../java-catalog.md)
+- [..](spring-catalog.md)
 
 - [Spring](#spring)
   - [SpringMVC的运行流程](#springmvc的运行流程)
