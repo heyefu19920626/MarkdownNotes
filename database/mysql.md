@@ -4,7 +4,24 @@
 
 - [日期更新CURRENT_TIMESTAMP](#date-update)
 
-<div id="date-update"></div>
+
+## 导入与导出数据库文件
+
+### 导出
+1. 导出数据库与文件
+   1. mysqldump -u 用户名 -p 数据库名 > 文件名.sql:`mysqldump -u root -p boot_template > boot.sql`
+2. 只导出结构
+   1. mysqldump -u 用户名 -p -d 数据库名 > 文件名.sql:`mysqldump -u root -p -d boot_template > boot_stru.sql`
+
+### 导入
+1. 在mysql控制台导入
+   1. 首先建空数据库`mysql>create database abc;`
+   2. 选择数据库`use abc;`
+   3. 设置数据库编码`set names utf8;`
+   4. 导入数据（注意sql文件的路径）`source /home/heyefu/Downloads/abc.sql;`
+2. 在终端导入
+   1. mysql -u 用户名 -p 数据库名 < 数据库名.sql:`mysql -u root -p abc < abc.sql`
+   2. 然后输入密码即可
 
 ## Mysql中创建日期和更新日期自动更新
 
