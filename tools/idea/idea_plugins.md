@@ -10,8 +10,11 @@
 - CodeGlance: 在右侧显示代码视图
 - Key promoter: 快捷键提醒
 - idea-batch
-- Alibaba Java Coding Guidelines
+- Alibaba Java Coding Guidelines, p3c: 阿里巴巴出品的java代码规范插件
+- FindBugs
 - SonarLint: 代码检查
+- MyBatisCodeHelperPro: mybatis代码自动生成插件，大部分单表操作的代码可自动生成 减少重复劳动 大幅提升效率
+- Free Mybatis plugin: 实现功能，点击dao层方法直接跳转到对应xml
 - .ignore: git提交忽略文件
 - cmdsupport: cmd文件支持
 - AceJump: 快捷跳转
@@ -23,12 +26,12 @@
 - Rainbow Brackets： 彩色括号
 - NyanProgressBar: loading条
 - Markdown Support: markdown
-- SonarLint: bug检查
 - Docker intergration
 - GsonFormat: JSON转java类
 - Lombok: 省略getter，setter
-- maven helper： maven依赖检查
-- VisualVM Launcher: JVM
+- Maven helper： maven依赖检查
+- VisualVM Launcher: 运行java程序的时候启动visualvm，方便查看jvm的情况 比如堆内存大小的分配
+- JVM Debugger Memory View [内存视图按照类名称分组来显示 堆中的对象总数](https://blog.csdn.net/azhegps/article/details/71195351)
 - Translation: 翻译
 - BashSupport: bash语法支持
 - Batch Script Support
