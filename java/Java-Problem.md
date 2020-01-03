@@ -10,6 +10,7 @@
   - [三种代理模式](#三种代理模式)
   - [Java对象不再使用时，赋值为null](#java对象不再使用时赋值为null)
   - [四大元注解](#四大元注解)
+  - [File.separator](#fileseparator)
 
 ## 反射
 
@@ -80,3 +81,11 @@ System.gc()
 3. @Documented：表示该注解是否可以生成到 API文档中。在该注解使用后，如果导出API文档，会将该注解相关的信息可以被例如javadoc此类的工具文档化。 注意：Documented是一个标记注解，没有成员。
 4. @Inherited：使用@Inherited定义的注解具备继承性
 假设一个注解在定义时，使用了@Inherited，然后该注解在一个类上使用，如果这个类有子类，那么通过反射我们可以从类的子类上获取到同样的注解
+
+## File.separator
+
+字符串替换时出现java.lang.IllegalArgumentException: character to be escaped is missing  
+如果replace(old, new),如果new中单独出现File.separator就会出现上面的异常  
+windows的File.separator为`\`,处理时会被当作转义字符，后面看这个字符后一位，如果没有任何内容，就报异常了  
+
+1. 需要Matcher.quoteReplacement(File.separator)
