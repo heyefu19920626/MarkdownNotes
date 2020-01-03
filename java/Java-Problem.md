@@ -16,6 +16,12 @@
 
 ### 获取类的三种方式
 
+Java9+中Class.newInstance()方法将被弃用,将被`Class.getDeclaredConstructor().newInstance()`方法取代  
+该方法适用与public与private,且可以构造有参与无参,`Class.getConstructor()`适用于public  
+```java
+String.class.getConstructor(String.class).newInstance("Hello");
+```
+
 1. ``Class.forName(String classPath)``
    1. classPath是类的完整路径，可能产生ClassNotFoundException异常
    2. 一般用于不知道类是否存在的情况
