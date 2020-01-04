@@ -12,6 +12,9 @@
     - [导出](#导出)
     - [导入](#导入)
   - [Mysql中创建日期和更新日期自动更新](#mysql中创建日期和更新日期自动更新)
+  - [datetime与timestamp](#datetime与timestamp)
+  - [Win10安装Maridb](#win10安装maridb)
+  - [Centos7 卸载自带的MaraiDB](#centos7-卸载自带的maraidb)
 
 ## Mariadb修改密码
 
@@ -93,3 +96,41 @@ service mysqld restart 重新启动
 4. 当Mysql字段类型设置为timestamp，且默认值设置为CURRENT_TIMESTAMP，并不为空时，如果插入时设置该字段为NULL则报错
     > 修改mysql的配置文件my.ini中将explicit_defaults_for_timestamp=true注释或者改为fales
 
+## datetime与timestamp
+
+1. datetime占用8个字节，而timestamp占用4个字节。
+2. 还有就是表示的时间范围不同。
+3. timestamp的时间显示值依赖于时区；如果在多个时区存储或访问数据，timestamp和datetime的行为将很不一样。timestamp提供的数值和时区有关系，而datetime则是文本表示的日期和时间。
+4. 除了特殊的行为，通常也应该尽量使用TIMESTAMP。
+```sql
+create table tb(
+t1 datetime default current_timestamp on update current_timestamp,     #设置为当前时间戳为默认值，并且自动更新    
+t2 datetime default current_timestamp,                                 #仅设置当前时间戳为默认值
+t3 timestamp default current_timestamp on update current_timestamp,
+t4 timestamp default current_timestamp,
+t5 varchar(10),
+t6 int auto_increment not null primary key)
+```
+
+## Win10安装Maridb
+
+1. 在[官网](https://mariadb.com/downloads/)下载对应安装包
+2. 直接安装即可
+3. 如果出现错误`Faild to start,Verify that you have suffcient privileges to start system services.`
+   1. 权限问题
+   2. 开始菜单搜索:服务，找到MariDB，右键打开属性，切换到登录tab标签，登录身份修改为本地系统账户,应用即可
+4. maridb10.4
+   1. mysql.user表已经退役。用户帐户和全局权限现在存储在mysql.global_priv表
+
+
+## Centos7 卸载自带的MaraiDB
+
+1. 查看已安装的包： `rpm -qa | grep mariadb`
+```
+mariadb-5.5.64-1.el7.x86_64
+mariadb-server-5.5.64-1.el7.x86_64
+mariadb-libs-5.5.64-1.el7.x86_64
+```
+2. 依次卸载
+   1. rpm -e --nodeps mariadb-libs-5.5.64-1.el7.x86_64
+安装最新的Maraidb可以去官网查看[yum安装方法](https://mariadb.com/kb/en/mariadb-package-repository-setup-and-usage/)
