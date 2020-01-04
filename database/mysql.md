@@ -55,7 +55,11 @@ mysql> quit
 service mysqld restart 重新启动
 ```
 
-或者修改库mysql的user表的host，`select user, host from mysql.user;`将需要远程连接的账户的host改为%
+或者修改库mysql的user表的host，
+1. `select user, host, passowrd from mysql.user;`
+2. 将需要远程连接的账户的host改为%,密码改为自己的密码
+   1. `update user set host='%', password=password('root') where host='127.0.0.1' and user='root';`
+3. 刷新权限: `FLUSH PRIVILEGES;` 刷新使之生效
 
 ## 导入与导出数据库文件
 
