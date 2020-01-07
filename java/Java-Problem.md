@@ -11,6 +11,7 @@
   - [Java对象不再使用时，赋值为null](#java对象不再使用时赋值为null)
   - [四大元注解](#四大元注解)
   - [File.separator](#fileseparator)
+  - [finally不执行](#finally不执行)
 
 ## 反射
 
@@ -95,3 +96,10 @@ System.gc()
 windows的File.separator为`\`,处理时会被当作转义字符，后面看这个字符后一位，如果没有任何内容，就报异常了  
 
 1. 需要Matcher.quoteReplacement(File.separator)
+
+## finally不执行
+
+1. try中System.exit(1)
+2. try中调用halt函数: `Runtime.getRuntime().halt(1)`
+3. 守护线程,如果守护线程刚开始执行到 finally 代码块，此时没有任何其他非守护线程，那么虚拟机将退出，此时 JVM 不会等待守护线程的 finally 代码块执行完成
+4. try中无限循环且没有异常
