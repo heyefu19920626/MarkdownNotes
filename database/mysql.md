@@ -15,6 +15,7 @@
   - [datetime与timestamp](#datetime与timestamp)
   - [Win10安装Maridb](#win10安装maridb)
   - [Centos7 卸载自带的MaraiDB](#centos7-卸载自带的maraidb)
+  - [时区设置](#时区设置)
 
 ## Mariadb修改密码
 
@@ -134,3 +135,9 @@ mariadb-libs-5.5.64-1.el7.x86_64
 2. 依次卸载
    1. rpm -e --nodeps mariadb-libs-5.5.64-1.el7.x86_64
 安装最新的Maraidb可以去官网查看[yum安装方法](https://mariadb.com/kb/en/mariadb-package-repository-setup-and-usage/)
+
+## 时区设置
+
+1. 控制台进入mysql
+2. `show variables like'%time_zone'; `查看时区
+3. `set global time_zone = '+8:00'; `设置时区

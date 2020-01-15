@@ -12,6 +12,8 @@
   - [四大元注解](#四大元注解)
   - [File.separator](#fileseparator)
   - [finally不执行](#finally不执行)
+  - [org.aspectj.apache.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 15](#orgaspectjapachebcelclassfileclassformatexception-invalid-byte-tag-in-constant-pool-15)
+  - [java.lang.ClassNotFoundException: javax.xml.bind.JAXBException](#javalangclassnotfoundexception-javaxxmlbindjaxbexception)
 
 ## 反射
 
@@ -103,3 +105,52 @@ windows的File.separator为`\`,处理时会被当作转义字符，后面看这�
 2. try中调用halt函数: `Runtime.getRuntime().halt(1)`
 3. 守护线程,如果守护线程刚开始执行到 finally 代码块，此时没有任何其他非守护线程，那么虚拟机将退出，此时 JVM 不会等待守护线程的 finally 代码块执行完成
 4. try中无限循环且没有异常
+
+## org.aspectj.apache.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 15
+
+aspectjweaver包版本太低,升级版本
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.8.14</version>
+</dependency>
+```
+
+## java.lang.ClassNotFoundException: javax.xml.bind.JAXBException
+
+JAXB API是java EE 的API，因此在java SE 9.0 中不再包含这个 Jar 包。  
+java 9 中引入了模块的概念，默认情况下，Java SE中将不再包含java EE 的Jar包  
+而在 java 6/7 / 8 时关于这个API 都是捆绑在一起的
+
+1. jdk降级
+2. 或者maven引入依赖
+```xml
+<!-- Java 6 = JAX-B Version 2.0   -->
+<!-- Java 7 = JAX-B Version 2.2.3 -->
+<!-- Java 8 = JAX-B Version 2.2.8 -->
+<dependencies>
+    <dependency>
+        <groupId>javax.xml.bind</groupId>
+        <artifactId>jaxb-api</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-impl</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.sun.xml.bind</groupId>
+        <artifactId>jaxb-core</artifactId>
+        <version>2.3.0</version>
+    </dependency>
+    <dependency>
+        <groupId>javax.activation</groupId>
+        <artifactId>activation</artifactId>
+        <version>1.1.1</version>
+    </dependency>
+</dependencies>
+```
