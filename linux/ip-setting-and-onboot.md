@@ -7,6 +7,7 @@
 - [IP设置](#ip设置)
   - [ifcfg-eth0](#ifcfg-eth0)
 - [开机自启](#开机自启)
+  - [tomcat开机自启](#tomcat开机自启)
 - [日志文件](#日志文件)
 
 
@@ -110,6 +111,49 @@ PrivateTmp=true                                                                 
 [Install]
 WantedBy=multi-user.target                                               //服务用户的模式
 ```
+
+### tomcat开机自启
+
+1. tomcat.service文件
+```service
+[Unit]
+Description=tomcat
+After=network.target redis.service mariadb.service
+Requires=mariadb.service
+
+[Service]
+Type=forking
+User=cjs
+Group=cjs
+Environment="JAVA_HOME=/home/cjs/tools/java-se-8u40" # 如果tomcat的启动文件中加入了环境变量，此处可以删除
+PIDFile=/home/cjs/tools/tomcat-9.0.30/tomcat.pid
+ExecStart=/home/cjs/tools/tomcat-9.0.30/bin/startup.sh
+ExecStop=/home/cjs/tools/tomcat-9.0.30/bin/shutdown.sh
+ExecReload=/bin/kill -s -HUP $MAINPID
+PrivateTmp=true
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+2. 在tomcat的catalina.sh开头加入环境变量与pid,如果此处不加pid,则同时删除service文件中的PIDFile
+```sh
+export JAVA_HOME=/home/cjs/tools/java-se-8u40
+export JRE_HOME=$JAVA_HOME/jre
+export CLASSPATH=.:${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
+export PATH=$PATH:${JAVA_HOME}/bin
+export CATALINA_BASE=/home/cjs/tools/tomcat-9.0.30
+export CATALINA_HOME=/home/cjs/tools/tomcat-9.0.30
+export CATALINA_TMPDIR=/home/cjs/tools/tomcat-9.0.30/temp
+
+# Copy CATALINA_BASE from CATALINA_HOME if not already set  
+[ -z "$CATALINA_BASE" ] && CATALINA_BASE="$CATALINA_HOME"
+# 设置pid。一定要加在CATALINA_BASE定义后面，要不然pid会生成到/下面  
+CATALINA_PID="$CATALINA_BASE/tomcat.pid"
+```
+3. 将tomcat.service放入/lib/systemd/system/文件夹下
+4. `systemctl start tomcat.service`启动；`systemctl enable tomcat.service`加入开机自启
+
 
 ## 日志文件
 > /var/log/
