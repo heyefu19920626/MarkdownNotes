@@ -1,5 +1,10 @@
 # Maven的一些配置
 
+- [Maven的一些配置](#maven的一些配置)
+  - [maven配置spring仓库与阿里云仓库](#maven配置spring仓库与阿里云仓库)
+  - [IDEAZ中maven编译可执行jar包](#ideaz中maven编译可执行jar包)
+  - [maven配置本地jar包](#maven配置本地jar包)
+
 
 ## maven配置spring仓库与阿里云仓库 
 
@@ -108,4 +113,17 @@
         </plugin>
     </plugins>
 </build>
+```
+
+## maven配置本地jar包
+
+```xml
+<dependency>
+    <groupId>com.baidu</groupId>
+    <artifactId>ueditor</artifactId>
+    <version>1.1.2</version>
+    <!-- 本地jar -->
+    <scope>system</scope>
+    <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ueditor-1.1.2.jar</systemPath>
+</dependency>
 ```
