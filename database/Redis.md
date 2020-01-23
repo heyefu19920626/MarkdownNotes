@@ -3,9 +3,28 @@
 - [..](database-catalog.md)
 
 - [Redis](#redis)
+  - [基础](#基础)
   - [非本机不能连接Redis](#非本机不能连接redis)
   - [分布式锁](#分布式锁)
   - [RedLock算法加锁](#redlock算法加锁)
+
+
+## 基础
+
+磁盘： 寻址，带宽  
+磁盘毫秒级，内存纳秒级  
+数据库，文件，分而治之,读写分离  
+写会牵扯到索引的变化，会变慢;查询通过内存中的B+Tree,快速命中索引;  
+redis,memcache内存型数据库  
+redis的value有类型,基于类型有对应的方法,减少了IO量  
+redis业务处理的时候是单线程的
+BIO(Block):一个线程阻塞，新出线程处理新的客户端  
+NIO(Unblock):用户态，内核态  
+select多路复用
+
+
+
+
 
 ## 非本机不能连接Redis
 

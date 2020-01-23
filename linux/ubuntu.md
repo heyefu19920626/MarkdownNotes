@@ -120,7 +120,7 @@ Environment="https_proxy=http://代理ip:代理的端口"
   background-position: center; 
 }
 ```
-5. 保存并重启
+5. 保存
 
 ## 创建启动图标并添加到开始菜单
 
