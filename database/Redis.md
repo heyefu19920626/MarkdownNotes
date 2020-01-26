@@ -20,7 +20,14 @@ redis的value有类型,基于类型有对应的方法,减少了IO量
 redis业务处理的时候是单线程的
 BIO(Block):一个线程阻塞，新出线程处理新的客户端  
 NIO(Unblock):用户态，内核态  
-select多路复用
+select多路复用  
+epoll多路复用: epoll_create,epoll_ctl,epoll_wait
+``strace -ff -o ~/starcedir/ooxx ./redis-server``  
+kafaka: MMAP(应用内核共享空间), 零拷贝(sendfile)  
+redis6.x: io thread 出发read读取数据  
+redis的value五大类型:string, list, hash map, set, sorted set;  
+二进制安全，字节数组;redis存的是字节;bit map,位图;  
+让程序没有状态，状态存入redis，微服务的无状态化
 
 
 
