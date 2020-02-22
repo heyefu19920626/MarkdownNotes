@@ -1,8 +1,12 @@
-#### IDEA的Tomcat突然不见
+## VSCODE插件
+
+- Setting Sync: 同步配置，Ctrl + Shift + P后输入sync同步
+
+## IDEA的Tomcat突然不见
 
 - 进去config删除disabled_plugins.txt(或者删除其中某一行相关的),重启IDEA
 
-#### IDEA插件
+## IDEA插件
 
 - GrepConsole: console可以设置不同级别log的字体颜色和背景色
 - IdeaVim: vim
