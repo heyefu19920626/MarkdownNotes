@@ -9,6 +9,7 @@
   - [安装go](#安装go)
   - [使用docker](#使用docker)
   - [闪退报错](#闪退报错)
+- [Win10安装Windows Terminal](#win10安装windows-terminal)
 
 ## 安装
 
@@ -78,3 +79,6 @@ options = "metadata"
    1.  是使用VPN的原因
    2.  cmd下管理员权限执行`netsh winsock reset`,然后重启即可
 
+# Win10安装Windows Terminal
+
+在Win10应用商店搜索安装
