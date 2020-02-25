@@ -9,6 +9,7 @@
 ## IDEA插件
 
 - GrepConsole: console可以设置不同级别log的字体颜色和背景色
+- Easy Code: 快速生成数据库实体，dao，mapper
 - IdeaVim: vim
 - Jrebel: 热部署
 - CodeGlance: 在右侧显示代码视图
