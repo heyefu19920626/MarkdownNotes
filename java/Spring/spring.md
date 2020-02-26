@@ -10,6 +10,8 @@
   - [跨域设置](#跨域设置)
   - [Spring的启动关键](#spring的启动关键)
   - [mybatis打印Sql语句](#mybatis打印sql语句)
+  - [Spring注入静态变量](#spring注入静态变量)
+  - [Spring boot 发起POST请求](#spring-boot-发起post请求)
 
 ## SpringMVC的运行流程
 
@@ -142,4 +144,58 @@ DispatcherServlet就是其中一个servlet
         <setting name="logImpl" value="STDOUT_LOGGING" />
     </settings>
 </configuration>
+```
+
+## Spring注入静态变量
+
+静态变量、类变量不是对象的属性，而是一个类的属性，所以静态方法是属于类（class）的，普通方法才是属于实体对象（也就是New出来的对象）的，spring注入是在容器中实例化对象，所以不能使用静态方法
+
+注入方法：
+1. 类上使用@Componet
+2. 静态变量使用set方法注入(set方法不能为静态的)
+
+```java
+@Component
+public final class DocImageUtils {
+    private static ImageFileDao imageFileDao;
+ 
+    @Autowired(required = true)
+    public  void setImageFileDao(ImageFileDao imageFileDao) {
+        DocImageUtils.imageFileDao = imageFileDao;
+    }
+}
+```
+
+## Spring boot 发起POST请求
+
+```java
+        String url = "https://heyefu.wsl.com/"+path;
+        //使用Restemplate来发送HTTP请求
+        RestTemplate restTemplate = new RestTemplate();
+        // json对象
+        JSONObject jsonObject = new JSONObject();
+        // LinkedMultiValueMap 有点像JSON，用于传递post数据，网络上其他教程都使用 
+        // MultiValueMpat<>来传递post数据
+        // 但传递的数据类型有限，不能像这个这么灵活，可以传递多种不同数据类型的参数
+        LinkedMultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+        body.add("price",price);
+        body.add("type",type);
+        body.add("uid",uid);
+        //设置请求header 为 APPLICATION_FORM_URLENCODED
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        // 请求体，包括请求数据 body 和 请求头 headers
+        HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(body, headers);
+        try {
+            //使用 exchange 发送请求，以String的类型接收返回的数据
+            //ps，我请求的数据，其返回是一个json
+            ResponseEntity<String> strbody = restTemplate.exchange(url,HttpMethod.POST,httpEntity,String.class);
+			//解析返回的数据
+            JSONObject jsTemp = JSONObject.parseObject(strbody.getBody());
+            System.out.println(jsonObject.toJSONString());
+            return jsTemp;
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
 ```
