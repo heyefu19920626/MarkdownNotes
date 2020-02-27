@@ -16,6 +16,7 @@
   - [Win10安装Maridb](#win10安装maridb)
   - [Centos7 卸载自带的MaraiDB](#centos7-卸载自带的maraidb)
   - [时区设置](#时区设置)
+  - [排序规则](#排序规则)
 
 ## Mariadb修改密码
 
@@ -141,3 +142,16 @@ mariadb-libs-5.5.64-1.el7.x86_64
 1. 控制台进入mysql
 2. `show variables like'%time_zone'; `查看时区
 3. `set global time_zone = '+8:00'; `设置时区
+
+## 排序规则
+
+mysql默认varchar类型是对大小写不敏感（不区分），如果想要mysql区分大小写需要设置排序规则：
+1. utf8_bin将字符串中的每一个字符用二进制数据存储，区分大小写
+2. utf8_genera_ci不区分大小写，ci为case insensitive的缩写，即大小写不敏感
+3. utf8_general_cs区分大小写，cs为case sensitive的缩写，即大小写敏感
+
+
+utf8_general_cs这个选项一般没有，所以只能用utf8_bin区分大小写
+1. 设置排序规则是可逆的，如果之前设置的排序规则不符合，更换排序规则后，可能出现乱码，当再次恢复原来的排序规则后，乱码即消失
+2. 可以将varchar 类型改为 varbinary
+3. 如果已经使用了默认的排序规则，即utf8_genera_ci，而又想查询结果大小写区分，可以在查询时进行限定：select binary column from table;   或者  select column2 from table where binary cloumn;
