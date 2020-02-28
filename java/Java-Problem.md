@@ -12,6 +12,7 @@
   - [四大元注解](#四大元注解)
   - [File.separator](#fileseparator)
   - [finally不执行](#finally不执行)
+  - [查看内存占用](#查看内存占用)
   - [org.aspectj.apache.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 15](#orgaspectjapachebcelclassfileclassformatexception-invalid-byte-tag-in-constant-pool-15)
   - [java.lang.ClassNotFoundException: javax.xml.bind.JAXBException](#javalangclassnotfoundexception-javaxxmlbindjaxbexception)
 
@@ -105,6 +106,16 @@ windows的File.separator为`\`,处理时会被当作转义字符，后面看这�
 2. try中调用halt函数: `Runtime.getRuntime().halt(1)`
 3. 守护线程,如果守护线程刚开始执行到 finally 代码块，此时没有任何其他非守护线程，那么虚拟机将退出，此时 JVM 不会等待守护线程的 finally 代码块执行完成
 4. try中无限循环且没有异常
+
+## 查看内存占用
+
+1. 在命令行中输入jps,即可查看当前已启动的进程和对应的PID
+2. 执行命令`jmap -dump:format=b,file=heap.bin <pid>`
+   1. jmap 能查看jvm内存中，对象占用内存的情况，还提供非常方便的命令将jvm的内存信息导出的文件
+   2. format=b是通过二进制的意思,-dump:format=b,file=heap.bin意思是：把内存结构全部dump到二进制文件heap.bin中
+3. 执行命令：`jhat -J-Xmx512m heap.bin`,就可以将我们刚刚使用jmap导出的内存信息交给jhat解析了,默认的情况下，它会监听7000端口
+   1. 可以在命令中调整命令使用的内存大小
+   2. 访问`http://localhost:7000/histo/`
 
 ## org.aspectj.apache.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 15
 
