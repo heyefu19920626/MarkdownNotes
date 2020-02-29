@@ -3,7 +3,7 @@
 - [..](linux-catalog.md)
 
 - [常用命令](#常用命令)
-  - [三种将前一命令结果作为后一命令参数](#三种将前一命令结果作为后一命令参数)
+  - [4种将前一命令结果作为后一命令参数](#4种将前一命令结果作为后一命令参数)
   - [strace](#strace)
   - [ls](#ls)
   - [tail](#tail)
@@ -19,11 +19,12 @@
 
 很多进程信息在/proc目录下
 
-## 三种将前一命令结果作为后一命令参数
+## 4种将前一命令结果作为后一命令参数
 
 1. find / -name “test*” |xargs rm -rf 
 2. find / -name “test*” -exec rm -rf {} \; 
 3. rm -rf $(find / -name “test”)
+4. docker images|awk '$2 ~ /^test$/ {print $1":"$2}'|xargs docker rmi
 
 ## strace
 

@@ -12,6 +12,7 @@
   - [mybatis打印Sql语句](#mybatis打印sql语句)
   - [Spring注入静态变量](#spring注入静态变量)
   - [Spring boot 发起POST请求](#spring-boot-发起post请求)
+  - [Spring Boot 集成kafka](#spring-boot-集成kafka)
 
 ## SpringMVC的运行流程
 
@@ -198,4 +199,34 @@ public final class DocImageUtils {
         }catch (Exception e){
             System.out.println(e);
         }
+```
+
+## Spring Boot 集成kafka
+
+```yaml
+spring:
+  kafka:
+    # 指定kafka代理地址，brokers集群。多个服务器以英文逗号分隔
+    bootstrap-servers: ssh.qianxunclub.com:9092
+    producer:
+      # 发送失败重试次数。
+      retries: 0
+      # 每次批量发送消息的数量 批处理条数：当多个记录被发送到同一个分区时，生产者会尝试将记录合并到更少的请求中。这有助于客户端和服务器的性能。
+      batch-size: 16384
+      # 32MB的批处理缓冲区。
+      buffer-memory: 33554432
+      # 指定消息key和消息体的编解码方式。
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      # 消费者群组ID，发布-订阅模式，即如果一个生产者，多个消费者都要消费，那么需要定义自己的群组，同一群组内的消费者只有一个能消费到消息。
+      group-id: kafka_order_group
+      auto-offset-reset: earliest
+      # 如果为true，消费者的偏移量将在后台定期提交。
+      enable-auto-commit: true
+      # 自动提交周期
+      auto-commit-interval: 100
+      # 指定消息key和消息体的编解码方式。
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 ```
