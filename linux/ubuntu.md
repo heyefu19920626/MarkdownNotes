@@ -6,6 +6,7 @@
   - [IDEA不能输入中文](#idea不能输入中文)
   - [mysql忘记密码](#mysql忘记密码)
   - [snap安装软件太慢](#snap安装软件太慢)
+  - [终端使用代理](#终端使用代理)
   - [SSH客户端](#ssh客户端)
   - [V2Ray客户端](#v2ray客户端)
     - [V2RayL](#v2rayl)
@@ -64,6 +65,18 @@ Environment="https_proxy=http://代理ip:代理的端口"
 ```
 3. 让systemd重载配置`sudo systemctl daemon-reload`
 4. 重新启动snap服务`sudo systemctl restart snapd`
+
+## 终端使用代理
+
+1. 只作用于当前终端, 在当前终端中直接修改环境变量
+   1. `export http_proxy=http://proxyAddress:port`
+   2. `export https_proxy=http://proxyAddress:port`
+2. 写入终端配置
+   1. `export http_proxy="socks5://127.0.0.1:1080"`
+   2. `export https_proxy="socks5://127.0.0.1:1080"`
+3. 只对git加速
+   1. `git config --global http.proxy 'socks5://127.0.0.1:1080'`
+   2. `git config --global https.proxy 'socks5://127.0.0.1:1080'`
 
 ## SSH客户端
 
