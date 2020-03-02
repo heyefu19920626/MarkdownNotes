@@ -2,11 +2,18 @@
 
 - [Windows](#windows)
 	- [启用或关闭Windows功能](#启用或关闭windows功能)
+	- [禁用svchost](#禁用svchost)
 	- [将快捷方式固定到开始菜单](#将快捷方式固定到开始菜单)
 	- [配置无线网卡和有线网卡同时上内外网](#配置无线网卡和有线网卡同时上内外网)
 	- [win10添加项目右键VSCode打开](#win10添加项目右键vscode打开)
 
 ## 启用或关闭Windows功能
+
+
+## 禁用svchost
+
+1. 在服务中找到Background Intelligent Transfer Service
+2. 启动类型改为禁用,服务状态改为停止服务
 
 
 ## 将快捷方式固定到开始菜单
