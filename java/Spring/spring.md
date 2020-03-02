@@ -203,6 +203,21 @@ public final class DocImageUtils {
 
 ## Spring Boot 集成kafka
 
+1. kafka的启动与监听
+   1. kafka配置经常需要修改hosts
+```sh
+# 启动zooker
+./zkCli.sh -server 127.0.0.1:2181
+# 启动kafka
+sudo  /bin/kafka-server-start.sh /config/server.properties
+# kafka提供的模拟收发消息的模板，可以简单的测试kafka的功能，测试后可以关闭
+## 发送消息
+sudo /usr/frankxulei/Kafka/kafka_2.12-2.1.0/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic Java
+## 监听消息
+sudo /usr/frankxulei/Kafka/kafka_2.12-2.1.0/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Java --from-beginning
+```
+
+
 ```yaml
 spring:
   kafka:
