@@ -4,6 +4,7 @@
 
 
 - [Mysql](#mysql)
+  - [update做了什么](#update做了什么)
   - [Mariadb修改密码](#mariadb修改密码)
     - [知道密码](#知道密码)
     - [忘记密码](#忘记密码)
@@ -17,6 +18,18 @@
   - [Centos7 卸载自带的MaraiDB](#centos7-卸载自带的maraidb)
   - [时区设置](#时区设置)
   - [排序规则](#排序规则)
+
+## update做了什么
+
+1. 开启事务，将原内容写入undo log
+2. 去Buffer Pool 中 查找id =2 所对应的数据
+3. 如果在Buffer Pool中查找到了对应的数据，那么直接在Buffer Pool 中直接修改对应数据
+4. 如果没有找到，那么先从磁盘中找到对应数据，然后加载到Buffer Pool 中进行修改
+5. 将更新的内容写入redo log
+6. 如果开启了binlog ，还会写入binlog日志
+7. 事务提交进入prepare 阶段，将redo log 刷入磁盘
+8. 事务提交进入commit 阶段， 将binlog 输入磁盘
+
 
 ## Mariadb修改密码
 
