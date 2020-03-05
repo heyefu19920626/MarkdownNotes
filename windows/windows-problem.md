@@ -2,12 +2,19 @@
 
 - [Windows](#windows)
 	- [启用或关闭Windows功能](#启用或关闭windows功能)
+	- [Windows上帝模式](#windows上帝模式)
 	- [禁用svchost](#禁用svchost)
 	- [将快捷方式固定到开始菜单](#将快捷方式固定到开始菜单)
 	- [配置无线网卡和有线网卡同时上内外网](#配置无线网卡和有线网卡同时上内外网)
 	- [win10添加项目右键VSCode打开](#win10添加项目右键vscode打开)
 
 ## 启用或关闭Windows功能
+
+
+## Windows上帝模式
+
+1. 在桌面新建一个文件夹
+2. 重命名为`GodMode.{ED7BA470-8E54-465E-825C-99712043E01C}`
 
 
 ## 禁用svchost
