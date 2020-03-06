@@ -13,6 +13,7 @@
   - [Spring注入静态变量](#spring注入静态变量)
   - [Spring boot 发起POST请求](#spring-boot-发起post请求)
   - [Spring Boot 集成kafka](#spring-boot-集成kafka)
+  - [mybatis时区](#mybatis时区)
 
 ## SpringMVC的运行流程
 
@@ -245,3 +246,11 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 ```
+
+## mybatis时区
+
+1. 数据库连接serverTimezone=Asia/Shanghai
+2. application设置属性：
+   1. `spring.jackson.time-zone=GMT+8`
+   2. `spring.jackson.date-format=yyyy-MM-dd HH:mm:ss`
+   3. `spring.jackson.time-zone=Asia/Shanghai`

@@ -2,6 +2,7 @@
 
 - [Maven的一些配置](#maven的一些配置)
   - [maven配置spring仓库与阿里云仓库](#maven配置spring仓库与阿里云仓库)
+  - [maven设置docker化](#maven设置docker化)
   - [Spring-boot编译可执行jar包](#spring-boot编译可执行jar包)
   - [IDEAZ中maven编译可执行jar包](#ideaz中maven编译可执行jar包)
   - [maven配置本地jar包](#maven配置本地jar包)
@@ -32,6 +33,86 @@
 </repository>
 ```
 
+## maven设置docker化
+
+1. 在pom文件中，设置docker服务器
+```xml
+<profiles>
+    <!-- 实验室环境 -->
+    <profile>
+        <id>idmlab</id>
+        <properties>
+            <config.prefix/>
+            <config.ip>192.168.11.106</config.ip>
+            <config.port>8080</config.port>
+            <config.project>fcm/</config.project>
+            <config.dockerhost>192.168.11.106</config.dockerhost>
+        </properties>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+    </profile>
+</profiles>
+```
+2. 在build中的plugins内添加docker整合插件，并配置
+```xml
+<!--docker-maven整合插件-->
+<plugin>
+    <groupId>com.spotify</groupId>
+    <artifactId>docker-maven-plugin</artifactId>
+    <version>1.2.1</version>
+    <configuration>
+        <serverId>docker-hub</serverId>
+        <imageName>
+            ${config.ip}:${config.port}/${config.project}${config.prefix}${project.artifactId}:${project.version}
+        </imageName>
+        <dockerHost>http://${config.dockerhost}:2375</dockerHost>
+        <!-- 本地docker文件的目录,dockerFile文件在此编写,下面resource配置的一些文件一会先放到这中转，后续再推送到服务器 -->
+        <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+        <skipDockerBuild>false</skipDockerBuild>
+        <resources>
+            <resource>
+                <targetPath>/</targetPath>
+                <directory>${project.build.directory}</directory>
+                <include>${project.build.finalName}.jar</include>
+            </resource>
+            <resource>
+                <!-- 这里是将项目根目下的crypto-config文件夹拷贝到target目录下的docker文件夹内 -->
+                <targetPath>/</targetPath>
+                <directory>${project.basedir}</directory>
+                <include>crypto-config/**</include>
+            </resource>
+            <resource>
+                <!-- 这里是将项目根目下的以yaml结尾的文件拷贝到target目录下的docker文件夹内 -->
+                <targetPath>/</targetPath>
+                <directory>${project.basedir}</directory>
+                <include>*.yaml</include>
+            </resource>
+        </resources>
+    </configuration>
+</plugin>
+```
+3. 在maven的setting.xml中添加docker服务器的用户名密码
+```xml
+<server>
+    <id>docker-hub</id>
+    <username>username</username>
+    <password>password</password>
+</server>
+```
+4. 在src/main/docker目录(没有新建)下，新建并编写Dockerfile文件
+```dockerfile
+FROM anapsix/alpine-java
+ADD *.jar fcm-blockchain-client.jar
+ADD connection-org1.yaml connection-org1.yaml
+ADD crypto-config /crypto-config #将docker目录下的文件夹拷贝到镜像根目录下
+ENTRYPOINT java -Xms512m -Xmx512m -jar fcm-blockchain-client.jar
+```
+5. 推送到镜像仓库
+   1. 在pom.xml所在目录执行`mvn clean package -P idmlab docker:build -DpushImage`推送镜像到镜像仓库
+   2. idmlab为pom中配置的profile名
+
+
 ## Spring-boot编译可执行jar包
 
 1. 在parent中引入spring boot
@@ -49,6 +130,17 @@
     <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>repackage</goal>
+                </goals>
+                <configuration>
+                    <!-- 主函数入口 -->
+                    <mainClass>com.heyefu.Main</mainClass>
+                </configuration>
+            </execution>
+        </executions>
     </plugin>
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -83,6 +175,7 @@
     <!-- 此处打包资源文件等 -->
     <resources>
         <resource>
+            <!-- 将java目录下的xml等文件打包 -->
             <directory>src/main/java</directory>
             <includes>
                 <include>**/*</include>

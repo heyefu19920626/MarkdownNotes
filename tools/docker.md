@@ -12,6 +12,11 @@
   - [推送镜像至https://hub.docker.com](#推送镜像至httpshubdockercom)
   - [镜像与文件](#镜像与文件)
   - [volumn卷的挂载](#volumn卷的挂载)
+  - [查看docker容器日志](#查看docker容器日志)
+  - [设置时区](#设置时区)
+  - [Dockerfile](#dockerfile)
+    - [设置时区](#设置时区-1)
+    - [添加文件夹](#添加文件夹)
 
 
 - 仓库： 别人做好的现成的镜像，都放在仓库里
@@ -88,3 +93,35 @@ docker pull how2j/tmall
 > docker load < 文件名
 
 ## volumn卷的挂载
+
+
+## 查看docker容器日志
+docker logs -f peer0.org1.example.com --tail=300
+
+## 设置时区
+
+1. 已运行容器里的时区修改
+   1. `ln -sf /usr/share/zoneinfo/Asia/Shanghai    /etc/localtime`
+   2. 或者`cp /usr/share/zoneinfo/Asia/Shanghai    /etc/localtime`  ,重启容器
+2. 创建并运行容器
+   1. `docker run -e TZ="Asia/Shanghai" -d -p 80:80 --name nginx nginx`
+
+## Dockerfile
+
+### 设置时区
+```dockerfile
+FROM anapsix/alpine-java
+ADD *.jar test.jar
+# 下面两句设置时区
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' >/etc/timezone
+ENTRYPOINT java -Xms1g -Xmx1g -jar test.jar
+```
+
+### 添加文件夹
+
+Dockerfile添加文件夹，则必须镜像中存在和当前文件夹同名的文件夹才行,例如，我希望将当前目录下的views文件夹添加到docker镜像中的app文件夹下。也许你会采用这样的方式
+> ADD views /app  
+这样其实并不能实现，应该通过下面的方式:
+> ADD views /app/views  
+也就是说：镜像中存在和当前需要拷贝或添加的文件夹同名的文件夹时，才能够拷贝或添加成功
