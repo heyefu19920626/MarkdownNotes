@@ -2,6 +2,7 @@
 
 - [Maven的一些配置](#maven的一些配置)
   - [maven配置spring仓库与阿里云仓库](#maven配置spring仓库与阿里云仓库)
+  - [Spring-boot编译可执行jar包](#spring-boot编译可执行jar包)
   - [IDEAZ中maven编译可执行jar包](#ideaz中maven编译可执行jar包)
   - [maven配置本地jar包](#maven配置本地jar包)
 
@@ -29,6 +30,38 @@
         <enabled>false</enabled>
     </snapshots>
 </repository>
+```
+
+## Spring-boot编译可执行jar包
+
+1. 在parent中引入spring boot
+```xml
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.4.RELEASE</version>
+    <relativePath/>
+</parent>
+```
+2. 在build中配置插件
+```xml
+<plugins>
+    <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+    </plugin>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+            <!-- 配置编译版本，如果 properties 和 build 里面都有配置的话，那么 properties 会覆盖掉 build 里面的配置，即以 properties 里面的配置为准 -->
+            <source>1.8</source>
+            <target>1.8</target>
+            <encoding>UTF-8</encoding>
+        </configuration>
+    </plugin>
+</plugins>
 ```
 
 
