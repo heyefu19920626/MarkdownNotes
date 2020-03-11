@@ -67,7 +67,7 @@ CA+couchDb的部署与1.4的基础多机部署并无太大区别
 ### Order节点与Peer节点的配置
 
 具体可以参照Fabric1.4的多机部署,这里只提几点注意事项,也可以参考[本项目的script/docker目录下的配置](http://192.168.3.10/system/product/FangChenMi/fcm-trial/fcm-block-client/tree/master/script/docker)
-1. 每个peer几点都需要添加order节点的host属性
+1. 每个peer节点都需要添加order节点与其余节点的host属性
 2. 每个组织的非锚节点，都需要添加锚节点的hsot属性
 3. cli客户端需要添加order节点与四个peer节点的host属性
 4. cli客户端需要注释掉commad命令，避免刚启动就关闭

@@ -161,8 +161,11 @@ first-network集群需要5台独立的机器，一台排序节点order，四台p
       - byfn
     # 这里增加host配置，如果这里不配也可以修改主机的hosts映射
     extra_hosts:
-    # 主节点只需要识别order节点即可
      - "orderer.example.com:192.168.11.105"
+     - "peer0.org1.example.com:192.168.11.101"
+     - "peer1.org1.example.com:192.168.11.102"
+     - "peer0.org2.example.com:192.168.11.103"
+     - "peer1.org2.example.com:192.168.11.104"
 ```
 6. 删除cli的配置中depends_on中除了本节点外的其他节点
 ```yaml
@@ -196,8 +199,10 @@ depends_on:
       - byfn
     extra_hosts:
      - "orderer.example.com:192.168.11.105"
-     # 如果是组织org2的peer1节点，只需要在此处增加org2的peer0节点的host即可
      - "peer0.org1.example.com:192.168.11.101"
+     - "peer1.org1.example.com:192.168.11.102"
+     - "peer0.org2.example.com:192.168.11.103"
+     - "peer1.org2.example.com:192.168.11.104
 ```
 6. 删除cli的配置中depends_on中除了本节点外的其他节点
 7. 在cli的配置最后同样增加host配置，不过此处要配置所有节点的host
