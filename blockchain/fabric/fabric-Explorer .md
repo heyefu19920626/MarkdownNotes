@@ -83,6 +83,8 @@
 
 ## 配置Fabric blockchain-explorer
 
+如果fabric本身是集群部署的话，浏览器需要部署在order节点所在的服务器
+
 1. 检出blockchain-explorer项目：``git clone github.com/hyperledger/blockchain-explorer``
 2. 切换至分支release-4.0：``git checkout -b release-4.0 origin/release-4.0``
 3. 修改数据库配置
@@ -94,8 +96,8 @@
    1. ``cd blockchain-explorer/app/platform/fabric/``
    2. ``cp config-balance-transfer.json config.json``
    3. ``vim config.json``
-   4. 删除network-configs.network-1.organizations.Org*.certificateAuthorities的属性
-   5. 修改network-configs.network-1.organizations.Org*.(adminPrivateKey|signedCert).path中的/crypto-config/之前的路径，改为自己的first-network的路径
+   4. 删除`network-configs.network-1.organizations.Org*.certificateAuthorities`的属性
+   5. 修改`network-configs.network-1.organizations.Org*.(adminPrivateKey|signedCert).path`中的/crypto-config/之前的路径，改为自己的first-network的路径
    6. 同理修改其他所有与自己不同的路径
    7. 将所有节点的grpcs端口修改为正确端口，如果first-work没做任何修改的话，应该是7051,7053;8051,8053;9051,9053;10051,10053
    8. 删除network-configs.network-1.certificateAuthorities属性
