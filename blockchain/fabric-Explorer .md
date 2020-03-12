@@ -72,19 +72,24 @@
 
    
 ## Jq安装 
+
 ``apt install jq``
 
 ## 启动first-network
+
 1. 进入``fabric-sample/first-network/``目录下
 2. ``./byfn.sh -m generate``
 3. ``./byfn.sh -m up``
 
 ## 配置Fabric blockchain-explorer
+
 1. 检出blockchain-explorer项目：``git clone github.com/hyperledger/blockchain-explorer``
 2. 切换至分支release-4.0：``git checkout -b release-4.0 origin/release-4.0``
 3. 修改数据库配置
    1. ``vim blockchain-explorer/app/explorerconfig.json``
    2. 修改其中的username与passwd,将其设为自己的用户名和密码，同时此用户名与密码还是将来web页面登录的账户与密码
+   3. 执行数据库脚本`blockchain-explorer/app/persistence/fabric/postgreSQL/db`,
+   4. `./createdb.sh`
 4. 修改应用的配置，修改其中的证书路径，端口等,主要参照同目录下的config-balance-transfer.json文件 
    1. ``cd blockchain-explorer/app/platform/fabric/``
    2. ``cp config-balance-transfer.json config.json``
@@ -107,6 +112,7 @@
 6. 运行
    1. ``cd blockchain-explorer``
    2. ``./start.sh``
+7. 访问：该项目部署在8080端口，通过ip+8080端口访问即可,访问后使用3.1中的用户名与密码登录
 7. 停止
    1. ``./stop.sh``
 
