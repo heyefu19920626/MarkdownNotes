@@ -166,11 +166,24 @@ StartupWMClass=code
 3. 安装主机连接器
    1. ``sudo apt install chrome-gnome-shell``
 4. 推荐扩展
-   1. Dash to Panel
-   2. Random Walls
-   3. TopIcons
-   4. User Themes
-   5. Workspace Grid
+   1. Bing Wallpaper Changer
+   2. Caffeine 
+   3. Clipboard Indicator 
+   4. Dash to Dock(可以不要，只安装下面的)
+   5. Dash to Panel 
+   6. Drop Down Terminal
+   7. EasyScreenCast 
+   8. gTile
+   9. Random Wallpaper(可能导致卡顿)
+   10. Random Walls(可能导致卡顿)
+   11. Screenshot Tool
+   12. Sound Input & Output Device Chooser 
+   13. system-monitor 
+   14. TopIcons 
+   15. User Themes 
+   16. Workspace Grid 
+   17. Ubuntu Dock 
+   18. Ubuntu AppIndicators 
 5. 推荐主题与图标
    1. vimix 主题项目: https://github.com/vinceliuice/vimix-gtk-themes
    2. vimix 图标项目: https://github.com/vinceliuice/vimix-icon-theme
