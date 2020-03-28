@@ -7,6 +7,7 @@
 	- [将快捷方式固定到开始菜单](#将快捷方式固定到开始菜单)
 	- [配置无线网卡和有线网卡同时上内外网](#配置无线网卡和有线网卡同时上内外网)
 	- [win10添加项目右键VSCode打开](#win10添加项目右键vscode打开)
+	- [Microsoft软件保护平台服务](#microsoft软件保护平台服务)
 
 ## 启用或关闭Windows功能
 
@@ -80,3 +81,12 @@
 	@="\"D:\\tools\\VSCode\\Code.exe\" \"%V\"" 
 ```
 3. 保存后，双击运行，确认即可
+
+## Microsoft软件保护平台服务
+
+据说kms激活不完整导致的
+
+1. 在运行中输入`regedit`,编辑注册表
+2. 找到`计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sppsvc`
+3. 修改右侧的start的值为4(原先为2)
+4. 重启
