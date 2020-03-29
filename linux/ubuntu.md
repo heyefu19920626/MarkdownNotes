@@ -168,11 +168,11 @@ StartupWMClass=code
 4. 推荐扩展
    1. Bing Wallpaper Changer
    2. Caffeine 
-   3. Clipboard Indicator 
+   3. Clipboard Indicator 剪贴板
    4. Dash to Dock(可以不要，只安装下面的)
    5. Dash to Panel 
    6. Drop Down Terminal
-   7. EasyScreenCast 
+   7. EasyScreenCast 视频音频录制 
    8. gTile
    9. Random Wallpaper(可能导致卡顿)
    10. Random Walls(可能导致卡顿)
