@@ -202,6 +202,15 @@ StartupWMClass=code
 2. 第二步，sudo vim /usr/share/applications/netease-cloud-music.desktop
 3. 修改 Exec=netease-cloud-music %U 为 Exec=sudo netease-cloud-music %U
 
+```
+#!/bin/sh
+HERE="$(dirname "$(readlink -f "${0}")")"
+export LD_LIBRARY_PATH="${HERE}"/libs
+export QT_PLUGIN_PATH="${HERE}"/plugins 
+export QT_QPA_PLATFORM_PLUGIN_PATH="${HERE}"/plugins/platforms
+exec "${HERE}"/netease-cloud-music $@ 
+```
+
 
 ## 修改gnome3的快捷键
 
