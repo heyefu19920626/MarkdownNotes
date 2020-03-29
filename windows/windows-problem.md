@@ -8,6 +8,7 @@
 	- [配置无线网卡和有线网卡同时上内外网](#配置无线网卡和有线网卡同时上内外网)
 	- [win10添加项目右键VSCode打开](#win10添加项目右键vscode打开)
 	- [Microsoft软件保护平台服务](#microsoft软件保护平台服务)
+	- [如何查看激活](#如何查看激活)
 
 ## 启用或关闭Windows功能
 
@@ -90,3 +91,11 @@
 2. 找到`计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sppsvc`
 3. 修改右侧的start的值为4(原先为2)
 4. 重启
+
+按以上方式修改后会导致错误0xc0020036,将值改回去重启就能修复
+
+## 如何查看激活
+
+1. 管理员运行命令行
+   1. `slmgr.vbs -xpr`可查看是否永久激活
+   2. `slmgr.vbs -dlv`查看激活状态
