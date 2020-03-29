@@ -168,7 +168,7 @@ StartupWMClass=code
 4. 推荐扩展
    1. Bing Wallpaper Changer
    2. Caffeine 
-   3. Clipboard Indicator 剪贴板
+   3. Clipboard Indicator 剪贴板(快捷键Ctrl + ；)
    4. Dash to Dock(可以不要，只安装下面的)
    5. Dash to Panel 
    6. Drop Down Terminal

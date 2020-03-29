@@ -204,11 +204,28 @@ public final class DocImageUtils {
 
 ## Spring Boot 集成kafka
 
-1. kafka的启动与监听
+1. 下载并解压[zooker](http://zookeeper.apache.org/)
+2. 在zooker目录的conf目录中copy一份配置文件:`cp zoo_sample.cfg zoo.cfg`
+3. 添加zooker的环境变量
+```
+export ZOOKEEPER_HOME=/home/zookeeper-3.4.14
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+```
+4. zooker的基本操作
+```
+启动zookeeper
+./zkServer.sh start
+查看状态
+./zkServer.sh status
+关闭
+./zkServer.sh stop
+启动zooker客户端
+./zkCli.sh -server 127.0.0.1:2181
+```
+5. 下载并解压[kafaka](http://kafka.apache.org/)
+6. kafka的启动与监听
    1. kafka配置经常需要修改hosts
 ```sh
-# 启动zooker
-./zkCli.sh -server 127.0.0.1:2181
 # 启动kafka
 sudo  /bin/kafka-server-start.sh /config/server.properties
 # kafka提供的模拟收发消息的模板，可以简单的测试kafka的功能，测试后可以关闭
