@@ -9,3 +9,4 @@
 - [Blockchain](blockchain/blockchain-catalog.md)
 - [Programming Basics](basic-of-program/program-basic-catalog.md)
 - [C AND C++](c-c++/c-c++-catalog.md)
+- [Distributed](distributed/distributed-catalog.md)
