@@ -25,6 +25,7 @@
   - [The package *** needs to be reinstalled, but I can't find an archive for it](#the-package--needs-to-be-reinstalled-but-i-cant-find-an-archive-for-it)
   - [Shadowsocks开机自启](#shadowsocks开机自启)
   - [7zip](#7zip)
+  - [画图工具](#画图工具)
 
 ## IDEA不能输入中文
 
@@ -340,3 +341,7 @@ exit 0
 
 1. 安装`sudo apt install p7zip-full p7zip-rar`
 2. 之后可以通过图形界面提取
+
+## 画图工具
+
+1. pinta: `sudo apt install pinta`
