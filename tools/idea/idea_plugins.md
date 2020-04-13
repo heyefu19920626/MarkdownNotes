@@ -42,3 +42,9 @@
 - Batch Script Support
 - CMD support
 - GenerateAllSetter：快速生成一个对象的所有set，默认值为null
+
+## 创建快捷方式
+
+- In the Customize IntelliJ IDEA wizard - when you run IntelliJ IDEA for the first time.
+- On the Welcome screen: Configure | Create Desktop Entry.
+- In the main menu: Tools | Create Desktop Entry.
