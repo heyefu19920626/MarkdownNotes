@@ -141,17 +141,17 @@ Environment="https_proxy=http://代理ip:代理的端口"
 开始菜单里的图标位置：/usr/share/applications/
 
 1. 创建code.desktop文件
-2. 将以下内容写入文件  
+2. 将以下内容写入文件,注意行尾不能有空格
 ```
-[Desktop Entry] 
-Version=1.0 
-Type=Application 
-Name=Visual Studio Code 
-Icon=/home/heyefu/tools/vscode/resources/app/resources/linux/code.png 
-Exec="/home/heyefu/tools/vscode/bin/code" %f 
-Comment=Visual Studio Code Categories=Development;IDE; 
-Terminal=false 
-StartupWMClass=code
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Visual Studio Code
+Icon=/home/heyefu/tools/vscode/resources/app/resources/linux/code.png
+Exec=/home/heyefu/tools/vscode/bin/code
+Comment=Visual Studio Code
+Categories=Development;IDE;
+Terminal=false
 ```
 
 3. 将文件修改为可执行(此步可以不用)
