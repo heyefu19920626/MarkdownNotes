@@ -33,7 +33,7 @@ wsl --set-version Uubuntu-18.04 2
 
 ## 更换阿里源
 
-- 备份/etc/apk/source.list,编辑并替换为阿里源
+- 备份/etc/apt/source.list,编辑并替换为阿里源
 
 ```
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
