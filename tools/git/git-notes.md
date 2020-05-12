@@ -3,6 +3,7 @@
 - [Git 笔记](#git-笔记)
   - [Git介绍](#git介绍)
   - [Git基础](#git基础)
+    - [Git使用代理](#git使用代理)
     - [Git配置](#git配置)
     - [查看修改内容](#查看修改内容)
     - [查看提交日志](#查看提交日志)
@@ -68,6 +69,16 @@
 
 
 ## Git基础
+
+### Git使用代理
+
+1. 单独仓库使用代理
+   1. git config http.proxy 'socks5://127.0.0.1:1080'
+   2. git config https.proxy 'socks5://127.0.0.1:1080'
+2. 全局代理
+   1. git config --global http.proxy 'socks5://127.0.0.1:1080'
+   2. git config --global https.proxy 'http://user:password@ip:port'
+
 ### Git配置
 ```bash
 $ git config --global user.name "Your Name"
