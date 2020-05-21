@@ -42,6 +42,13 @@
 - Batch Script Support
 - CMD support
 - GenerateAllSetter：快速生成一个对象的所有set，默认值为null
+- Atom Material Icon
+- HighlightBracketPair: 括号高亮
+- SequenceDiagram: 时序图
+- Solarized Themes: vim主题
+- Leetcode Editor
+- Jclasslib Bytecode Viewer: 查看字节码
+- CamelCase: 大小写
 
 ## 创建快捷方式
 
