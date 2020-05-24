@@ -56,3 +56,22 @@
 - In the Customize IntelliJ IDEA wizard - when you run IntelliJ IDEA for the first time.
 - On the Welcome screen: Configure | Create Desktop Entry.
 - In the main menu: Tools | Create Desktop Entry.
+
+
+## 设置
+
+### leetcode
+
+1. CodeFileName: 设置为显示题目的英文名称
+> $!velocityTool.camelCaseName(${question.titleSlug})  
+2. CodeTemplate: 
+```java
+${question.content}
+package test.leetcode.editor.cn;
+public class $!velocityTool.camelCaseName(${question.titleSlug}) {
+    public static void main(String[] args) {
+        Solution solution = new $!velocityTool.camelCaseName(${question.titleSlug})().new Solution();
+    }
+    ${question.code}
+}
+```
