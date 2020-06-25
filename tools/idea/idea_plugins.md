@@ -69,3 +69,21 @@
 4. 更改idea 启动sdk
    1. 修改 文件: `home/idea-2020.1/bin/idea.sh` (找到你自己的idea的安装路径)
    2. 在文件开头添加`export IDEA_JDK=/home/prehonor/gitproject/JetBrainsRuntime/build/linux-x86_64-normal-server-release/images/jdk` (改成你自己的编译的jdk所在目录)
+
+## 设置
+
+### leetcode
+
+1. CodeFileName: 设置为显示题目的英文名称
+> $!velocityTool.camelCaseName(${question.titleSlug})  
+2. CodeTemplate: 
+```java
+${question.content}
+package test.leetcode.editor.cn;
+public class $!velocityTool.camelCaseName(${question.titleSlug}) {
+    public static void main(String[] args) {
+        Solution solution = new $!velocityTool.camelCaseName(${question.titleSlug})().new Solution();
+    }
+    ${question.code}
+}
+```
