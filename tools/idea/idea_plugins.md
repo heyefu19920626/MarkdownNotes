@@ -56,3 +56,16 @@
 - In the Customize IntelliJ IDEA wizard - when you run IntelliJ IDEA for the first time.
 - On the Welcome screen: Configure | Create Desktop Entry.
 - In the main menu: Tools | Create Desktop Entry.
+
+## linux下搜狗不跟随
+
+通过修改JetBrainsRuntime源码
+
+1. 下载JetBrainsRuntime
+   1. github网址: [link](https://github.com/JetBrains/JetBrainsRuntime)
+2. 应用patch
+   1. [patch](https://github.com/prehonor/myJetBrainsRuntime)
+3. 编译JetBrainsRuntime
+4. 更改idea 启动sdk
+   1. 修改 文件: `home/idea-2020.1/bin/idea.sh` (找到你自己的idea的安装路径)
+   2. 在文件开头添加`export IDEA_JDK=/home/prehonor/gitproject/JetBrainsRuntime/build/linux-x86_64-normal-server-release/images/jdk` (改成你自己的编译的jdk所在目录)
