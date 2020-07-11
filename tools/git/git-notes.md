@@ -78,6 +78,21 @@
 2. 全局代理
    1. git config --global http.proxy 'socks5://127.0.0.1:1080'
    2. git config --global https.proxy 'http://user:password@ip:port'
+3. 注意替换特殊字符
+```
+如果密码中有@等特殊字符，会出错，此时要对其中的特殊符号进行处理，使用百分比编码(Percent-encoding)对特殊字符进行转换，转换列表如下：
+! --> %21    # --> %23    $ --> %24    & --> %26    ' --> %27
+( --> %28    ) --> %29    * --> %2A    + --> %2B    , --> %2C
+/ --> %2F    : --> %3A    ; --> %3B    = --> %3D    ? --> %3F
+@ --> %40    [ --> %5B    ] --> %5D
+```
+4. 永久单仓库代理:修改.git目录下的config文件
+```
+[http]
+	proxy = http://username:password@domain:port/
+[https]
+	proxy = http://username:password@domain:port/
+```
 
 ### Git配置
 ```bash
