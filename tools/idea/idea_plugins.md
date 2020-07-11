@@ -1,12 +1,30 @@
+## Sublime Text3插件
+
+1. OmniMarkupPreviewer
+
+### 问题
+
+1. OmniMarkupPreviewer 404: 在插件的set-user中写入
+```json
+{
+    "renderer_options-MarkdownRenderer": {
+        "extensions": ["markdown.extensions.tables", "markdown.extensions.fenced_code", "markdown.extensions.codehilite"]
+    }
+}
+```
+
+
 ## VSCODE插件
 
 - Setting Sync: 同步配置，Ctrl + Shift + P后输入sync同步
 
-## IDEA的Tomcat突然不见
+## IDEA
+
+### IDEA的Tomcat突然不见
 
 - 进去config删除disabled_plugins.txt(或者删除其中某一行相关的),重启IDEA
 
-## IDEA插件
+### IDEA插件
 
 - GrepConsole: console可以设置不同级别log的字体颜色和背景色
 - Easy Code: 快速生成数据库实体，dao，mapper
@@ -51,13 +69,13 @@
 - CamelCase: 大小写
 - Julia: 反编译
 
-## 创建快捷方式
+### 创建快捷方式
 
 - In the Customize IntelliJ IDEA wizard - when you run IntelliJ IDEA for the first time.
 - On the Welcome screen: Configure | Create Desktop Entry.
 - In the main menu: Tools | Create Desktop Entry.
 
-## linux下搜狗不跟随
+### linux下搜狗不跟随
 
 通过修改JetBrainsRuntime源码
 
@@ -70,9 +88,9 @@
    1. 修改 文件: `home/idea-2020.1/bin/idea.sh` (找到你自己的idea的安装路径)
    2. 在文件开头添加`export IDEA_JDK=/home/prehonor/gitproject/JetBrainsRuntime/build/linux-x86_64-normal-server-release/images/jdk` (改成你自己的编译的jdk所在目录)
 
-## 设置
+### 设置
 
-### leetcode
+#### leetcode
 
 1. CodeFileName: 设置为显示题目的英文名称
 > $!velocityTool.camelCaseName(${question.titleSlug})  
