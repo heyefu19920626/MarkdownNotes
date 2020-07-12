@@ -1,3 +1,18 @@
+# 编辑器设置
+
+- [编辑器设置](#编辑器设置)
+  - [Sublime Text3插件](#sublime-text3插件)
+    - [问题](#问题)
+  - [VSCODE插件](#vscode插件)
+  - [IDEA](#idea)
+    - [IDEA的Tomcat突然不见](#idea的tomcat突然不见)
+    - [IDEA插件](#idea插件)
+    - [创建快捷方式](#创建快捷方式)
+    - [linux下搜狗不跟随](#linux下搜狗不跟随)
+    - [设置](#设置)
+      - [leetcode](#leetcode)
+    - [新版本升级](#新版本升级)
+
 ## Sublime Text3插件
 
 1. OmniMarkupPreviewer
@@ -105,3 +120,15 @@ public class $!velocityTool.camelCaseName(${question.titleSlug}) {
     ${question.code}
 }
 ```
+
+### 新版本升级
+
+1. 修改配置文件: `idea/bin/idea.properties`
+2. 破解: `idea/bin/idea64.vmoptions`
+3. 修改jdk: `idea/bin/idea.sh`
+4. 备注
+   1. vim打开多个文件
+   2. 使用命令`:split`水平分割，`:vsplit`垂直分割
+   3. 使用`ctrl+w`然后按`hjkl`跳转方向
+   4. `:close`关闭当前窗口，`:only`关闭其他所有窗口
+   5. `ctrl+6`下一个文件，`:bn`下一个文件，`bp`上一个文件
