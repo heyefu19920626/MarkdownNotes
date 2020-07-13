@@ -7,6 +7,7 @@
     - [在项目中引入](#在项目中引入)
   - [RESTFUL文档](#restful文档)
   - [多module打包](#多module打包)
+    - [maven](#maven)
   - [问题](#问题)
     - [application.yml不起作用](#applicationyml不起作用)
 
@@ -74,6 +75,8 @@ public class SwaggerConfig {
 3. 访问页面http://ip:port/swagger-ui.html
 
 ## 多module打包
+
+### maven
 
 [参考](https://blog.csdn.net/luo15242208310/article/details/100141368)
 
