@@ -3,6 +3,7 @@
 - [Git 笔记](#git-笔记)
   - [Git介绍](#git介绍)
   - [Git基础](#git基础)
+    - [fork模式保持同步更新](#fork模式保持同步更新)
     - [Git使用代理](#git使用代理)
     - [Git配置](#git配置)
     - [查看修改内容](#查看修改内容)
@@ -69,6 +70,16 @@
 
 
 ## Git基础
+
+### fork模式保持同步更新
+
+1. 添加一个远程中心仓库`git remote add center https://github.com/...`
+2. 查看是否配置成功`git remote -v`
+3. 同步中心仓库的代码`git fetch center`
+4. 切换到主分支`git checkout master`
+5. 合并`git merge  center/master`
+6. 推送到自己的仓库，提MR
+   1. 这里推荐使用rebase，因为merge之后，会有记录，然后在提交PR，会很难看
 
 ### Git使用代理
 
