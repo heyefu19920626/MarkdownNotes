@@ -6,6 +6,7 @@
   - [VSCODE插件](#vscode插件)
   - [IDEA](#idea)
     - [IDEA的Tomcat突然不见](#idea的tomcat突然不见)
+    - [插件位置](#插件位置)
     - [IDEA插件](#idea插件)
     - [创建快捷方式](#创建快捷方式)
     - [linux下搜狗不跟随](#linux下搜狗不跟随)
@@ -37,7 +38,12 @@
 
 ### IDEA的Tomcat突然不见
 
-- 进去config删除disabled_plugins.txt(或者删除其中某一行相关的),重启IDEA
+- 进去config删除disabled_plugins.txt(或者删除其中某一行相关的),重启IDEA\
+  
+### 插件位置
+
+- 默认位置
+  - `C:\Users\tangan\AppData\Roaming\JetBrains\WebStorm2020.1`
 
 ### IDEA插件
 
