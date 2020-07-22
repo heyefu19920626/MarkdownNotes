@@ -4,6 +4,7 @@
   - [npm仓库设置](#npm仓库设置)
     - [单项目仓库设置](#单项目仓库设置)
     - [全局配置](#全局配置)
+  - [引入bootstrap](#引入bootstrap)
 
 ## npm仓库设置
 
@@ -22,4 +23,27 @@ registry=http://npm.cloudartifact.szv.dragon.tools.huawei.com/artifactory/api/np
 npm config set registry https://registry.npm.taobao.org
 //查看源，可以看到设置过的所有的源
 npm config get registry
+<!-- 换成官网镜像 -->
+npm config set registry https://registry.npmjs.org
+```
+
+## 引入bootstrap
+
+1. 安装bootstrap,jquery,popper.js
+   1. `npm install bootstrap`
+   2. `npm install --svae jquery`
+   3. `npm install --save popper.js`
+2. 在angular.json中引入css和对应js
+```json
+build{
+  "styles": [
+    "src/styles.css",
+    "./node_modules/bootstrap/dist/css/bootstrap.css"
+  ],
+  "scripts": [
+    "./node_modules/jquery/dist/jquery.js",
+    "./node_modules/popper.js/dist/popper.js",
+    "./node_modules/bootstrap/dist/js/bootstrap.js"
+  ]
+}
 ```
