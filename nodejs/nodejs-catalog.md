@@ -36,6 +36,9 @@ npm config set registry https://registry.npmjs.org
    1. `npm install xxx`安装但不写入package.json
    2. `npm install xxx –save`安装并写入package.json的`dependencies`中
    3. `npm install xxx –save-dev`安装并写入package.json的`devDependencies`中
+3. npm卸载模块
+   1. `npm uninstall xxx`删除xxx模块
+   2. `npm uninstall -g xxx`删除全局模块xxx
 
 ## 引入bootstrap
 
