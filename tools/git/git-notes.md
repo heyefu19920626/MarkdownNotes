@@ -5,6 +5,8 @@
   - [Git基础](#git基础)
     - [fork模式保持同步更新](#fork模式保持同步更新)
     - [Git使用代理](#git使用代理)
+    - [git命令行中文乱码](#git命令行中文乱码)
+    - [git回退](#git回退)
     - [Git配置](#git配置)
     - [查看修改内容](#查看修改内容)
     - [查看提交日志](#查看提交日志)
@@ -104,6 +106,18 @@
 [https]
 	proxy = http://username:password@domain:port/
 ```
+
+### git命令行中文乱码
+
+```bash
+git config --global i18n.commitencoding utf-8  --注释：该命令表示提交命令的时候使用utf-8编码集提交
+git config --global i18n.logoutputencoding utf-8 --注释：该命令表示日志输出时使用utf-8编码集显示
+export LESSCHARSET=utf-8  --注释：设置LESS字符集为utf-8
+```
+
+### git回退
+1. `git rest --hard commitid`
+2. `git push orign master --force` 或者 `git push orign HEAD -force`
 
 ### Git配置
 ```bash
