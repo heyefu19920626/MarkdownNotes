@@ -10,6 +10,7 @@
     - [maven](#maven)
   - [问题](#问题)
     - [application.yml不起作用](#applicationyml不起作用)
+    - [controller没有自动扫描](#controller没有自动扫描)
 
 ## 默认首页
 
@@ -146,3 +147,7 @@ public class SwaggerConfig {
 ### application.yml不起作用
 
 1. pom.xml中`<package>pom</package>`改为`<package>jar</package>`或者直接注释
+
+### controller没有自动扫描
+
+1. 启动类要放在第一层，只会扫描启动类之下的包
