@@ -94,8 +94,43 @@ export class AppComponent {
     }
 
     changeLanguage(language: string) {
-        this.translate.setDefaultLang(language);
+        this.translate.setDefaultLang(language); //设置默认的语言类型
+        this.translateService.use(language); // 设置使用的语言类型
     }
 }
 ```
-4. 在界面增加函数调用
+4. 在src/assets/下建立i18n文件夹，并在其中建立`zh.json,en.json`等国际化文件
+```json
+{
+  "i18n": {
+    "top-bar": {
+      "title": "我的商店",
+      "title.title": "{{name}}的店"
+    },
+    "title": "我的应用商店",
+    "title.title": "{{name}}的商店"
+  }
+}
+```
+5. 在界面增加函数调用
+```html
+<!-- 参数中的name可以从ts文件中传入 -->
+<!-- 使用管道 -->
+<h1 title="{{'i18n.top-bar.title'|translate:{name: name } }}">{{'i18n.top-bar.title' | translate}}</h1>
+<span>{{ 'welcome '| translate}}</span>
+<span>{{getName | translate: {name:"crk"} }}</span>
+<!-- 使用指令 -->
+<span [translate]="'welcome'">welcome</span>
+<span [translate]="getName" [translateParams]="{'name':'ggg'}">getName</span>
+```
+```js
+// 使用服务
+this.translate.get('welcome').subscribe((res: string) => {
+    console.log(res);
+    this.welcomeTranslate = res;
+});
+this.translate.get('getName',this.param).subscribe((res: string) => {
+  console.log(res);
+  this.getNameTranslate = res;
+});
+```
