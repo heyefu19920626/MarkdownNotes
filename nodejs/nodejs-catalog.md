@@ -6,6 +6,7 @@
     - [全局配置](#全局配置)
   - [npm全局安装](#npm全局安装)
   - [引入bootstrap](#引入bootstrap)
+  - [国际化](#国际化)
 
 ## npm仓库设置
 
@@ -60,3 +61,41 @@ build{
   ]
 }
 ```
+
+## 国际化
+
+1. 安装依赖
+   1. `npm install @ngx-translate/core @ngx-translate/http-loader --save`
+2. 在`app.module.ts`中全局注册，并使用iot
+```js
+@NgModule({
+  imports: [
+  // 放在这以便全局注册, 翻译模块
+  HttpClientModule,
+  TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })]
+})
+
+export function HttpLoaderFactory(http: HttpClient) {
+    // 默认i18n可以省略
+    return new TranslateHttpLoader(http, '../assets/i18n/', '.json');
+}
+```
+3. 在`app.component.ts`中使用服务
+```js
+export class AppComponent {
+    constructor(private translate: TranslateService) {
+        this.translate.setDefaultLang("zh")
+    }
+
+    changeLanguage(language: string) {
+        this.translate.setDefaultLang(language);
+    }
+}
+```
+4. 在界面增加函数调用
