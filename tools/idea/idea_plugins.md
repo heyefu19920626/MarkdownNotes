@@ -63,7 +63,6 @@
 - cmdsupport: cmd文件支持
 - AceJump: 快捷跳转
 - activate-power-mode: 屏幕颤抖
-- Background image Plus: 背景图片
 - Background Image Plus +
 - Scala: Scala语言
 - Material Theme UI: 主题插件
