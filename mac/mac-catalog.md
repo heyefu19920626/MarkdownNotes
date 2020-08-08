@@ -15,11 +15,15 @@
 
 ## 键盘映射
 
-1、Home键=Fn+左方向
-2、End键=Fn+右方向
-3、PageUP=Fn+上方向、
-4、PageDOWN=Fn+下方向、
-5、向前Delete=Fn+delete键
+1. Home键=Fn+左方向
+2. End键=Fn+右方向
+3. PageUP=Fn+上方向、
+4. PageDOWN=Fn+下方向、
+5. 向前Delete=Fn+delete键
+6. Fn + Control + ←：上一个标签页
+7. Fn + F2聚焦到菜单栏
+8. Ctrl + →：右边的桌面
+
 
 
 
