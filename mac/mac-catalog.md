@@ -6,6 +6,8 @@
   - [快捷键](#快捷键)
   - [包管理器Homebrew](#包管理器homebrew)
     - [7z](#7z)
+  - [命令](#命令)
+    - [ping端口](#ping端口)
 
 
 ## 允许安装任何来源
@@ -23,8 +25,6 @@
 6. Fn + Control + ←：上一个标签页
 7. Fn + F2聚焦到菜单栏
 8. Ctrl + →：右边的桌面
-
-
 
 
 ## 快捷键
@@ -56,3 +56,9 @@
 1. 安装： `brew install pzip`
 2. 压缩 sputnik 文件夹下的所有文件`7z a heed.7z sputnik`
 3. 解压 heed.7z`7z x heed.7z`
+
+## 命令
+
+### ping端口
+
+1. `nc -vz -w 2 127.0.0.1 1080`

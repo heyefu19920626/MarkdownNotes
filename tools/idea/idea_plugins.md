@@ -88,6 +88,10 @@
 - Jclasslib Bytecode Viewer: 查看字节码
 - CamelCase: 大小写
 - Julia: 反编译
+- RestfulToolkit: rest接口概览，跳转
+- Codota:支持智能代码自动提示,搜索相关用法
+- MyBatis Log Plugin: 把Mybatis输出的SQL日志还原成完整的SQL语句
+- Statistic: 一款代码统计工具，可以用来统计当前项目中代码的行数和大小
 
 ### 创建快捷方式
 
