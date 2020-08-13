@@ -8,6 +8,8 @@
     - [7z](#7z)
   - [命令](#命令)
     - [ping端口](#ping端口)
+  - [问题](#问题)
+    - [Clean Mac X运行错误](#clean-mac-x运行错误)
 
 
 ## 允许安装任何来源
@@ -62,3 +64,19 @@
 ### ping端口
 
 1. `nc -vz -w 2 127.0.0.1 1080`
+
+
+## 问题
+
+### [Clean Mac X运行错误](https://www.macbed.com/if-crashes-when-opening/)
+
+Apple removed TNT’s certificate, so the app will crash after July 12th. The current solution is to sign it yourself.
+
+Run in Terminal
+
+> codesign --force --deep --sign - /Applications/name.app  
+
+Requisite: Xcode or the Apple Command Line Tools
+To install, execute
+
+> xcode-select --install  
