@@ -26,6 +26,7 @@
 2. find / -name “test*” -exec rm -rf {} \; 
 3. rm -rf $(find / -name “test”)
 4. docker images|awk '$2 ~ /^test$/ {print $1":"$2}'|xargs docker rmi
+5. grep -E "regex"  (grep使用正则)
 
 ## strace
 
