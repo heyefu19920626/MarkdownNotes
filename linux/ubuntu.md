@@ -28,6 +28,9 @@
   - [画图工具](#画图工具)
   - [中文输入法](#中文输入法)
   - [20.04没声音](#2004没声音)
+- [问题](#问题)
+    - [解决server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none](#解决server-certificate-verification-failed-cafile-etcsslcertsca-certificatescrt-crlfile-none)
+    - [curl: (60) SSL certificate problem忽略校验解决方法](#curl-60-ssl-certificate-problem忽略校验解决方法)
 
 ## IDEA不能输入中文
 
@@ -361,3 +364,14 @@ exit 0
 2. `pavucontrol`
 3. 切换到“配置”选项卡，根据实际情况禁用不需要的声卡。禁止第一项，第二项选择analogy stereo output（模拟立体输出。推荐选择）或者analogy stereo duplex（模拟立体声双工）
 4. 切换到输出设备，选择headphones，不要选择line out。到现在就设置好了
+
+
+# 问题
+
+### 解决server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none
+
+> git config --global http.sslverify false
+
+### curl: (60) SSL certificate problem忽略校验解决方法
+
+> 使用-k参数，忽略https证书校验 curl -k https://xxx.xxx
