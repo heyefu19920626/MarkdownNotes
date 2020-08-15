@@ -37,6 +37,7 @@
 4. 强制关闭程序：command+option+esc
 5. 清空回收站：command+shift+delete
 6. 移到回收站: command+delete
+7. 非全屏隐藏：command + h
 
 
 
