@@ -4,6 +4,7 @@
 
 - [常用命令](#常用命令)
   - [4种将前一命令结果作为后一命令参数](#4种将前一命令结果作为后一命令参数)
+    - [注意](#注意)
   - [strace](#strace)
   - [ls](#ls)
   - [tail](#tail)
@@ -27,6 +28,10 @@
 3. rm -rf $(find / -name “test”)
 4. docker images|awk '$2 ~ /^test$/ {print $1":"$2}'|xargs docker rmi
 5. grep -E "regex"  (grep使用正则)
+
+### 注意
+
+1. exec 最后的大括号要与前面的空一格，最后的分号不能少
 
 ## strace
 
