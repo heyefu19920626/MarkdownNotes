@@ -18,5 +18,5 @@
 
 ### telnet
 
-> talnet ip port  
+> telnet ip port  
 > 查看端口连接情况
