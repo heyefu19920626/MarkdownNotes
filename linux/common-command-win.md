@@ -16,6 +16,11 @@
 > taskkill -PID 应用pid -F  
 > 强制杀死程序
 
+### 根据路径查看任务
+
+> cmd.exe /c wmic process get executablepath,processid | findStr path
+> path 为路径
+
 ### telnet
 
 > telnet ip port  
