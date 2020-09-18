@@ -10,6 +10,7 @@
   - [ThreadPoolExecutor线程池](#threadpoolexecutor线程池)
   - [CountDownLatch和thread.join()](#countdownlatch和threadjoin)
   - [ForkJoinPool与RecursiveTask](#forkjoinpool与recursivetask)
+  - [ScheduledExecutorService](#scheduledexecutorservice)
 
 
 ## ExecutorService与Executor接口
@@ -89,3 +90,15 @@ interface Runnable {
    3. 每个工作线程在处理自己的工作队列同时，会尝试窃取一个任务（或是来自于刚刚提交到 pool 的任务，或是来自于其他工作线程的工作队列），窃取的任务位于其他线程的工作队列的队首，也就是说工作线程在窃取其他工作线程的任务时，使用的是 FIFO （first-in,first-out）方式
    4. 在遇到 join() 时，如果需要 join 的任务尚未完成，则会先处理其他任务，并等待其完成
    5. 在既没有自己的任务，也没有可以窃取的任务时，进入休眠
+
+## ScheduledExecutorService
+
+定时调度
+
+1. scheduleAtFixedRate
+   1. 按指定频率周期执行
+   2. 上次任务没完成，下次任务不会开始
+2. scheduleWithFixedDelay
+   1. 按指定频率间隔执行
+   2. 上次执行完毕后开始计时
+3. 遇到异常和死循环都会抑制下次任务的执行
