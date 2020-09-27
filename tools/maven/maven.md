@@ -171,6 +171,38 @@ ENTRYPOINT java -Xms512m -Xmx512m -jar fcm-blockchain-client.jar
 </properties>
 
 
+<!-- 把所有依赖打入 -->
+<build>
+<plugins>
+    <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+            <appendAssemblyId>false</appendAssemblyId>
+            <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+            <archive>
+                <manifest>
+                    <!-- 此处指定main方法入口的class -->
+                    <mainClass>com.huawei.cloud.callback.CloudTransferMain</mainClass>
+                </manifest>
+            </archive>
+        </configuration>
+        <executions>
+            <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>assembly</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+</plugins>
+</build>
+
+
+<!-- 这种只打自己 -->
 <build>
     <!-- 此处打包资源文件等 -->
     <resources>
