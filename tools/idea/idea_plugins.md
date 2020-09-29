@@ -13,6 +13,7 @@
     - [设置](#设置)
       - [leetcode](#leetcode)
     - [新版本升级](#新版本升级)
+    - [tomcat 控制台乱码](#tomcat-控制台乱码)
 
 ## Sublime Text3插件
 
@@ -141,3 +142,8 @@ public class $!velocityTool.camelCaseName(${question.titleSlug}) {
    3. 使用`ctrl+w`然后按`hjkl`跳转方向
    4. `:close`关闭当前窗口，`:only`关闭其他所有窗口
    5. `ctrl+6`下一个文件，`:bn`下一个文件，`bp`上一个文件
+
+### tomcat 控制台乱码
+1. 找到tomcat 安装目录下的 conf /logging.properties 文件打开
+2. 将 java.util.logging.ConsoleHandler.encoding = UTF-8修改为java.util.logging.ConsoleHandler.encoding = GBK
+3. 保存后 重启idea
