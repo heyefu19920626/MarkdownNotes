@@ -17,6 +17,8 @@
   - [查看CPU配置](#查看cpu配置)
   - [查看网络状况](#查看网络状况)
   - [后台运行](#后台运行)
+  - [统计文件个数](#统计文件个数)
+  - [chrome 网页截图](#chrome-网页截图)
 
 
 很多进程信息在/proc目录下
@@ -114,3 +116,17 @@ linux中文件的时间有三种:
 5. `&`在命令的最后追加这个符号，让命令在后台运行
 6. `stop %jobid`或者`kill -stop pid`(redhat不存在stop)将进程挂起
 7. `kill %jobid`杀死后台job进程(杀死进程为`kill pid`)
+
+## 统计文件个数
+
+1. `ls -l | grep '^-' | wc -l`
+   1. ls -l 列出文件
+   2. grep '^-'查找以-开头的行数
+   3. wc -l统计行数 
+
+## chrome 网页截图
+
+1. F12
+2. Ctrl+Shift+P,搜索命令
+3. 输入screen搜索截图相关命令
+   1. 选择Capture full size screenshot
