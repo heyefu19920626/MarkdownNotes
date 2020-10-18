@@ -6,6 +6,7 @@
   - [4种将前一命令结果作为后一命令参数](#4种将前一命令结果作为后一命令参数)
     - [注意](#注意)
   - [strace](#strace)
+  - [批量重命名](#批量重命名)
   - [ls](#ls)
   - [tail](#tail)
   - [netstat](#netstat)
@@ -36,6 +37,20 @@
 1. exec 最后的大括号要与前面的空一格，最后的分号不能少
 
 ## strace
+
+## 批量重命名
+1. 使用脚本
+
+```
+ls | awk 'gsub(/.html/,""){print $1}'|while read i
+do
+    echo "$i";
+    mv $i.html  $i.jpg
+done
+```
+
+- awk
+  - gsub 替换
 
 
 ## ls
