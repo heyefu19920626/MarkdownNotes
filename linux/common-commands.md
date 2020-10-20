@@ -40,6 +40,17 @@
 
 ## 批量重命名
 1. 使用脚本
+```bash
+#!/bin/bash
+
+#http://blog.csdn.net/longxibendi
+ls | awk 'gsub(/.html/,""){print $1}'|while read i
+#find ./ -name "*.html"  |  while read i
+do
+    echo "$i";
+    mv $i.html  $i.jpg
+done
+```
 
 ```
 ls | awk 'gsub(/.html/,""){print $1}'|while read i
