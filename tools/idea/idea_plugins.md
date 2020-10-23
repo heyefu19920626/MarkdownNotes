@@ -14,6 +14,7 @@
       - [leetcode](#leetcode)
     - [新版本升级](#新版本升级)
     - [tomcat 控制台乱码](#tomcat-控制台乱码)
+    - [命令行快捷键](#命令行快捷键)
 
 ## Sublime Text3插件
 
@@ -147,3 +148,18 @@ public class $!velocityTool.camelCaseName(${question.titleSlug}) {
 1. 找到tomcat 安装目录下的 conf /logging.properties 文件打开
 2. 将 java.util.logging.ConsoleHandler.encoding = UTF-8修改为java.util.logging.ConsoleHandler.encoding = GBK
 3. 保存后 重启idea
+
+
+### 命令行快捷键
+
+1. CTRL + U - 剪切光标前的内容
+2. CTRL + K - 剪切光标至行末的内容
+3. CTRL + Y - 粘贴
+4. CTRL + E - 移动光标到行末
+5. CTRL + A - 移动光标到行首
+6. ALT + F - 跳向下一个空格
+7. ALT + B - 跳回上一个空格
+8. ALT + Backspace - 删除前一个单词
+9. CTRL + W - 剪切光标前一个单词
+10. Shift + Insert - 向终端内粘贴文本 (CTRL+SHIFT+V)
+11. Ctrl + ←,移动光标到左边一个空格
