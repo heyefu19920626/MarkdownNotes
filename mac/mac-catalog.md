@@ -10,6 +10,9 @@
     - [ping端口](#ping端口)
   - [问题](#问题)
     - [Clean Mac X运行错误](#clean-mac-x运行错误)
+  - [证书问题](#证书问题)
+    - [生成证书和私钥](#生成证书和私钥)
+    - [浏览器信任](#浏览器信任)
 
 
 ## 允许安装任何来源
@@ -81,3 +84,17 @@ Requisite: Xcode or the Apple Command Line Tools
 To install, execute
 
 > xcode-select --install  
+
+## 证书问题
+
+### 生成证书和私钥
+
+> openssl req -newkey rsa:2048 -nodes -keyout rsa_private.key -x509 -days 365 -out cert.crt
+
+### 浏览器信任
+
+1. 打开［应用程序］>［实用工具］>［钥匙串访问］，并在左侧导航选择［系统］
+   1. Chrome在[设置]->[隐私设置和安全性]->[安全]->[管理证书]打开钥匙串
+2. 选择顶部的［文件］［导入项目］，并定位到goagent安装目录的Application/goagent/local/CA.crt。选择导入
+3. 右键选择新导入的GoAgent CA证书，选择［显示简介］，然后选择展开［信任］一栏，确保所有的选择都是［总是信任］
+4. 重启浏览器

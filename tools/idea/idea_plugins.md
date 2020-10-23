@@ -162,4 +162,3 @@ public class $!velocityTool.camelCaseName(${question.titleSlug}) {
 8. ALT + Backspace - 删除前一个单词
 9. CTRL + W - 剪切光标前一个单词
 10. Shift + Insert - 向终端内粘贴文本 (CTRL+SHIFT+V)
-11. Ctrl + ←,移动光标到左边一个空格
