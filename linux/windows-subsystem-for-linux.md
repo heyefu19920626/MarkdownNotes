@@ -5,6 +5,7 @@
 - [Windows10上使用Linux子系统(WSL)](#windows10上使用linux子系统wsl)
   - [安装](#安装)
   - [升级至WSL2](#升级至wsl2)
+    - [报错处理](#报错处理)
   - [更换阿里源](#更换阿里源)
   - [安装go](#安装go)
   - [使用docker](#使用docker)
@@ -28,8 +29,14 @@ Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
 #查看当前版本
 wsl -l -v
 #升级
-wsl --set-version Uubuntu-18.04 2
+wsl --set-version Uubuntu-20.04 2
 ```
+
+### 报错处理
+
+1. 确认启用Hyper-V
+2. 确认启用Linux子系统
+3. 在官网下载wsl2内核安装
 
 ## 更换阿里源
 
