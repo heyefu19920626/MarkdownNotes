@@ -254,8 +254,9 @@ exec "${HERE}"/netease-cloud-music $@
 
 ## oh-my-zsh安装与配置
 
-1. 安装：``sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"``
-2. 配置终端前缀显示
+1. 先安装zsh和git
+2. 安装：``sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"``
+3. 配置终端前缀显示
    1. ``cd  ~/.oh-my-zsh/themes/``
    2. 查看自己主题：``echo $ZSH_THEME``，此处为robbyrussell
    3. ``cp robbyrussell.zsh-theme myrobbyrussell.zsh-theme``
@@ -266,6 +267,7 @@ exec "${HERE}"/netease-cloud-music $@
    6. 修改.zshrc中的默认主题 ``vim ~/.zshrc``的ZSH_THEME的值
       1. ``ZSH_THEME="myrobbyrussell"``
    7. 保存退出,启动新终端
+
 
 ## dpkg解决依赖问题
 
