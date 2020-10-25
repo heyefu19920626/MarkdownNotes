@@ -1,0 +1,7 @@
+## 地址栏显示完整网址
+
+1. 访问`chrome://flags/`
+2. 搜索`Context menu show full URLs`
+3. 设置为enable
+4. 重启浏览器
+5. 在地址栏右击，选择总是显示完整网址
