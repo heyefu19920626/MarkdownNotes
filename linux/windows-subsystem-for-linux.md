@@ -11,6 +11,7 @@
   - [使用docker](#使用docker)
   - [闪退报错](#闪退报错)
 - [Win10安装Windows Terminal](#win10安装windows-terminal)
+  - [Windows Terminal美化](#windows-terminal美化)
 
 ## 安装
 
@@ -89,3 +90,64 @@ options = "metadata"
 # Win10安装Windows Terminal
 
 在Win10应用商店搜索安装
+
+## Windows Terminal美化
+
+```json
+"defaults": {
+			"backgroundImage": "D:\\wallpaper\\tifa.jpg",
+			"backgroundImageOpacity": 0.25,
+			"useAcrylic": true,
+			"icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
+			"backgroundImageStretchMode": "fill",
+			"fontFace": "Sarasa Term SC",
+			"fontSize": 14,
+			"colorScheme": "Solarized Darcula",
+			"cursorColor": "#FFFFFF",
+			"cursorShape": "bar"
+		},
+"schemes": [
+		{
+			"name": "Solarized Dark",
+			"black": "#002831",
+			"red": "#d11c24",
+			"green": "#738a05",
+			"yellow": "#a57706",
+			"blue": "#2176c7",
+			"purple": "#c61c6f",
+			"cyan": "#259286",
+			"white": "#eae3cb",
+			"brightBlack": "#475b62",
+			"brightRed": "#bd3613",
+			"brightGreen": "#475b62",
+			"brightYellow": "#536870",
+			"brightBlue": "#708284",
+			"brightPurple": "#5956ba",
+			"brightCyan": "#819090",
+			"brightWhite": "#fcf4dc",
+			"background": "#001e27",
+			"foreground": "#708284"
+		},
+		{
+			"name": "Solarized Darcula",
+			"black": "#25292a",
+			"red": "#f24840",
+			"green": "#629655",
+			"yellow": "#b68800",
+			"blue": "#2075c7",
+			"purple": "#797fd4",
+			"cyan": "#15968d",
+			"white": "#d2d8d9",
+			"brightBlack": "#25292a",
+			"brightRed": "#f24840",
+			"brightGreen": "#629655",
+			"brightYellow": "#b68800",
+			"brightBlue": "#2075c7",
+			"brightPurple": "#797fd4",
+			"brightCyan": "#15968d",
+			"brightWhite": "#d2d8d9",
+			"background": "#3d3f41",
+			"foreground": "#d2d8d9"
+		}
+	]
+```
