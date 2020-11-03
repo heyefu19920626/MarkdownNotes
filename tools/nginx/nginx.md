@@ -8,6 +8,7 @@
   - [localtion以及proxy_pass以/结尾的问题](#localtion以及proxy_pass以结尾的问题)
     - [location 结尾的/](#location-结尾的)
     - [proxy_pass 结尾的/](#proxy_pass-结尾的)
+  - [upstream](#upstream)
 
 ## 静态资源配置
 
@@ -90,4 +91,30 @@ location /proxy {
 }
 # proxy_pass 代理到http://myblog.com:8000/disquz//login.html  
 # 因为匹配到了这个规则 所以把uri里面的/proxy去掉 剩下/login.html, 拼在url后面就是http://myblog.com:8000/disquz//login.html
+```
+
+## upstream
+
+
+```bash
+upstream test_8040{
+    192.0.0.1:8040
+}
+
+upstream test_8050{
+    192.0.0.2:8050
+}
+
+server{
+    listen 8040;
+    listen 8050;
+
+location / {
+    proxy http://test_$server_port
+    # $server_port会被listen的port替换，然后test_$server_port会被upstream对应的替换
+    # 访问http://localhost:8040转发到192.0.0.1:8040
+    # 访问http://localhost:8050转发到192.0.0.2:8050
+}
+}
+
 ```
