@@ -9,6 +9,7 @@
 	- [更换阿里源](#更换阿里源)
 	- [安装go](#安装go)
 	- [使用docker](#使用docker)
+	- [局域网访问WSL](#局域网访问wsl)
 	- [配置代理](#配置代理)
 	- [闪退报错](#闪退报错)
 - [Win10安装Windows Terminal](#win10安装windows-terminal)
@@ -72,6 +73,15 @@ sudo nano /etc/wsl.conf
 [automount]
 root = /
 options = "metadata"
+```
+
+##  局域网访问WSL
+
+```bash
+netsh interface portproxy add v4tov4 listenport=【宿主机windows平台监听端口】 listenaddress=0.0.0.0 connectport=【wsl2平台监听端口】 connectaddress=【wsl2平台ip】protocol=tcp
+netsh interface portproxy add v4tov4 listenport=80 listenaddress=0.0.0.0 connectport=80 connectaddress=172.30.144.91 protocol=tcp
+或
+netsh interface portproxy add v4tov4 listenport=80 listenaddress=* connectport=80 connectaddress=172.30.144.91 protocol=tcp
 ```
 
 ## 配置代理

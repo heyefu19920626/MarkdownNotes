@@ -3,11 +3,39 @@
 - [..](database-catalog.md)
 
 - [Redis](#redis)
+  - [登录密码](#登录密码)
+  - [非主机登录](#非主机登录)
+  - [启动多个实例](#启动多个实例)
   - [基础](#基础)
   - [非本机不能连接Redis](#非本机不能连接redis)
   - [分布式锁](#分布式锁)
   - [RedLock算法加锁](#redlock算法加锁)
 
+## 登录密码
+
+1. 修改/etc/redis/redis.conf
+   1. 取消requirpass,并设置值
+2. 命令行登录
+   1. redis-cli -h $host -p $port -a $password
+   2. redis-cli -h $host -p $port进入后再使用auth $password认证
+
+## 非主机登录
+
+1. 修改/etc/redis/redis.conf
+   1. 取消bind 127.0.0.1，并设置密码
+   2. 取消bind 127.0.0.1，关闭protected-mode(将值设为no)
+
+## 启动多个实例
+
+1. redis-server --port 6380 &
+2. redis-server /etc/redis/redis_6380.conf
+```bash
+#vi redis6380.conf
+pidfile : pidfile/var/run/redis/redis_6380.pid
+port 6380
+logfile : logfile/var/log/redis/redis_6380.log
+rdbfile : dbfilenamedump_6380.rdb
+```
 
 ## 基础
 
