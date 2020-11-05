@@ -3,15 +3,16 @@
 - [..](linux-catalog.md)
 
 - [Windows10上使用Linux子系统(WSL)](#windows10上使用linux子系统wsl)
-  - [安装](#安装)
-  - [升级至WSL2](#升级至wsl2)
-    - [报错处理](#报错处理)
-  - [更换阿里源](#更换阿里源)
-  - [安装go](#安装go)
-  - [使用docker](#使用docker)
-  - [闪退报错](#闪退报错)
+	- [安装](#安装)
+	- [升级至WSL2](#升级至wsl2)
+		- [报错处理](#报错处理)
+	- [更换阿里源](#更换阿里源)
+	- [安装go](#安装go)
+	- [使用docker](#使用docker)
+	- [配置代理](#配置代理)
+	- [闪退报错](#闪退报错)
 - [Win10安装Windows Terminal](#win10安装windows-terminal)
-  - [Windows Terminal美化](#windows-terminal美化)
+	- [Windows Terminal美化](#windows-terminal美化)
 
 ## 安装
 
@@ -72,6 +73,60 @@ sudo nano /etc/wsl.conf
 root = /
 options = "metadata"
 ```
+
+## 配置代理
+
+1. windows安装cntlm
+   1. 安装在默认位置`C:\Program Files (x86)\Cntlm`
+   2. 也可以使用python的Px工具`pip install px-proxy`
+2. 编辑cntlm.ini,管理员权限
+```ini
+Username 用户名
+Domain   域名  china.baidu.com
+#Password password #注释掉
+Proxy    proxyhk.baidu.com:8080
+#Proxy       10.0.0.42:8080
+#Listen改成0.0.0.0加端口号，这样本机所有IP都可以访问（不改的话只有127.0.0.1可以）
+Listen       0.0.0.0:4399
+#这三行内容通过下面的步骤3获取
+#Auth NTLM
+#PassNT ***
+#PassLM ***
+```
+3. 在安装目录打开命令行执行命令`.\cntlm.exe -c .\cntlm.ini -I -M https://www.google.com`
+4. 将上一步生成的认证信息报备到cntlm.ini中
+5. 管理员命令行启动`net start cntlm`
+   1. 停止`net stop cntlm`
+6. 在wsl中添加需要的根证书文件`sudo vim /usr/local/share/ca-certificates/baidu.crt`,并写入证书内容
+```
+-----BEGIN CERTIFICATE-----
+MIID2TCCAsGgAwIBAgIJALQPO9XxFFZmMA0GCSqGSIb3DQEBCwUAMIGCMQswCQYD
+VQQGEwJjbjESMBAGA1UECAwJR3VhbmdEb25nMREwDwYDVQQHDAhTaGVuemhlbjEP
+MA0GA1UECgwGSHVhd2VpMQswCQYDVQQLDAJJVDEuMCwGA1UEAwwlSHVhd2VpIFdl
+YiBTZWN1cmUgSW50ZXJuZXQgR2F0ZXdheSBDQTAeFw0xNjA1MTAwOTAyMjdaFw0y
+NjA1MDgwOTAyMjdaMIGCMQswCQYDVQQGEwJjbjESMBAGA1UECAwJR3VhbmdEb25n
+MREwDwYDVQQHDAhTaGVuemhlbjEPMA0GA1UECgwGSHVhd2VpMQswCQYDVQQLDAJJ
+VDEuMCwGA1UEAwwlSHVhd2VpIFdlYiBTZWN1cmUgSW50ZXJuZXQgR2F0ZXdheSBD
+QTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANk9kMn2ivB+6Lp23PIX
+OaQ3Z7YfXvBH5HfecFOo18b9jC1DhZ3v5URScjzkg8bb616WS00E9oVyvcaGXuL4
+Q0ztCwOszF0YwcQlnoLBpAqq6v5kJgXLvGfjx+FKVjFcHVVlVJeJviPgGm4/2FLh
+odoreBqPRAfLRuSJ5U+VvgYipKMswTXh7fAK/2LkTf1dpWNvRsoXVm692uFkGuNx
+dCdUHYCI5rl6TqMXht/ZINiclroQLkd0gJKhDVmnygEjwAJMMiJ5Z+Tltc6WZoMD
+lrjETdpkY6e/qPhzutxDJv5XH9nXN33Eu9VgE1fVEFUGequcFXX7LXSHE1lzFeae
+rG0CAwEAAaNQME4wHQYDVR0OBBYEFDB6DZZX4Am+isCoa48e4ZdrAXpsMB8GA1Ud
+IwQYMBaAFDB6DZZX4Am+isCoa48e4ZdrAXpsMAwGA1UdEwQFMAMBAf8wDQYJKoZI
+hvcNAQELBQADggEBAKN9kSjRX56yw2Ku5Mm3gZu/kQQw+mLkIuJEeDwS6LWjW0Hv
+3l3xlv/Uxw4hQmo6OXqQ2OM4dfIJoVYKqiLlBCpXvO/X600rq3UPediEMaXkmM+F
+tuJnoPCXmew7QvvQQvwis+0xmhpRPg0N6xIK01vIbAV69TkpwJW3dujlFuRJgSvn
+rRab4gVi14x+bUgTb6HCvDH99PhADvXOuI1mk6Kb/JhCNbhRAHezyfLrvimxI0Ky
+2KZWitN+M1UWvSYG8jmtDm+/FuA93V1yErRjKj92egCgMlu67lliddt7zzzzqW+U
+QLU0ewUmUHQsV5mk62v1e8sRViHBlB2HJ3DU5gE=
+-----END CERTIFICATE-----
+```
+7. 更新证书`sudo update-ca-certificates`
+8. 配置代理
+   1. `export http_proxy=http://ip:port` 
+   2. `export https_proxy=http://ip:port` 
 
 ## 闪退报错
 
