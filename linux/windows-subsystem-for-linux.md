@@ -77,12 +77,14 @@ options = "metadata"
 
 ##  局域网访问WSL
 
+1. 将主机的端口映射到wsl端口
 ```bash
 netsh interface portproxy add v4tov4 listenport=【宿主机windows平台监听端口】 listenaddress=0.0.0.0 connectport=【wsl2平台监听端口】 connectaddress=【wsl2平台ip】protocol=tcp
 netsh interface portproxy add v4tov4 listenport=80 listenaddress=0.0.0.0 connectport=80 connectaddress=172.30.144.91 protocol=tcp
 或
 netsh interface portproxy add v4tov4 listenport=80 listenaddress=* connectport=80 connectaddress=172.30.144.91 protocol=tcp
 ```
+2. 只在主机上可以使用127.0.0.1:port访问wsl2
 
 ## 配置代理
 
