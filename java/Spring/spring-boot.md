@@ -2,6 +2,7 @@
 
 - [Spring boot](#spring-boot)
   - [默认首页](#默认首页)
+  - [打印sql日志](#打印sql日志)
   - [配置https](#配置https)
     - [https证书获取](#https证书获取)
     - [在项目中引入](#在项目中引入)
@@ -15,6 +16,15 @@
 ## 默认首页
 
 src/resource/static/index.html
+
+## 打印sql日志
+
+1. mybatis: 在application.yml中配置需要打印的包路径
+```yml
+logging:
+  level:
+    com.heyefu.dao: debug
+```
 
 ## 配置https
 
