@@ -92,7 +92,8 @@ public class SwaggerConfig {
 [参考](https://blog.csdn.net/luo15242208310/article/details/100141368)
 
 1. 最外层父pom
-```xml <build>
+```xml 
+<build>
     <resources>
         <resource>
             <directory>src/main/java</directory>

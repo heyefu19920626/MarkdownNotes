@@ -57,6 +57,7 @@
 - Key promoter: 快捷键提醒
 - idea-batch
 - Alibaba Java Coding Guidelines, p3c: 阿里巴巴出品的java代码规范插件
+- Alibaba Cloud Toolkit: 快速部署到服务器
 - FindBugs
 - SonarLint: 代码检查
 - MyBatisCodeHelperPro: mybatis代码自动生成插件，大部分单表操作的代码可自动生成 减少重复劳动 大幅提升效率
@@ -73,6 +74,7 @@
 - Markdown Support: markdown
 - Docker intergration
 - GsonFormat: JSON转java类
+- Json Parser json: json格式化工具，在右侧tool windows bar
 - Lombok: 省略getter，setter
 - Maven helper： maven依赖检查
 - VisualVM Launcher: 运行java程序的时候启动visualvm，方便查看jvm的情况 比如堆内存大小的分配
@@ -82,6 +84,7 @@
 - Batch Script Support
 - CMD support
 - GenerateAllSetter：快速生成一个对象的所有set，默认值为null
+- JUnitGenerator: 自动生成测试代码
 - Atom Material Icon
 - HighlightBracketPair: 括号高亮
 - SequenceDiagram: 时序图
@@ -90,10 +93,11 @@
 - Jclasslib Bytecode Viewer: 查看字节码
 - CamelCase: 大小写
 - Julia: 反编译
-- RestfulToolkit: rest接口概览，跳转
+- RestfulToolkit: rest接口概览，跳转,在方法上右击复制url和参数， java类上添加Convert to JSON功能,在tool window bar,CTR +ALT+N
 - Codota:支持智能代码自动提示,搜索相关用法
 - MyBatis Log Plugin: 把Mybatis输出的SQL日志还原成完整的SQL语句
 - Statistic: 一款代码统计工具，可以用来统计当前项目中代码的行数和大小
+- Codota: 代码提示工具，扫描你的代码后，根据你的敲击完美提示
 
 ### 创建快捷方式
 
