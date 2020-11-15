@@ -2,6 +2,13 @@
 
 - [Spring boot](#spring-boot)
   - [默认首页](#默认首页)
+  - [传参](#传参)
+    - [命令行参数](#命令行参数)
+    - [系统属性参数](#系统属性参数)
+    - [jvm参数](#jvm参数)
+    - [环境变量](#环境变量)
+    - [spring boot参数](#spring-boot参数)
+    - [getEnv与getProperty](#getenv与getproperty)
   - [打印sql日志](#打印sql日志)
   - [配置https](#配置https)
     - [https证书获取](#https证书获取)
@@ -16,6 +23,52 @@
 ## 默认首页
 
 src/resource/static/index.html
+
+## 传参
+
+### 命令行参数
+
+跟在jar后，以空格分隔，在main方法中读取  
+> java -jar demo.jar param1 param2 param3
+
+### 系统属性参数
+
+系统属性参数也是供应用程序使用的，并且是以key=value这样的形式提供的，在程序的任何一个地方，都可以通过System.getProperty("key")获取到对应的value值  
+用法`java -Dfoo="some string" SomeClass`,系统属性参数传入的时候需要带一个横杆和大写字母D,示例中可以使用Sytem.getProperty("foo")获取
+> java -jar xxx.jar -Da1=aaa -Db1=bbb -Dc1=ccc
+
+### jvm参数
+
+jvm参数就是和jvm相关的参数了，比如配置gc、配置堆大小、配置classpath等等  
+jvm参数分为标准参数、扩展参数和不稳定参数  
+标准参数是一定有效，向后兼容的，且所有的jvm都必须要实现的，比如-classpath，这类参数是横杆直接跟参数名  
+扩展参数是不保证向后向后兼容，不强值要求所有jvm实现都要支持，不保证后续版本不会取消的，这类参数的形式是-Xname，横杠和一个大写的X开头  
+不稳定参数就是非常不稳定，可能只是特定版本的，特点是-XXname，横杆后带两个大写X开头  
+java中的命令行参数只有option和args两类
+```bash
+java [-options] class [args...]
+           (to execute a class)
+或者
+java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+```
+
+### 环境变量
+
+启动前export a1=a1,启动后可以使用System.getEnv("a1)获取
+
+### spring boot参数
+
+可以通过@Value("${a1})获取
+> java -jar xxx.jar --a1=aaa --b1=bbb
+
+### getEnv与getProperty
+
+Java提供了System类的以下静态方法用于返回系统相关的变量与属性
+1. System.getenv() 方法是获取指定的环境变量的值，大多与系统相关
+2. System.getenv(String str) 接收参数为任意字符串，当存在指定环境变量时即返回环境变量的值，否则返回null
+3. System.getProperty() 是获取系统的相关属性，大多与java程序有关，包括文件编码、操作系统名称、区域、用户名等，此属性一般由jvm自动获取，不能设置
+4. System.getProperty(String str) 接收参数为任意字符串，当存在指定属性时即返回属性的值，否则返回null
 
 ## 打印sql日志
 
