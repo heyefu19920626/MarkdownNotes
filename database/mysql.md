@@ -191,6 +191,10 @@ utf8_general_cs这个选项一般没有，所以只能用utf8_bin区分大小写
    2. all privileges 可换成select,update,insert,delete,drop,create等操作
    3. 第一个*表示通配数据库，可指定新建用户只可操作的数据库
    4. 第二个*表示通配表，可指定新建用户只可操作的数据库下的某个表
+   5. 库名和表名有特殊符号时使用`database-name`包起来
 2. 查看用户授权信息`show grants for 'test1'@'localhost';`
 3. 撤销授权`revoke all privileges on *.* from 'test1'@'localhost';`
    1. 用户有什么权限就撤销什么权限
+   2. 撤销授权报错` you need (at least one of) the SYSTEM_USER privilege(s) for this operation`
+      1. 原因是由于root用户没有SYSTEM_USER权限，把权限加入后即可解决
+      2. 需要先给root授权`grant system_user on *.* to 'root';`
