@@ -6,6 +6,8 @@
   - [Spring-boot编译可执行jar包](#spring-boot编译可执行jar包)
   - [IDEAZ中maven编译可执行jar包](#ideaz中maven编译可执行jar包)
   - [maven配置本地jar包](#maven配置本地jar包)
+  - [问题](#问题)
+    - [was cached in the local repository](#was-cached-in-the-local-repository)
 
 
 ## maven配置spring仓库与阿里云仓库 
@@ -285,3 +287,9 @@ ENTRYPOINT java -Xms512m -Xmx512m -jar fcm-blockchain-client.jar
     <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ueditor-1.1.2.jar</systemPath>
 </dependency>
 ```
+
+## 问题
+
+### was cached in the local repository
+
+删除本地仓库中的*.lastUpdated文件

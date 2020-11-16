@@ -14,12 +14,13 @@
     - [日志参数说明](#日志参数说明)
 
 ## 基本命令
-1. 重新加载配置文件`nginx -s reload`
-2. 关闭`nginx -s stop`或者`nginx -s quit`
-3. 查看配置信息`nginx -V`
+1. 启动`start nginx`
+2. 重新加载配置文件`nginx -s reload`
+3. 关闭`nginx -s stop`或者`nginx -s quit`
+4. 查看配置信息`nginx -V`
    1. 查看版本`nginx -v`
-4. 配置语法检查`nginx -c ./conf/jason.conf -t`
-5. 重新打开日志文件`nginx -s reopen`
+5. 配置语法检查`nginx -c ./conf/jason.conf -t`
+6. 重新打开日志文件`nginx -s reopen`
 
 ## 静态资源配置
 
