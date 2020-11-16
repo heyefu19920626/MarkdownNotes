@@ -6,6 +6,7 @@
   - [静态资源配置](#静态资源配置)
     - [root配置](#root配置)
     - [alias配置](#alias配置)
+    - [413 Request Entity Too Large](#413-request-entity-too-large)
   - [localtion以及proxy_pass以/结尾的问题](#localtion以及proxy_pass以结尾的问题)
     - [location 结尾的/](#location-结尾的)
     - [proxy_pass 结尾的/](#proxy_pass-结尾的)
@@ -20,7 +21,10 @@
 4. 查看配置信息`nginx -V`
    1. 查看版本`nginx -v`
 5. 配置语法检查`nginx -c ./conf/jason.conf -t`
-6. 重新打开日志文件`nginx -s reopen`
+   1. `nginx -t`检查配置文件
+   2. `nginx -c`设置配置文件的路径
+5. 重新打开日志文件`nginx -s reopen`
+   1. `nginx -s`向主进程发送信号
 
 ## 静态资源配置
 
@@ -50,6 +54,17 @@ location /images/ {
      alias /mnt/upload/files/;  
 }
 ```
+
+###  413 Request Entity Too Large
+
+nginx服务器限制了上传文件的大小  
+
+1. 在http{ }中设置：client_max_body_size 20m;
+    1. http{} ——》控制所有nginx收到的请求报文大小
+2. 在server{ }中设置：client_max_body_size 20m;
+    2. server{}——》控制该server收到的请求报文大小
+3. 在location{ }中设置：client_max_body_size 20m;
+    3. location{}——》控制匹配了location 路由规则的请求报文大小
 
 ## localtion以及proxy_pass以/结尾的问题
 

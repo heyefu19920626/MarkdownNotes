@@ -18,6 +18,8 @@
   - [Centos7 卸载自带的MaraiDB](#centos7-卸载自带的maraidb)
   - [时区设置](#时区设置)
   - [排序规则](#排序规则)
+  - [创建新用户](#创建新用户)
+  - [授权](#授权)
 
 ## update做了什么
 
@@ -56,6 +58,8 @@
 3. 在命令行进入mysql: `mysql`
 4. 切换至mysql库: `use mysql;`
 5. 修改root的密码: `update user set password=password('root') where user='root';`
+   1. mysql8以上版本需要使用新的命令`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'yourpassword';`
+   2. 或者`alter user 'root'@'localhost' identified by 'newpassword';`
 6. 退出数据库: `exit`
 7. 停止mariadb跳过权限的启动进程,查看进程并停止进程(先停止root账户的进程再停止mysql的进程)
    1. `ps aux |grep mysql`
@@ -168,3 +172,29 @@ utf8_general_cs这个选项一般没有，所以只能用utf8_bin区分大小写
 1. 设置排序规则是可逆的，如果之前设置的排序规则不符合，更换排序规则后，可能出现乱码，当再次恢复原来的排序规则后，乱码即消失
 2. 可以将varchar 类型改为 varbinary
 3. 如果已经使用了默认的排序规则，即utf8_genera_ci，而又想查询结果大小写区分，可以在查询时进行限定：select binary column from table;   或者  select column2 from table where binary cloumn;
+
+## 创建新用户
+
+1. 创建用户
+> create user 'heyefu'@'%' identified by 'password';  
+2. 刷新权限
+> flush privileges;  
+3. 修改密码
+> alter user ‘heyefu'@'%' identified by 'newpassword';  
+4. 删除用户
+> drop user 'test1'@'localhost';
+
+## 授权
+
+1. 授权`grant all privileges on *.* to 'test1'@'localhost' with grant option;`
+   1. with gran option表示该用户可给其它用户赋予权限，但不可能超过该用户已有的权限
+   2. all privileges 可换成select,update,insert,delete,drop,create等操作
+   3. 第一个*表示通配数据库，可指定新建用户只可操作的数据库
+   4. 第二个*表示通配表，可指定新建用户只可操作的数据库下的某个表
+   5. 库名和表名有特殊符号时使用`database-name`包起来
+2. 查看用户授权信息`show grants for 'test1'@'localhost';`
+3. 撤销授权`revoke all privileges on *.* from 'test1'@'localhost';`
+   1. 用户有什么权限就撤销什么权限
+   2. 撤销授权报错` you need (at least one of) the SYSTEM_USER privilege(s) for this operation`
+      1. 原因是由于root用户没有SYSTEM_USER权限，把权限加入后即可解决
+      2. 需要先给root授权`grant system_user on *.* to 'root';`
