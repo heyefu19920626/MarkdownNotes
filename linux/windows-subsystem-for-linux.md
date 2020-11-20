@@ -85,6 +85,8 @@ netsh interface portproxy add v4tov4 listenport=80 listenaddress=0.0.0.0 connect
 netsh interface portproxy add v4tov4 listenport=80 listenaddress=* connectport=80 connectaddress=172.30.144.91 protocol=tcp
 ```
 2. 只在主机上可以使用127.0.0.1:port访问wsl2
+3. 查看wsl的ip
+   1. `cat /etc/resolv.conf`
 
 ## 配置代理
 
