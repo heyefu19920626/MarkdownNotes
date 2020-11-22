@@ -27,20 +27,23 @@
 3. PageUP=Fn+上方向、
 4. PageDOWN=Fn+下方向、
 5. 向前Delete=Fn+delete键
-6. Fn + Control + ←：上一个标签页
-7. Fn + F2聚焦到菜单栏
-8. Ctrl + →：右边的桌面
+6. Fn + Control + ← 上一个标签页
+7. Fn + F2 聚焦到菜单栏
+8. Ctrl + → 右边的桌面
 
 
 ## 快捷键
 
-1. 应用最小化：Command + M
-2. 从最下画恢复： Command + tab切换到，松开tab，按住option,松开command
-3. 固定大写：control + caps
-4. 强制关闭程序：command+option+esc
-5. 清空回收站：command+shift+delete
+1. 应用最小化: Command + M
+2. 从最下画恢复: Command + tab切换到，松开tab，按住option,松开command
+3. 固定大写: control + caps
+4. 强制关闭程序: command+option+esc
+5. 清空回收站: command+shift+delete
 6. 移到回收站: command+delete
-7. 非全屏隐藏：command + h
+7. 非全屏隐藏: command + h
+8. 进入文件夹: Command + ↓ 
+9. 返回上一层: Command + ↑ 
+10. 桌面视图: Ctrl + ↑
 
 
 
