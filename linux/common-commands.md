@@ -20,6 +20,7 @@
   - [后台运行](#后台运行)
   - [统计文件个数](#统计文件个数)
   - [chrome 网页截图](#chrome-网页截图)
+  - [文件编码格式转换](#文件编码格式转换)
 
 
 很多进程信息在/proc目录下
@@ -156,3 +157,19 @@ linux中文件的时间有三种:
 2. Ctrl+Shift+P,搜索命令
 3. 输入screen搜索截图相关命令
    1. 选择Capture full size screenshot
+
+## 文件编码格式转换
+
+1. 查看文件格式
+   1. `vim target`,target为目标文件
+   2. 命令模式`:set fileencoding`查看文件格式
+   3. `set fenc`,`set enc`
+2. 查看文本模式类型
+   1. `set ff`,可以设置文本模式，dos，unix等
+3. 查看文件编码
+   1. `file target`,在命令行直接使用，target为目标文件
+4. 设置文件格式
+   1. vim
+      1. `set fileencoding=utf-8`
+   2. iconv
+      1. `iconv -f gbk -t utf-8 fromfile`将gbk格式的fromfile文件转换为utf-8格式的文件并输出到命令行
