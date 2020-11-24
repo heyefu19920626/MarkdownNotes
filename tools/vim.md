@@ -75,3 +75,9 @@ set smartcase
 "会话之中打开多个文件的情况，默认的工作目录是打开的第一个文件的目录。该配置可以将工作目录自动切换到，正在编辑的文件的目录
 set autochdir
 ```
+
+## IDEA中的配置
+
+1. 安装ideavim
+2. 在~目录下，创建.ideavimrc（windows下为_ideavimrc）
+3. 在ideavimrc中添加配置内容
