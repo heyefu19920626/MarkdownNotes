@@ -81,3 +81,59 @@ set autochdir
 1. 安装ideavim
 2. 在~目录下，创建.ideavimrc（windows下为_ideavimrc）
 3. 在ideavimrc中添加配置内容
+4. 重启IDEA
+```bash
+" Vim 的默认寄存器和系统剪贴板共享
+set clipboard+=unnamed
+set history=100000
+" select模式下复制
+if has("clipboard")
+    vnoremap <C-C> "+y
+endif
+" 映射到idea快捷键
+" 弹出输入框，可以跳到指定类
+nnoremap <Space>gc :action GotoClass<CR>
+" 弹出输入框，跳转到指定操作
+nnoremap <Space>ga :action GotoAction<CR>
+" 跳转到定义
+nnoremap <Space>gd :action GotoDeclaration<CR>
+" 跳转到实现
+nnoremap <Space>gi :action GotoImplementation<CR>
+" 跳转到指定的文件
+nnoremap <Space>gf :action GotoFile<CR>
+" 跳转到方法的声明
+nnoremap <Space>gs :action GotoSuperMethod<CR>
+" 跳转到测试
+nnoremap <Space>gt :action GotoTest<CR>
+" 跳转到变量的声明
+nnoremap <Space>gS :action GotoSymbol<CR>
+
+" 查找使用
+nnoremap <Space>fu :action FindUsages<CR>
+" 显示使用
+nnoremap <Space>su :action ShowUsages<CR>
+
+" 前进，相当似于eclipse中的alt+方向右键
+nnoremap gf :action Forward<CR>
+" 后退，相当于eclipse中的alt+方向左键
+nnoremap gb :action Back<CR>
+
+" gh=go head, 映射vim中的^
+nnoremap gh ^
+" gl=go last，映射vim中的$
+nnoremap gl $
+
+" Window operation
+nnoremap <Space>ww <C-W>w
+nnoremap <Space>wc <C-W>c
+nnoremap <Space>wj <C-W>j
+nnoremap <Space>wk <C-W>k
+nnoremap <Space>wh <C-W>h
+nnoremap <Space>wl <C-W>l
+nnoremap <Space>ws <C-W>s
+nnoremap <Space>w- <C-W>-
+nnoremap <Space>w+ <C-W>+
+nnoremap <Space>w= <C-W>=
+
+nnoremap <Space>wv <C-W>vf
+```
