@@ -20,6 +20,7 @@
   - [排序规则](#排序规则)
   - [创建新用户](#创建新用户)
   - [授权](#授权)
+  - [修改文件存储位置](#修改文件存储位置)
 
 ## update做了什么
 
@@ -198,3 +199,27 @@ utf8_general_cs这个选项一般没有，所以只能用utf8_bin区分大小写
    2. 撤销授权报错` you need (at least one of) the SYSTEM_USER privilege(s) for this operation`
       1. 原因是由于root用户没有SYSTEM_USER权限，把权限加入后即可解决
       2. 需要先给root授权`grant system_user on *.* to 'root';`
+
+
+## 修改文件存储位置
+
+1. 查看文件存储位置`show  global  variables  like  "%datadir%";`
+2. 设置新的存放路径`mkdir -p /data/mysql`
+3. 复制原有数据`cp -R /var/lib/mysql/* /data/mysql`
+4. 修改权限`chown -R mysql:mysql /data/mysql`
+5. 修改配置文件`vim /etc/mysql/my.cnf`
+   1. `datadir = /data/mysql`
+6. 修改启动文件`vim /etc/apparmor.d/usr.sbin.mysqld`
+```bash
+#把
+/var/lib/mysql r,
+/var/lib/mysql/** rwk,
+#改成
+/data/mysql r,
+/data/mysql/** rwk,
+```
+7. 重启服务和apparmor
+```bash
+/etc/init.d/apparmor restart
+/etc/init.d/mysql restart
+```
