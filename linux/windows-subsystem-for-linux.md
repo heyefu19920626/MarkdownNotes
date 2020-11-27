@@ -5,6 +5,7 @@
 - [Windows10上使用Linux子系统(WSL)](#windows10上使用linux子系统wsl)
 	- [安装](#安装)
 	- [升级至WSL2](#升级至wsl2)
+	- [在windows访问wsl文件](#在windows访问wsl文件)
 		- [报错处理](#报错处理)
 	- [更换阿里源](#更换阿里源)
 	- [安装go](#安装go)
@@ -34,6 +35,10 @@ wsl -l -v
 #升级
 wsl --set-version Uubuntu-20.04 2
 ```
+
+## 在windows访问wsl文件
+
+`\\wsl$`
 
 ### 报错处理
 
