@@ -46,6 +46,13 @@
 
 - 默认位置
   - `C:\Users\tangan\AppData\Roaming\JetBrains\WebStorm2020.1`
+- mac
+```
+~/Library/Preferences/IntelliJIdea2017.2/这里面包含了 fileTemplates templates等配置文件信息
+~/Library/Application\ Support/IntelliJIdea2017.2/这里面包含了插件信息
+~/Library/Logs/IntelliJIdea.../日志信息
+~/Library/Caches/IntelliJIdea... 缓存信息
+```
 
 ### IDEA插件
 
