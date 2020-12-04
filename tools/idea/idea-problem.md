@@ -4,6 +4,8 @@
   - [Linux创建桌面图标](#linux创建桌面图标)
   - [maven项目不能自动导入](#maven项目不能自动导入)
   - [Idea多次启动同一个项目](#idea多次启动同一个项目)
+  - [HttpClient](#httpclient)
+    - [上传文件和JSON](#上传文件和json)
   - [破解](#破解)
 
 ## Linux创建桌面图标
@@ -26,6 +28,26 @@
 
 1. 进入配置页Run -> Edit Configurations
 2. 勾选最右边的Allow parallel run
+
+## HttpClient
+
+### 上传文件和JSON
+
+```java
+POST http://localhost:8080/rest/config/channel/internet/register
+Content-Type: multipart/form-data;boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file";filename="D:\TEMP\1.png"
+
+< D:\TEMP\1.PNG
+
+--WebAppBoundary
+Content-Disposition: form-data; name="param"
+Content-Type: application/json
+
+{"name":"test","password":"json"}
+```
 
 ## 破解
 
