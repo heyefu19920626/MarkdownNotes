@@ -15,6 +15,7 @@
     - [新版本升级](#新版本升级)
     - [tomcat 控制台乱码](#tomcat-控制台乱码)
     - [命令行快捷键](#命令行快捷键)
+    - [快捷键](#快捷键)
 
 ## Sublime Text3插件
 
@@ -173,3 +174,7 @@ public class $!velocityTool.camelCaseName(${question.titleSlug}) {
 8. ALT + Backspace - 删除前一个单词
 9. CTRL + W - 剪切光标前一个单词
 10. Shift + Insert - 向终端内粘贴文本 (CTRL+SHIFT+V)
+
+### 快捷键
+
+Ctrl + Alt + Y:  刷新本地文件夹
