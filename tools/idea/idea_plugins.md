@@ -130,6 +130,8 @@
 
 #### leetcode
 
+TempFilePath: /Users/tangan/codes/java/design-mode/src/test/java/test
+
 1. CodeFileName: 设置为显示题目的英文名称
 > $!velocityTool.camelCaseName(${question.titleSlug})  
 2. CodeTemplate: 
