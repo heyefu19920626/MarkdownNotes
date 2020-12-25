@@ -1,6 +1,7 @@
 # Maven的一些配置
 
 - [Maven的一些配置](#maven的一些配置)
+  - [maven package传参](#maven-package传参)
   - [maven配置spring仓库与阿里云仓库](#maven配置spring仓库与阿里云仓库)
   - [maven设置docker化](#maven设置docker化)
   - [Spring-boot编译可执行jar包](#spring-boot编译可执行jar包)
@@ -8,6 +9,11 @@
   - [maven配置本地jar包](#maven配置本地jar包)
   - [问题](#问题)
     - [was cached in the local repository](#was-cached-in-the-local-repository)
+
+## maven package传参
+
+1. 在maven package后加-Dfilename=test
+2. 在pom文件中使用`${filename}`使用
 
 
 ## maven配置spring仓库与阿里云仓库 
