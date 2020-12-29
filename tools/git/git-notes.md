@@ -375,6 +375,7 @@ $ git push origin :refs/tags/<tagname>
    2. 之后是注释修改界面,修改后:wq退出
 4. 强制推送到远端
    1. `git push origin master --force`
+5. git stash pop 从Git栈中读取最近一次保存的内容
 ```
 pick：保留该commit（缩写:p）
 reword：保留该commit，但我需要修改该commit的注释（缩写:r）
