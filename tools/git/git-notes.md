@@ -53,6 +53,7 @@
     - [推送全部未推送过的本地标签](#推送全部未推送过的本地标签)
     - [删除一个本地标签](#删除一个本地标签)
     - [删除一个远程标签](#删除一个远程标签)
+    - [rebase 合并多个commit](#rebase-合并多个commit)
 
 ## Git介绍
 - Git是分布式版本控制系统
@@ -361,4 +362,25 @@ $ git tag -d <tagname>
 ### 删除一个远程标签
 ```bash
 $ git push origin :refs/tags/<tagname>
+```
+
+### rebase 合并多个commit
+
+1. git stash 暂存当前正在进行的工作
+2. 开始合并
+   1. `git rebase -i HEAD~3`合并从HEAD往上3个版本
+   2. `git rebase -i 3a442`指明要合并的版本之前的版本号（3a442这个版本不参与合并） 
+3. 执行合并
+   1. 执行rebase命令后，会有一个窗口(rebae界面)，将除了第一行行首的pick，其余行首的pick都修改为s,:wq保存退出
+   2. 之后是注释修改界面,修改后:wq退出
+4. 强制推送到远端
+   1. `git push origin master --force`
+```
+pick：保留该commit（缩写:p）
+reword：保留该commit，但我需要修改该commit的注释（缩写:r）
+edit：保留该commit, 但我要停下来修改该提交(不仅仅修改注释)（缩写:e）
+squash：将该commit和前一个commit合并（缩写:s）
+fixup：将该commit和前一个commit合并，但我不要保留该提交的注释信息（缩写:f）
+exec：执行shell命令（缩写:x）
+drop：我要丢弃该commit（缩写:d）
 ```
