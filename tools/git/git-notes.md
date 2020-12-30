@@ -54,6 +54,8 @@
     - [删除一个本地标签](#删除一个本地标签)
     - [删除一个远程标签](#删除一个远程标签)
     - [rebase 合并多个commit](#rebase-合并多个commit)
+  - [](#)
+    - [git一直卡在Update file 100%](#git一直卡在update-file-100)
 
 ## Git介绍
 - Git是分布式版本控制系统
@@ -385,3 +387,11 @@ fixup：将该commit和前一个commit合并，但我不要保留该提交的注
 exec：执行shell命令（缩写:x）
 drop：我要丢弃该commit（缩写:d）
 ```
+
+
+## 
+
+### git一直卡在Update file 100%
+
+可能是由于git lfs的原因或者代理导致的，
+使用`git config --global http.proxy ""`与`git config --global https.proxy ""`置空代理
