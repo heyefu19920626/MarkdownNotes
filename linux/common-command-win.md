@@ -15,6 +15,7 @@
   - [任务栏无法自动隐藏](#任务栏无法自动隐藏)
   - [查看当前路径](#查看当前路径)
   - [删除文件](#删除文件)
+  - [查看程序启动时间](#查看程序启动时间)
 
 
 ## tasklist
@@ -65,7 +66,7 @@ Pause
 set java_home=C:\tools\java
 setx PATH "%java_home%;%PATH%"
 ```
-3. 永久设置系统环境变量
+3. 永久设置系统环境变量,该方法设置的新开一个命令行即可生效
 ```bat
 set java_home=C:\tools\java
 setx PATH "%java_home%;%PATH%" /m
@@ -76,8 +77,13 @@ setx PATH "%java_home%;%PATH%" /m
 1. 查询系统环境变量
 > wmic ENVIRONMENT where "name='PATH' and username='<system>'"  
 > wmic ENVIRONMENT where "name='PATH' and username='<system>'"  get VariableValue
-2. 更新系统环境变量
-> wmic ENVIRONMENT where "name='PATH' and username='<system>'"  set VariableValue="C:\tools\java;%PATH%"
+2. 更新系统环境变量,该方法设置的必须用管理员新开命令行或者去环境变量里手动确认下才会在普通命令行生效
+```bat
+wmic ENVIRONMENT where "name='PATH' and username='<system>'"  set VariableValue="C:\tools\java;%PATH%"
+::也可以通过重启资源管理器explorer来实现即时生效
+taskkill /im explorer.exe /f
+start explorer.exe
+```
 3. 创建环境变量
 > wmic ENVIRONMENT create name="JAVA_HOME",username="<system>",VariableValue="%javaPath%"
 4. 删除环境变量
@@ -153,3 +159,10 @@ pause
 DEL /F /A /Q \\?\%1
 RD /S /Q \\?\%1
 ```
+
+## 查看程序启动时间
+
+1. 任务管理器详细信息中按名称排序应该就是
+2. WIN + R打开运行
+   1. 输入msinfo32
+   2. 软件环境->正在运行的任务
