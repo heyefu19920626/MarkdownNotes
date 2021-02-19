@@ -4,6 +4,9 @@
   - [CPU调优](#cpu调优)
     - [jps](#jps)
     - [jstack](#jstack)
+    - [jstat](#jstat)
+    - [jmap](#jmap)
+    - [jhat](#jhat)
       - [win下查看进程的线程信息](#win下查看进程的线程信息)
       - [Linux下查看进程的线程信息](#linux下查看进程的线程信息)
       - [报错](#报错)
@@ -25,6 +28,24 @@
 
 1. `jstack -m pid > D:\1.txt`
 2. `jstack -l pid > D:\2.txt`
+
+### jstat
+
+### jmap
+
+### jhat
+
+用途：是用来分析java堆的命令，可以将堆中的对象以html的形式显示出来，包括对象的数量，大小等等，并支持对象查询语言
+
+1. 使用jmap导出堆`jmap -dump:live,file=a.hprof`
+2. 分析堆文件`jhat a.hprof`
+   1. 如果dump的堆很大，空间不足，添加参数`jhat -J-Xmx512m <heap dump file>`
+3. 查看html`http://127.0.0.1:7000`
+   1. 显示堆中所包含的所有类
+   2. 从根集能引用到的对象
+   3. 显示平台包括的所有类的实例
+   4. 堆实例的分布表
+   5. 执行对象查询语句
 
 #### win下查看进程的线程信息
 
