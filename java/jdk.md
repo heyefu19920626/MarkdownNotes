@@ -2,14 +2,14 @@
 
 - [Java 工具](#java-工具)
   - [CPU调优](#cpu调优)
-    - [jps](#jps)
-    - [jstack](#jstack)
-    - [jstat](#jstat)
-    - [jmap](#jmap)
-    - [jhat](#jhat)
-      - [win下查看进程的线程信息](#win下查看进程的线程信息)
-      - [Linux下查看进程的线程信息](#linux下查看进程的线程信息)
-      - [报错](#报错)
+  - [jps](#jps)
+  - [jstack](#jstack)
+  - [jstat](#jstat)
+  - [jmap](#jmap)
+  - [jhat](#jhat)
+    - [win下查看进程的线程信息](#win下查看进程的线程信息)
+    - [Linux下查看进程的线程信息](#linux下查看进程的线程信息)
+    - [报错](#报错)
 
 ## CPU调优
 
@@ -18,22 +18,24 @@
 3. 将十进制的tid转化为16进制的
 4. jstack导出线程堆栈，查看16进制的tid的堆栈信息
 
-### jps
+## jps
 
 显示当前所有java进程pid
 
 1. `jps -v`输出传递给jvm的参数 
 
-### jstack
+## jstack
 
 1. `jstack -m pid > D:\1.txt`
 2. `jstack -l pid > D:\2.txt`
 
-### jstat
+## jstat
 
-### jmap
+jstat命令可以查看堆内存各部分的使用量，以及加载类的数量
 
-### jhat
+## jmap
+
+## jhat
 
 用途：是用来分析java堆的命令，可以将堆中的对象以html的形式显示出来，包括对象的数量，大小等等，并支持对象查询语言
 
@@ -47,7 +49,7 @@
    4. 堆实例的分布表
    5. 执行对象查询语句
 
-#### win下查看进程的线程信息
+### win下查看进程的线程信息
 
 1. pslist,如果没有该命令，到[官网](https://docs.microsoft.com/zh-cn/sysinternals/downloads/pslist)下载后，解压到C:\Windows\System32路径即可
    1. `pslist pid`,查看总线程情况
@@ -57,13 +59,13 @@
    1. 找对对应的进程，右键点击Properteis...,切换到Thread选项卡
    2. 找出CPU占用最多的线程tid,同样为十进制
 
-#### Linux下查看进程的线程信息
+### Linux下查看进程的线程信息
 
 1.  使用top查看cpu占用最高的进程，并获取其pid
 2.  `ps -mp pid -o THREAD,tid,time`,找到cpu占用最高的线程tid
 3.  将10进制tid转为16进制，去jstack文件中查看对应的线程
 
-#### 报错
+### 报错
 1. 没有以管理员执行
 ```log
 Error attaching to process: Windbg Error: WaitForEvent failed!
