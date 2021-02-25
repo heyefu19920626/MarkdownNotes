@@ -46,7 +46,9 @@
 
 ## 查看端口占用
 
-> netstat -ano|findstr port
+> netstat -ano|findstr port  
+> netsh interface ipv4 show excludedportrange protocol=tcp 查看哪些端口是操作系统保留端口  
+如果查找不到，可能是HyperV占用了
 
 ## 设置环境变量
 
