@@ -4,6 +4,7 @@
 - [Nginx](#nginx)
   - [基本命令](#基本命令)
   - [静态资源配置](#静态资源配置)
+  - [证书转化](#证书转化)
     - [root配置](#root配置)
     - [alias配置](#alias配置)
     - [413 Request Entity Too Large](#413-request-entity-too-large)
@@ -33,6 +34,22 @@
 
 需要的是
 > /mnt/upload/files/a.png  
+
+## 证书转化
+
+将.crt和.key或者.pem和.key转化为jks  
+使用openssl在linux下转化
+1. 转化为pkcs12：`openssl pkcs12 -export -in server.crt -inkey server.key -out mycert.p12 -name abc -CAfile myCA.crt`
+   1. CAfile可以不要
+   2. -name为别名，也可不要
+   3. 之后输入密码
+   4. crt文件可以换为pem文件
+   5. -out为输出的文件
+2. keytool -importkeystore -v -srckeystore mycert.p12 -srcstoretype pkcs12 -srcstorepass a123456 -destkeystore Aserver.keystore -deststoretype jks -deststorepass b123456
+   1. srcstorepass为pkcs12的密码
+   2. destkeystore为jks文件
+   3. deststorepass为jks密码
+
 
 ### root配置
 
