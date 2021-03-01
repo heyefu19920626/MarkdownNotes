@@ -209,7 +209,7 @@ if { [llength $argv] < 1} {
 set target_file [lindex $argv 0]
 puts "target file: $target_file"
 
-#########判断等于
+#判断等于
 if { "$target_file" == "1" } {
    set target_file "exe.zip_1"
 } else {
@@ -222,6 +222,7 @@ spawn ftp osaftp.his.huawei.com
 
 expect {
   "*):*" {
+    # 会覆盖上面的timeout
     set timeout 1000
     #\r表示回车
     send "admin\r"
