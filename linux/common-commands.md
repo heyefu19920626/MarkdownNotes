@@ -21,6 +21,7 @@
   - [统计文件个数](#统计文件个数)
   - [chrome 网页截图](#chrome-网页截图)
   - [文件编码格式转换](#文件编码格式转换)
+  - [expect自动发送用户名密码](#expect自动发送用户名密码)
 
 
 很多进程信息在/proc目录下
@@ -183,3 +184,59 @@ r=4，w=2，x=1
       1. `set fileencoding=utf-8`
    2. iconv
       1. `iconv -f gbk -t utf-8 fromfile`将gbk格式的fromfile文件转换为utf-8格式的文件并输出到命令行
+
+## expect自动发送用户名密码
+
+1. which expect查看是有该命令，没有，则安装
+2.  
+
+```bash
+#!/bin/expect  
+#修改执行程序为expect
+
+set timeout 1000
+
+#判断参数个数
+if { [llength $argv] < 1} {
+   puts "miss argument"
+   puts "1: exe"
+   puts "2: green"
+   exit 1
+}
+set target_file [lindex $argv 0]
+puts "target file: $target_file"
+
+#########判断等于
+if { "$target_file" == "1" } {
+   set target_file "exe.zip_1"
+} else {
+   set target_file "green.zip_1"
+}
+puts "target file: $target_file"
+
+#spawn是expect的语句，执行命令前都要加这句
+spawn ftp osaftp.his.huawei.com
+
+expect {
+  "*):*" {
+    set timeout 1000
+    send "admin\r"
+    #输入用户后继续匹配
+    exp_continue
+  }
+  "*assword:*" {
+    set timeout 1000
+    send "admin\r"
+  }
+  timeout {
+    puts "connect is timeout"
+    exit 3
+  }
+}
+expect "ftp*"
+send "bin\r"
+expect "ftp*"
+send "get $target_file\r"
+#interact代表执行完留在远程控制台
+interact
+```
