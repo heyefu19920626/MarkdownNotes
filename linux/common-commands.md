@@ -188,12 +188,15 @@ r=4，w=2，x=1
 ## expect自动发送用户名密码
 
 1. which expect查看是有该命令，没有，则安装
-2.  
+2. 编写脚本
+3. 执行
+   1. 有时可以使用nohup  ... &执行
 
 ```bash
 #!/bin/expect  
 #修改执行程序为expect
 
+#设置延时为1000秒
 set timeout 1000
 
 #判断参数个数
@@ -220,6 +223,7 @@ spawn ftp osaftp.his.huawei.com
 expect {
   "*):*" {
     set timeout 1000
+    #\r表示回车
     send "admin\r"
     #输入用户后继续匹配
     exp_continue
@@ -237,6 +241,8 @@ expect "ftp*"
 send "bin\r"
 expect "ftp*"
 send "get $target_file\r"
+#使用nohup时可能需要多留几行？
+#expect "ftp*"
 #interact代表执行完留在远程控制台
 interact
 ```
