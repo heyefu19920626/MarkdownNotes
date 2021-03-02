@@ -17,6 +17,7 @@
   - [查看当前路径](#查看当前路径)
   - [删除文件](#删除文件)
   - [查看程序启动时间](#查看程序启动时间)
+  - [查找文件中是否包含字符串](#查找文件中是否包含字符串)
 
 
 ## tasklist
@@ -175,3 +176,37 @@ RD /S /Q \\?\%1
 2. WIN + R打开运行
    1. 输入msinfo32
    2. 软件环境->正在运行的任务
+
+## 查找文件中是否包含字符串
+
+
+```bat
+@echo off
+
+::设置变量为脚本所在目录
+set RUNTIME_DIR=%~dp0
+::进入脚本所在目录
+cd /d "%RUNTIME_DIR%"
+::设置变量
+set dependsPath=%RUNTIME_DIR%:\test
+::查找系统环境变量中是否有上一步的变量
+wmic ENVIRONMENT where "name='PATH' and username='<system>'"  get VariableValue | findstr %dependsPath% >nul && (
+    echo exit %dependsPath%
+) || (
+    echo not exit %dependsPath%
+    ::把系统变量输出到文件中
+    wmic ENVIRONMENT where "name='PATH' and username='<system>'"  get VariableValue | findstr ";" > syspath.txt
+    ::把文件中的尾行值赋值给oldPath,注意括号内有空格
+    for /F %%i in ( syspath.txt ) do set oldPATH=%%i
+    ::设置系统环境变量
+    wmic ENVIRONMENT where "name='PATH' and username='<system>'"  set VariableValue="%dependsPath%;%PATH%"
+    setx PATH "%dependsPath%;%oldPath%" /m
+)
+:end
+
+::查询包含则赋值
+findstr "AAAAA" *.txt >nul 2>&1 && set strA=A
+findstr "BBBBB" *.txt >nul 2>&1 && set strB=B
+findstr "CCCCC" *.txt >nul 2>&1 && set strC=C
+findstr "DDDDD" *.txt >nul 2>&1 && set strD=D
+```
