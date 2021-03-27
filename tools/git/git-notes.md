@@ -239,6 +239,11 @@ $ git merge <branchname>
 ```
 
 ### 合并某个分支上的单个commit
+
+把82ecb31这次commit合并到master分支
+1. 获取此次commit的id：82ecb31
+2. 切换到master分支
+3. 使用git cherry-pick命令
 ```bash
 git checkout master  
 git cherry-pick 82ecb31
