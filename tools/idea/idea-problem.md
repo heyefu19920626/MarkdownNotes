@@ -2,6 +2,7 @@
 
 - [问题](#问题)
   - [程序包不存在](#程序包不存在)
+  - [lombok失效](#lombok失效)
   - [Linux创建桌面图标](#linux创建桌面图标)
   - [maven项目不能自动导入](#maven项目不能自动导入)
   - [Idea多次启动同一个项目](#idea多次启动同一个项目)
@@ -12,6 +13,13 @@
 ## 程序包不存在
 
 1. F12到对应项目目录执行`mvn idea:idea`
+
+## lombok失效
+
+1. Seting->Build->Complier->Shared build process VM option
+   1. 输入参数`-Djps.track.ap.dependencies=false`
+2. 升级lombok
+3. file-->setting-->build,excecution,deployment-->compiler-->annotation processors勾选上 enable annotation processing
 
 ## Linux创建桌面图标
 
