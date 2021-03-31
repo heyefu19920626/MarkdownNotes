@@ -24,6 +24,7 @@
   - [expect自动发送用户名密码](#expect自动发送用户名密码)
   - [输出重定向](#输出重定向)
   - [grep](#grep)
+  - [nsenter,在docker中执行curl命令](#nsenter在docker中执行curl命令)
 
 
 很多进程信息在/proc目录下
@@ -261,3 +262,11 @@ interact
 ## grep
 
 1. 正则`grep '^[^0]'`, 搜索非0开头的行
+
+## nsenter,在docker中执行curl命令
+
+nsenter命令是一个可以在指定进程的命令空间下运行指定程序的命令
+
+有的docker容器没有curl命令，因此借助nsenter在外部执行  
+1. `docker inspect 容器id | grep Pid`: 搜索容器的Pid
+2. `nsenter -t Pid -n curl -o /dev/null -s -w -k '%{time_connect} %{time_starttransfer} %{time_total}' "http://10.254.149.31:8000/"`,在主机中使用nsenter在容器内部执行
