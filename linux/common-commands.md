@@ -25,6 +25,7 @@
   - [输出重定向](#输出重定向)
   - [grep](#grep)
   - [nsenter,在docker中执行curl命令](#nsenter在docker中执行curl命令)
+  - [bash脚本，循环](#bash脚本循环)
 
 
 很多进程信息在/proc目录下
@@ -262,6 +263,9 @@ interact
 ## grep
 
 1. 正则`grep '^[^0]'`, 搜索非0开头的行
+2. 统计行数
+   1. `grep -c keyword 文件1 文件2`: 分别返回每个文件中匹配keyword的个数
+   2. `wc -l`
 
 ## nsenter,在docker中执行curl命令
 
@@ -270,3 +274,63 @@ nsenter命令是一个可以在指定进程的命令空间下运行指定程序�
 有的docker容器没有curl命令，因此借助nsenter在外部执行  
 1. `docker inspect 容器id | grep Pid`: 搜索容器的Pid
 2. `nsenter -t Pid -n curl -o /dev/null -s -w -k '%{time_connect} %{time_starttransfer} %{time_total}' "http://10.254.149.31:8000/"`,在主机中使用nsenter在容器内部执行
+
+## bash脚本，循环
+
+1. Shell中判断两个数字大小的方式：
+   1. `-gt（大于）  -lt（小于）  -eq（等于）  -le（小于等于）  -ge（大于等于）`
+2. 判断两个字符串的方式：
+   1. `>（大于）    <（小于）   ==（等于）   >=（大于等于）   <=（小于等于）`
+
+```bash
+#! /bin/bash
+
+# 定义变量i, i默认是字符串，变量与等号间不能有空格
+i=1
+
+# 表达式用中括号括起来，与中括号间必须有空格
+while [ $i -lt 10 ]
+do
+#        nsenter -t 29194 -n curl -o /dev/null -s -w '%{time_connect} %{time_starttransfer}' https://10.247.203.18:31003 -k >> test.time
+        curl -o /dev/null -s -w '%{time_connect} %{time_starttransfer}' https://10.247.203.18:31003 -k >> test.time
+        echo -e >> test.time
+      #   i++, 双括号(())即数学计算表达式
+        (( i++ ))
+done
+# if elif else
+if [ $i -lt 15 ]
+then
+   echo "i < 15"
+elif [ $i -eq 15 ]
+then
+   echo "i == 15"
+else
+   echho "i > 15"
+# if结束语
+fi
+# 也可以循环字符串 for loop in "abc" "def"
+for loop in 1 2 3
+# do相当于左大括号
+do
+   echo $loop
+# done相当于左大括号
+done
+
+for ((i=0;i<10;i++))
+do
+   echo "i=$i"
+done
+
+seq是一个命令，1表示i的初值，2表示i的步长，10表示i的最大值
+for i in $(seq 1 2 10)
+do
+   echo "i=${i}abc"
+done
+
+# until与其他循环不同，它是判断表达是为假时进行循环
+until [ $i -gt 10 ]
+do
+   echo "i = $i"
+   ((i++))
+done
+```
