@@ -18,6 +18,7 @@
   - [删除文件](#删除文件)
   - [查看程序启动时间](#查看程序启动时间)
   - [查找文件中是否包含字符串](#查找文件中是否包含字符串)
+  - [ssh连接Linux](#ssh连接linux)
 
 
 ## tasklist
@@ -210,3 +211,9 @@ findstr "BBBBB" *.txt >nul 2>&1 && set strB=B
 findstr "CCCCC" *.txt >nul 2>&1 && set strC=C
 findstr "DDDDD" *.txt >nul 2>&1 && set strD=D
 ```
+
+## ssh连接Linux
+
+1. plink
+   1. `plink --help`
+   2. `plink -ssh -l username -pw password -P port ${ip}`
