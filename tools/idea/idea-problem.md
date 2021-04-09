@@ -20,6 +20,7 @@
    1. 输入参数`-Djps.track.ap.dependencies=false`
 2. 升级lombok
 3. file-->setting-->build,excecution,deployment-->compiler-->annotation processors勾选上 enable annotation processing
+4. mvn idea:idea
 
 ## Linux创建桌面图标
 
