@@ -26,6 +26,7 @@
   - [grep](#grep)
   - [nsenter,在docker中执行curl命令](#nsenter在docker中执行curl命令)
   - [bash脚本，循环](#bash脚本循环)
+  - [用户相关](#用户相关)
 
 
 很多进程信息在/proc目录下
@@ -256,7 +257,7 @@ interact
 
 1. `>`: 覆盖重定向
 2. `>>`: 追加重定向
-3. `命令 >> 文件 2>&1`: 把正确输出和错误输出都追加到同一个文件
+3. `命令 >> 文件 2>&1`: 把正确输出和错误输出都追加到同一个文
 4. `命令>> 文件1 2>>文件2`: 把正确输出追加到文件1，把错误输出追加到文件2
 5. `echo -e >> 文件`: 向文件中输出换行
 
@@ -334,3 +335,14 @@ do
    ((i++))
 done
 ```
+
+## 用户相关
+
+1. useradd
+   1. `useradd -m test`,创建test用户，并创建test家目录
+2. passwd
+   1. `passwd test`，给test用户设置密码
+3. userdel
+   1. `userdel -r test`,删除test用户，并删除test所在目录
+4. usermod
+   1. `usermod -s /bin/bash test`,给test用户设置shell为/bin/bash
