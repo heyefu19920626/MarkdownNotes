@@ -7,6 +7,7 @@
   - [Spring-boot编译可执行jar包](#spring-boot编译可执行jar包)
   - [IDEAZ中maven编译可执行jar包](#ideaz中maven编译可执行jar包)
   - [maven配置本地jar包](#maven配置本地jar包)
+  - [maven编译级别设置](#maven编译级别设置)
   - [问题](#问题)
     - [was cached in the local repository](#was-cached-in-the-local-repository)
 
@@ -292,6 +293,34 @@ ENTRYPOINT java -Xms512m -Xmx512m -jar fcm-blockchain-client.jar
     <scope>system</scope>
     <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ueditor-1.1.2.jar</systemPath>
 </dependency>
+```
+
+## maven编译级别设置
+
+1. 插件
+```xml
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+2. 属性
+```xml
+<properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+
 ```
 
 ## 问题
