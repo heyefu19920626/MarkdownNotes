@@ -57,6 +57,15 @@ do
     echo "$i";
     mv $i.html  $i.jpg
 done
+ls | while read i
+do
+# 将awk替换后的值赋给shell变量
+   name=`echo $name | awk 'gsub(/.[0-9]+/,".mp4"){print $0}'`
+#   输出mv命令，执行脚本时将命令输出到文件后再用bash执行
+   echo mv \'$i\' \'$name\'
+#   直接使用命令会报错，不知为啥
+#    mv \'$i\' \'$name\'
+done
 ```
 
 ```
