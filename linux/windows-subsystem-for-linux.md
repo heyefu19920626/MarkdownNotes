@@ -15,6 +15,7 @@
 	- [闪退报错](#闪退报错)
 - [Win10安装Windows Terminal](#win10安装windows-terminal)
 	- [Windows Terminal美化](#windows-terminal美化)
+	- [pip安装源修改](#pip安装源修改)
 
 ## 安装
 
@@ -224,4 +225,13 @@ QLU0ewUmUHQsV5mk62v1e8sRViHBlB2HJ3DU5gE=
 			"foreground": "#d2d8d9"
 		}
 	]
+```
+
+## pip安装源修改
+
+在个人用户目录下（即C:\Users\用户名）下找到pip文件夹，没有则需要自己新建一个，然后进入该文件夹，新建一个pip.ini的配置文件，并在该文件内增加以下声明：
+```
+[global]
+trusted-host=cmc-cd-mirror.rnd.huawei.com
+index-url=http://cmc-cd-mirror.rnd.huawei.com/pypi/simple/
 ```
