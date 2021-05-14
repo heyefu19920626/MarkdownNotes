@@ -29,6 +29,7 @@
   - [用户相关](#用户相关)
   - [$参数](#参数)
   - [linux命令行快捷键](#linux命令行快捷键)
+  - [查看文件类型](#查看文件类型)
 
 
 很多进程信息在/proc目录下
@@ -359,6 +360,7 @@ done
    1. `usermod -s /bin/bash test`,给test用户设置shell为/bin/bash
 5. -stdin
    1. `echo $password | passwd -stdin $user`,只输入一次就改变密码，在有些系统上无法使用-stdin
+   2. `echo -e "$password\n$password" | passwd $user`,-e选项支持换行
 
 
 ## $参数
@@ -429,3 +431,16 @@ done
    7. Ctrl+[ ：相当于Esc键
 6. 重复执行操作动作
    1. M – 操作次数 操作动作 ： 指定操作次数，重复执行指定的操作。
+
+
+## 查看文件类型
+
+Linux下可以用ll 命令来判断文件类型，主要是根据每行的首个字符来判断。
+
+1. -rw-r—r—   ”-“开头的都是普通文件；
+2. drw-r—r—   ”d”开头的是目录文件；
+3. brw-r—r—    ”b”开头的文件都是块设备文件；
+4. crw-r—r—    ”c”开头的文件都是字符设备文件；
+5. srw-r—r—    ”s”开头的文件都是socket文件；
+6. prw-r—r—    ”p”开头的文件都是管道文件；
+7. lrw-r—r—    ”l”开头的文件都是软链接文件；
