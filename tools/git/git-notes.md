@@ -43,6 +43,7 @@
     - [在本地创建和远程分支对应的分支](#在本地创建和远程分支对应的分支)
     - [建立本地分支和远程分支的关联](#建立本地分支和远程分支的关联)
     - [从本地推送分支](#从本地推送分支)
+    - [推送特定一次提交到远程分支](#推送特定一次提交到远程分支)
     - [从远程抓取分支](#从远程抓取分支)
   - [标签](#标签)
     - [新建一个标签](#新建一个标签)
@@ -325,6 +326,12 @@ $ git branch --set-upstream branch-name origin/branch-name；
 $ git push origin branch-name
 ```
 如果推送失败，先用git pull抓取远程的新提交；
+
+### 推送特定一次提交到远程分支
+> `git push <remotename> <commit SHA>:<remotebranchname>`  
+1. `<remotename>` 远程仓库名，默认为origin
+2. `<commit SHA>` 提交的唯一码
+3. `<remotebranchname>` 远程分支名
 ### 从远程抓取分支
 ```bash
 $ git pull
