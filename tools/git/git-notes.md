@@ -332,6 +332,9 @@ $ git push origin branch-name
 1. `<remotename>` 远程仓库名，默认为origin
 2. `<commit SHA>` 提交的唯一码
 3. `<remotebranchname>` 远程分支名
+
+如果想要通过上面推送某一个特定的提交，需要保证这个提交之前没有其他的提交了，如果不是，我们可以通过git rebase -i改变提交的位置，使其之前没有其他提交  
+参考`git rebase -i`,将该提交移动到首行`:m 0`,rebase后唯一码会变
 ### 从远程抓取分支
 ```bash
 $ git pull
