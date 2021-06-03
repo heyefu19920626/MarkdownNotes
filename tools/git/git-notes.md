@@ -31,6 +31,7 @@
     - [合并某个分支上的单个commit](#合并某个分支上的单个commit)
     - [合并某个分支上的一系列commits](#合并某个分支上的一系列commits)
     - [合并单个文件到分支](#合并单个文件到分支)
+    - [合并多个commit为一个commit](#合并多个commit为一个commit)
     - [复制文件到分支](#复制文件到分支)
     - [删除分支](#删除分支)
     - [查看分支合并图](#查看分支合并图)
@@ -266,6 +267,16 @@ git checkout feature
 git checkout --patch master f.txt
 # 合并master分支上f文件到feature分支上，将master分支上 f 文件追加补丁到feature分支上 f文件。你可以接受或者拒绝补丁内容
 ```
+
+### 合并多个commit为一个commit
+
+1. `git log --online`查看所有commit的hash
+2. `git rebase -i <hash>`此处hash为不需要合并的commit的hash值
+3. 将除了最上面的pick都改为s,然后`:wq`保存退出
+   1. pick 的意思是要会执行这个 commit
+   2. squash 的意思是这个 commit 会被合并到前一个commit
+4. 此时为commit message界面，非账户上部分就是所有的commit message，修改为当次的commit message保存退出即可
+5. 过程有错误，可以使用`git rebase --abort`来撤销修改
 
 ### 复制文件到分支
 ```bash
