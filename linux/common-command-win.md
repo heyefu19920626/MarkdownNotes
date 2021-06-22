@@ -19,6 +19,7 @@
   - [查看程序启动时间](#查看程序启动时间)
   - [查找文件中是否包含字符串](#查找文件中是否包含字符串)
   - [ssh连接Linux](#ssh连接linux)
+  - [删除文件](#删除文件-1)
 
 
 ## tasklist
@@ -217,3 +218,13 @@ findstr "DDDDD" *.txt >nul 2>&1 && set strD=D
 1. plink
    1. `plink --help`
    2. `plink -ssh -l username -pw password -P port ${ip}`
+
+
+## 删除文件
+
+
+1. 删除单个文件del
+   1. `del filename /s /q`, `/q`静默删除
+2. 删除文件夹
+   1. `rmdir dirname`, 只能删除空文件夹
+   2. `rmdir dirname /s /q`, 递归静默删除
