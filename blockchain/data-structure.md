@@ -245,11 +245,12 @@ $$
 图的邻接矩阵存储方式是用两个数组来来表示图。一个一维数组存储图中的顶点信息，一个二维数组(称为邻接矩阵)存储图中的边或弧的信息  
 设图G有n个顶点，则邻接矩阵是一个$n \times n$的方阵，定义为  
 $$
-        arc[i][j] =
-        \begin{cases}
+        arc[i][j] = \left\{
+        \begin{aligned}
         1, 若(v_i,v_j) \in E或<v_i,v_j> \in E \\
-        0,  反之 \\
-        \end{cases}
+        0, 反之 \\
+        \end{aligned}
+        \right.
 $$
 
 #### 网
@@ -261,11 +262,10 @@ $$
         arc[i][j] =
         \begin{cases}
         W_{ij}, 若(v_i,v_j) \in E或<v_i,v_j> \in E \\
-        0, 若i = j  反之 \\
+        0, 若i = j \\
         \infty, 反之 \\
         \end{cases}
 $$
-
 这里$W_{ij}表示(v_i,v_j)或<v_i,v_j>$上的权值
 
 ### 邻接表（Adjacency List）
