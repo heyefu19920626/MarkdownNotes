@@ -11,6 +11,7 @@
 	- [安装go](#安装go)
 	- [使用docker](#使用docker)
 	- [局域网访问WSL](#局域网访问wsl)
+	- [CCProxy代理](#ccproxy代理)
 	- [配置代理](#配置代理)
 	- [闪退报错](#闪退报错)
 - [Win10安装Windows Terminal](#win10安装windows-terminal)
@@ -86,13 +87,19 @@ options = "metadata"
 1. 将主机的端口映射到wsl端口
 ```bash
 netsh interface portproxy add v4tov4 listenport=【宿主机windows平台监听端口】 listenaddress=0.0.0.0 connectport=【wsl2平台监听端口】 connectaddress=【wsl2平台ip】protocol=tcp
-netsh interface portproxy add v4tov4 listenport=80 listenaddress=0.0.0.0 connectport=80 connectaddress=172.30.144.91 protocol=tcp
+netsh interface portproxy add v4tov4 listenport=22 listenaddress=0.0.0.0 connectport=22 connectaddress=172.23.204.187 protocol=tcp
 或
-netsh interface portproxy add v4tov4 listenport=80 listenaddress=* connectport=80 connectaddress=172.30.144.91 protocol=tcp
+netsh interface portproxy add v4tov4 listenport=22 listenaddress=* connectport=22 connectaddress=172.23.204.187 protocol=tcp
 ```
 2. 只在主机上可以使用127.0.0.1:port访问wsl2
 3. 查看wsl的ip
    1. `cat /etc/resolv.conf`
+
+## CCProxy代理
+
+1. 配置带密码的代理
+   1. 选择账号->允许范围（允许部分）， 验证类型(用户名/密码)->编辑->设置用户名/密码->保存->确定
+   2. 域用户验证不勾选
 
 ## 配置代理
 
@@ -113,7 +120,7 @@ Listen       0.0.0.0:4399
 #PassNT ***
 #PassLM ***
 ```
-3. 在安装目录打开命令行执行命令`.\cntlm.exe -c .\cntlm.ini -I -M https://www.google.com`
+3. 在安装目录打开命令行执行命令`.\cntlm.exe -c .\cntlm.ini -I -M https://www.google.com`或者`cntlm.exe -H`
 4. 将上一步生成的认证信息报备到cntlm.ini中
 5. 管理员命令行启动`net start cntlm`
    1. 停止`net stop cntlm`
