@@ -65,7 +65,11 @@ interface Runnable {
 4. 当池中正在运行的线程数（包括空闲线程数）大于等于corePoolSize时，新插入的任务进入workQueue排队(如果workQueue长度允许)，等待空闲线程来执行
 5. **当队列里的任务达到上限**，并且池中正在进行的线程小于maxinumPoolSize,**对于新加入的任务**，新建线程
 6. 队列里的任务达到上限，并且池中正在运行的线程等于maximumPoolSize，对于新加入的任务，执行拒绝策略（线程池默认的策略是抛异常）
-7. 关闭线程
+7. 线程池的3中队列的区别
+   1. SynchronousQueue: SynchronousQueue没有容量，是无缓冲等待队列，是一个不存储元素的阻塞队列，会直接将任务交给消费者，必须等队列中的添加元素被消费后才能继续添加新的元素，使用SynchronousQueue阻塞队列一般要求maximumPoolSizes为无界(Integer.MAX_VALUE)，避免线程拒绝执行操作
+   2. LinkedBlockingQueue: LinkedBlockingQueue是一个无界缓存等待队列。当前执行的线程数量达到corePoolSize的数量时，剩余的元素会在阻塞队列里等待
+   3. ArrayBlockingQueue: ArrayBlockingQueue是一个有界缓存等待队列，可以指定缓存队列的大小，当正在执行的线程数等于corePoolSize时，多余的元素缓存在ArrayBlockingQueue队列中等待有空闲的线程时继续执行，当ArrayBlockingQueue已满时，加入ArrayBlockingQueue失败，会开启新的线程去执行，当线程数已经达到最大的maximumPoolSizes时，再有新的元素尝试加入ArrayBlockingQueue时会执行拒绝策略
+8. 关闭线程
    1. pool.shutdown();//平缓关闭，不允许新的线程加入，正在运行的都跑完即可关闭
    2. pool.shutdownNow();//暴力关闭。不允许新的线程加入，且直接停到正在进行的线程
 
