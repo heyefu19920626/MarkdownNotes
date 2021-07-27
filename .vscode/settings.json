@@ -8,5 +8,6 @@
     "debug.console.fontSize": 16,
     "markdown.preview.fontSize": 16,
     "terminal.integrated.fontSize": 16,
-    "vim.easymotionMarkerFontSize": "16"
+    "vim.easymotionMarkerFontSize": "16",
+    "terminal.integrated.automationShell.windows": "C:\\tools\\Git\\bin\\bash.exe"
 }
