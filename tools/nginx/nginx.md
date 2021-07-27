@@ -4,6 +4,7 @@
 - [Nginx](#nginx)
   - [基本命令](#基本命令)
   - [静态资源配置](#静态资源配置)
+  - [显示目录](#显示目录)
   - [证书转化](#证书转化)
     - [root配置](#root配置)
     - [alias配置](#alias配置)
@@ -34,6 +35,19 @@
 
 需要的是
 > /mnt/upload/files/a.png  
+
+## 显示目录
+
+在location中添加如下  
+```bash
+        location /pdf {
+            autoindex on; #开启目录浏览功能；
+            autoindex_exact_size off; #关闭详细文件大小统计，让文件大小显示MB，GB单位，默认为b；
+            autoindex_localtime on; #开启以服务器本地时区显示文件修改日期！
+            charset utf-8,gbk; # 避免中文乱码
+            alias /Users/tangan/codes/books;
+        }
+```
 
 ## 证书转化
 
