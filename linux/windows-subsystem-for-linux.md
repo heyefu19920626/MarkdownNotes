@@ -6,6 +6,7 @@
 	- [安装](#安装)
 	- [升级至WSL2](#升级至wsl2)
 	- [在windows访问wsl文件](#在windows访问wsl文件)
+	- [忘记密码](#忘记密码)
 		- [报错处理](#报错处理)
 	- [更换阿里源](#更换阿里源)
 	- [安装go](#安装go)
@@ -41,6 +42,10 @@ wsl --set-version Uubuntu-20.04 2
 ## 在windows访问wsl文件
 
 `\\wsl$`
+
+## 忘记密码
+
+> wsl.exe --user root
 
 ### 报错处理
 
