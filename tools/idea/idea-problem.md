@@ -16,7 +16,6 @@
     - [一些说明](#一些说明)
     - [支持的产品](#支持的产品)
   - [设置方法分割线颜色](#设置方法分割线颜色)
-  - [查看代码单元测试覆盖率](#查看代码单元测试覆盖率)
 
 ## 程序包不存在
 
@@ -155,7 +154,3 @@ WebStorm
 > 索搜结果高亮: 在General--->Search Results部分
 > Tear Line&选择部分的颜色: 在General--->TearLine, Selection
 
-
-## 查看代码单元测试覆盖率
-
-1. RUN -> Run with coverage
