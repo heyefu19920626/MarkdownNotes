@@ -16,6 +16,8 @@
     - [tomcat 控制台乱码](#tomcat-控制台乱码)
     - [命令行快捷键](#命令行快捷键)
     - [快捷键](#快捷键)
+  - [查看代码单元测试覆盖率](#查看代码单元测试覆盖率)
+    - [关闭代码测试覆盖率的颜色](#关闭代码测试覆盖率的颜色)
 
 ## Sublime Text3插件
 
@@ -180,3 +182,13 @@ public class $!velocityTool.camelCaseName(${question.titleSlug}) {
 ### 快捷键
 
 Ctrl + Alt + Y:  刷新本地文件夹
+
+
+## 查看代码单元测试覆盖率
+
+1. RUN -> Run with coverage
+
+
+### 关闭代码测试覆盖率的颜色
+
+Ctrl + Alt + F6

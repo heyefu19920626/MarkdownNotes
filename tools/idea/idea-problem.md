@@ -10,6 +10,7 @@
     - [上传文件和JSON](#上传文件和json)
   - [破解](#破解)
   - [设置方法分割线颜色](#设置方法分割线颜色)
+  - [查看代码单元测试覆盖率](#查看代码单元测试覆盖率)
 
 ## 程序包不存在
 
@@ -137,9 +138,14 @@ WebStorm
 ## 设置方法分割线颜色
 
 1. Ctrl+Alt+S, 打开设置:
-  settings--->Editor--->Color Scheme--->General路径下
+> settings--->Editor--->Color Scheme--->General路径下
 2. 开始设置:
-  行号&方法分隔线: Code--->Line number,
-  Indent guide: Editor--->Guides, Caret, Tear Line
-  索搜结果高亮: 在General--->Search Results部分
-  Tear Line&选择部分的颜色: 在General--->TearLine, Selection
+> 行号&方法分隔线: Code--->Line number,
+> Indent guide: Editor--->Guides, Caret, Tear Line
+> 索搜结果高亮: 在General--->Search Results部分
+> Tear Line&选择部分的颜色: 在General--->TearLine, Selection
+
+
+## 查看代码单元测试覆盖率
+
+1. RUN -> Run with coverage
