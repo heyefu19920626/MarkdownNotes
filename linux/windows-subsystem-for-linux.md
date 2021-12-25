@@ -121,11 +121,11 @@ Proxy    proxyhk.baidu.com:8080
 #Listen改成0.0.0.0加端口号，这样本机所有IP都可以访问（不改的话只有127.0.0.1可以）
 Listen       0.0.0.0:4399
 #这三行内容通过下面的步骤3获取
-#Auth NTLM
+#Auth NTLM 
 #PassNT ***
 #PassLM ***
 ```
-3. 在安装目录打开命令行执行命令`.\cntlm.exe -c .\cntlm.ini -I -M https://www.google.com`或者`cntlm.exe -H`
+3. 在安装目录打开命令行执行命令`.\cntlm.exe -c .\cntlm.ini -I -M https://www.google.com`或者`cntlm.exe -H`(-H生成hash，要打开Auth)
 4. 将上一步生成的认证信息报备到cntlm.ini中
 5. 管理员命令行启动`net start cntlm`
    1. 停止`net stop cntlm`
