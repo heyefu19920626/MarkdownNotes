@@ -157,6 +157,9 @@ WebStorm
 
 ## 端口绑定错误
 
+```
+ llij.ide.plugins.PluginManager - java.net.BindException: Address already in use: bind 
+ ```
 1. ide本地会启动一个服务端，这服务端会从6942-6991端口范围内挑选一个可用的
 2. 将该端口占用的程序干掉
 
