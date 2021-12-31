@@ -16,6 +16,7 @@
     - [一些说明](#一些说明)
     - [支持的产品](#支持的产品)
   - [设置方法分割线颜色](#设置方法分割线颜色)
+  - [端口绑定错误](#端口绑定错误)
 
 ## 程序包不存在
 
@@ -153,4 +154,10 @@ WebStorm
 > Indent guide: Editor--->Guides, Caret, Tear Line
 > 索搜结果高亮: 在General--->Search Results部分
 > Tear Line&选择部分的颜色: 在General--->TearLine, Selection
+
+## 端口绑定错误
+
+1. ide本地会启动一个服务端，这服务端会从6942-6991端口范围内挑选一个可用的
+2. 将该端口占用的程序干掉
+
 
