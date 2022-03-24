@@ -327,4 +327,39 @@ ENTRYPOINT java -Xms512m -Xmx512m -jar fcm-blockchain-client.jar
 
 ### was cached in the local repository
 
-删除本地仓库中的*.lastUpdated文件
+使用命令mvn 编译项目时提示错误信息：​​
+
+报错一：was cached in the local repository...
+[ERROR] Failed to execute goal on project <project_name>: Could not resolve dependencies
+for project com.xxx.xxx:<project_name>:jar:1.0.7: Failure to find com.xxx.xxx:obj-test-client:jar:1.1.1
+in http://maven-nexus.xxx.com/repository/maven-public/ was cached in the local repository, resolution 
+will not be reattempted until the update interval of fintech has elapsed or updates are forced -> [Help 1]
+
+​问题原因 ​
+
+​Maven默认会使用本地缓存的库来编译工程，对于上次下载失败的库，maven会在​​~/.m2/repository/<group>/<artifact>/<version>/​​​目录下创建xxx.lastUpdated文件，一旦这个文件存在，那么在直到下一次nexus更新之前都不会更新这个依赖库。​
+
+解决办法
+
+​方法一：​
+​删除`~/.m2/repository/<group>/<artifact>/<version>/`目录下的*.lastUpdated文件，然后再次运行mvn compile编译工程。​
+
+​​方法二：​​
+修改~/.m2/settings.xml 或/opt/maven/conf/settings.xml文件，将其中的仓库添加 `<updatePolicy>always</updatePolicy>`来强制每次都更新依赖库。
+
+```xml
+<repositories>
+        <repository>
+                <id>central</id>
+                <url>http://central</url>
+                <releases>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                </releases>
+                <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                </snapshots>
+        </repository>
+</repositories>
+```
