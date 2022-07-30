@@ -58,6 +58,7 @@
     - [rebase 合并多个commit](#rebase-合并多个commit)
   - [](#)
     - [git一直卡在Update file 100%](#git一直卡在update-file-100)
+  - [git lfs](#git-lfs)
 
 ## Git介绍
 - Git是分布式版本控制系统
@@ -421,3 +422,11 @@ drop：我要丢弃该commit（缩写:d）
 
 可能是由于git lfs的原因或者代理导致的，
 使用`git config --global http.proxy ""`与`git config --global https.proxy ""`置空代理
+
+## git lfs
+
+
+1. GitLab 推送错误:LFS 对象丢失
+   1. 尝试获取所有lfs对象, `git lfs fetch --all`
+   2. 手动推送二进制文件, `git lfs push --all`
+   3. 检查所有二进制文件, `git lfs fsck`
