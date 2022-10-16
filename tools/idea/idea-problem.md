@@ -29,6 +29,7 @@
 2. 升级lombok
 3. file-->setting-->build,excecution,deployment-->compiler-->annotation processors勾选上 enable annotation processing
 4. mvn idea:idea
+5. 删除对应项目根目录下的第四步生成的无关文件
 
 ## Linux创建桌面图标
 
@@ -45,7 +46,7 @@
     2. mvn idea:module 生成.iml文件
     3. mvn idea:project 生成.ipr文件
     4. mvn idea:workspace 生成.iws文件
-
+    
 ## Idea多次启动同一个项目
 
 1. 进入配置页Run -> Edit Configurations

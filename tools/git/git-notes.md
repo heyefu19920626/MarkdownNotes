@@ -59,6 +59,7 @@
   - [](#)
     - [git一直卡在Update file 100%](#git一直卡在update-file-100)
   - [git lfs](#git-lfs)
+  - [导出两个版本之间的不同文件](#导出两个版本之间的不同文件)
 
 ## Git介绍
 - Git是分布式版本控制系统
@@ -430,3 +431,8 @@ drop：我要丢弃该commit（缩写:d）
    1. 尝试获取所有lfs对象, `git lfs fetch --all`
    2. 手动推送二进制文件, `git lfs push --all`
    3. 检查所有二进制文件, `git lfs fsck`
+
+
+## 导出两个版本之间的不同文件
+
+> git diff --name-only  7eb7872 2a3a36e | xargs -I {} 7z a diff.zip {}
