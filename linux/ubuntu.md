@@ -8,6 +8,7 @@
   - [snap安装软件太慢](#snap安装软件太慢)
   - [终端使用代理](#终端使用代理)
   - [SSH客户端](#ssh客户端)
+  - [v2ray服务端](#v2ray服务端)
   - [V2Ray客户端](#v2ray客户端)
     - [V2RayL](#v2rayl)
   - [更改登录输入密码界面壁纸](#更改登录输入密码界面壁纸)
@@ -93,6 +94,10 @@ Environment="https_proxy=http://代理ip:代理的端口"
    3. `./finalshell_install_linux.sh`
    4. 安装路径`/usr/lib/FinalShell/`
    5. 配置文件路径`/home/$USER/.finalshell/`
+
+## v2ray服务端
+
+> bash <(curl -s -L https://git.io/v2ray.sh)
 
 ## V2Ray客户端
 
