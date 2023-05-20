@@ -187,7 +187,7 @@ QLU0ewUmUHQsV5mk62v1e8sRViHBlB2HJ3DU5gE=
 			"useAcrylic": true,
 			"icon": "ms-appx:///ProfileIcons/{9acb9455-ca41-5af7-950f-6bca1bc9722f}.png",
 			"backgroundImageStretchMode": "fill",
-			"fontFace": "Sarasa Term SC",
+			"fontFace": "宋体",
 			"fontSize": 14,
 			"colorScheme": "Solarized Darcula",
 			"cursorColor": "#FFFFFF",
