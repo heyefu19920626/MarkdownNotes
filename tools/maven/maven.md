@@ -300,9 +300,9 @@ ENTRYPOINT java -Xms512m -Xmx512m -jar fcm-blockchain-client.jar
 1. 插件
 ```xml
 <build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.1</version>
             <configuration>
