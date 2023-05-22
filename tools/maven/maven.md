@@ -341,10 +341,13 @@ will not be reattempted until the update interval of fintech has elapsed or upda
 
 解决办法
 
-​方法一：​
+​方法一:​
 ​删除`~/.m2/repository/<group>/<artifact>/<version>/`目录下的*.lastUpdated文件，然后再次运行mvn compile编译工程。​
 
-​​方法二：​​
+方法二:
+maven命令后加-U，如`mvn package -U`
+
+​​方法二:​​
 修改~/.m2/settings.xml 或/opt/maven/conf/settings.xml文件，将其中的仓库添加 `<updatePolicy>always</updatePolicy>`来强制每次都更新依赖库。
 
 ```xml
