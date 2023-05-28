@@ -2,7 +2,9 @@
 
 - [..](linux-catalog.md)
 
+
 - [Ubuntu](#ubuntu)
+  - [切换国内源](#切换国内源)
   - [IDEA不能输入中文](#idea不能输入中文)
   - [mysql忘记密码](#mysql忘记密码)
   - [snap安装软件太慢](#snap安装软件太慢)
@@ -23,7 +25,7 @@
   - [dpkg解决依赖问题](#dpkg解决依赖问题)
   - [报错](#报错)
   - [ubuntu提示/boot空间不足](#ubuntu提示boot空间不足)
-  - [The package *** needs to be reinstalled, but I can't find an archive for it](#the-package--needs-to-be-reinstalled-but-i-cant-find-an-archive-for-it)
+  - [The package \*\*\* needs to be reinstalled, but I can't find an archive for it](#the-package--needs-to-be-reinstalled-but-i-cant-find-an-archive-for-it)
   - [Shadowsocks开机自启](#shadowsocks开机自启)
   - [7zip](#7zip)
   - [画图工具](#画图工具)
@@ -32,6 +34,30 @@
 - [问题](#问题)
     - [解决server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none](#解决server-certificate-verification-failed-cafile-etcsslcertsca-certificatescrt-crlfile-none)
     - [curl: (60) SSL certificate problem忽略校验解决方法](#curl-60-ssl-certificate-problem忽略校验解决方法)
+
+
+## 切换国内源
+
+Ubuntu22.04[参考](https://www.myfreax.com/ubuntu-22-04geng-gai-jing-xiang-ruan-jian-yuan/)
+
+```bash
+# 首先切为root
+# 备份初始源
+copy /etc/apt/source.list /etc/apt/source.list.bak
+# 清空初始source.list，改为阿里源
+deb http://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+# 更新
+apt update
+```
 
 ## IDEA不能输入中文
 
