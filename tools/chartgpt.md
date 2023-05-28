@@ -11,4 +11,5 @@
 1. 下载并安装Docker, Ubuntu可以参考[Docker](docker.md)
 2. 下载Pandora镜像`docker pull pengzhile/pandora`
 3. 启动Pandora镜像`docker run  -e PANDORA_CLOUD=cloud -e PANDORA_SERVER=0.0.0.0:8899 -p 8899:8899 -d pengzhile/pandora`
-4. 浏览器访问: `http://ip:8899/`
+4. 使用梯子登录[OpenAI](https://chat.openai.com/)之后，访问[这里](http://chat.openai.com/api/auth/session)获取Access Token
+5. 浏览器访问: `http://ip:8899/`,使用上面的Access Token登录即可
