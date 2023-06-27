@@ -398,6 +398,11 @@ exit 0
 3. 切换到“配置”选项卡，根据实际情况禁用不需要的声卡。禁止第一项，第二项选择analogy stereo output（模拟立体输出。推荐选择）或者analogy stereo duplex（模拟立体声双工）
 4. 切换到输出设备，选择headphones，不要选择line out。到现在就设置好了
 
+## 安装v2ray
+
+1. 执行命令`bash <(wget -qO- -o- https://git.io/v2ray.sh)`
+2. 可以参考[V2ray一键安装脚本](https://github.com/233boy/v2ray/wiki/V2Ray%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC)
+
 
 # 问题
 
