@@ -15,6 +15,7 @@
 	- [CCProxy代理](#ccproxy代理)
 	- [配置代理](#配置代理)
 	- [闪退报错](#闪退报错)
+	- [限制wsl使用的内存](#限制wsl使用的内存)
 - [Win10安装Windows Terminal](#win10安装windows-terminal)
 	- [Windows Terminal美化](#windows-terminal美化)
 	- [pip安装源修改](#pip安装源修改)
@@ -173,6 +174,20 @@ QLU0ewUmUHQsV5mk62v1e8sRViHBlB2HJ3DU5gE=
 2. 参考的对象类型不支持尝试的操作
    1.  是使用VPN的原因
    2.  cmd下管理员权限执行`netsh winsock reset`,然后重启即可
+
+## 限制wsl使用的内存
+
+1. 在当前用户目录下新建文件`.wslconfig`
+2. 写入内容
+
+```bash
+[wsl2]
+memory=2048MB # 限制最大使用内存
+swap=2G # 限制最大使用虚拟内存
+processors=2 # 限制最大使用cpu个数
+```
+3. 重启wsl2`wsl --shutdown`
+
 
 # Win10安装Windows Terminal
 

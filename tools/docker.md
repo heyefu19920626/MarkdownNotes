@@ -8,6 +8,10 @@
     - [启动](#启动)
     - [测试](#测试)
     - [卸载](#卸载)
+  - [配置代理](#配置代理)
+    - [配置Client代理](#配置client代理)
+    - [配置容器代理](#配置容器代理)
+    - [WSL2中配置代理](#wsl2中配置代理)
   - [配置镜像加速](#配置镜像加速)
   - [拉取镜像](#拉取镜像)
   - [运行镜像](#运行镜像)
@@ -82,6 +86,77 @@ docker run --rm hello-world
 ```bash
 $ sudo apt-get remove docker docker-engine  docker.io
 ```
+
+## 配置代理
+
+配置代理可以参考[这里](https://kingdo.club/2022/01/06/docker%E5%8C%85%E6%8B%ACwsl2%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEproxy/)
+
+docker使用proxy分两种情况：
+1. docker client希望使用代理，也就是在执行docker pull、docker push等操作时通过代理来访问镜像仓库
+2. 容器实例希望使用代理，也就是在容器内部希望通过代理来访问网络
+
+### 配置Client代理
+
+1. 创建配置文件
+```bash
+sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+```
+2. 添加配置
+```bash
+[Service]
+Environment="HTTP_PROXY=http://211.69.198.232:8118"
+Environment="HTTPS_PROXY=http://211.69.198.232:8118"
+Environment="NO_PROXY=localhost,127.0.0.1,docker-registry.example.com,.corp,211.69.198.232"
+```
+3. 重启容器
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+### 配置容器代理
+
+1. 配置文件方式
+```bash
+创建配置文件
+vim  ~/.docker/config.json
+
+写入
+{
+ "proxies":
+ {
+   "default":
+   {
+     "httpProxy": "http://211.69.198.232:8118",
+     "httpsProxy": "http://211.69.198.232:8118",
+     "noProxy": "*.test.example.com,.example2.com,127.0.0.0/8,211.69.198.232"
+   }
+ }
+}
+```
+2. 环境变量方式
+
+| Variable  | Dockerfile example  | docker run example |
+|---|---|
+| HTTP_PROXY  |  ENV HTTP_PROXY=”http://192.168.1.12:3128“ | –env HTTP_PROXY=”http://192.168.1.12:3128“ |
+| HTTP_PROXY  |  ENV HTTPS_PROXY=”https://192.168.1.12:3128“ | 	–env HTTPS_PROXY=”https://192.168.1.12:3128“ |
+| HTTP_PROXY  |  ENV FTP_PROXY=”ftp://192.168.1.12:3128″ | –env FTP_PROXY=”ftp://192.168.1.12:3128″ | 
+| HTTP_PROXY  |  ENV NO_PROXY=”*.test.example.com,.http://example2.com“ | –env NO_PROXY=”*.test.example.com,.http://example2.com“ |
+
+
+### WSL2中配置代理
+
+对于容器实例的代理, 配置方式同上所述, 问题在于Docker CLient的代理配置, 因为WSL2并不是采用Systemd方式管理的!
+
+```bash
+sudo vim /etc/default/docker
+
+输入:
+export HTTP_PROXY="http://211.69.198.232:8118"
+export HTTPS_PROXY="http://211.69.198.232:8118"
+export NO_PROXY="localhost,127.0.0.0/8,172.16.0.0/12,192.168.0.0/16,10.0.0.0/8"
+```
+配置完成可以通过docker info查看配置
 
 ## 配置镜像加速
 > /etc/docker/daemon.json
