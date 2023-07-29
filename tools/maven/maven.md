@@ -16,6 +16,13 @@
 1. 在maven package后加-Dfilename=test
 2. 在pom文件中使用`${filename}`使用
 
+## maven多个相同依赖的优先级
+
+[参考](https://blog.csdn.net/lishe9452/article/details/119146586)
+1. 最短路径原则：对于多级依赖出现相同jar的不同版本，maven会选择路径最短的依赖；
+2. 声明优先原则：对于多级依赖出现相同jar的不同版本，并且所经历的路径相同时，maven会选择最先声明的依赖版本；
+3. 同级依赖，后声明会覆盖先声明原则：对于同一级的依赖出现相同jar的不同版本，maven会根据依赖声明的先后顺序，选择后声明的依赖版本；
+
 
 ## maven配置spring仓库与阿里云仓库 
 
