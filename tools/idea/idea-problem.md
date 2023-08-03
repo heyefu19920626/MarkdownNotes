@@ -17,6 +17,7 @@
     - [支持的产品](#支持的产品)
   - [设置方法分割线颜色](#设置方法分割线颜色)
   - [端口绑定错误](#端口绑定错误)
+  - [idea 启动多个org.jetbrains.jps.cmdline.Launcher 没有关闭](#idea-启动多个orgjetbrainsjpscmdlinelauncher-没有关闭)
 
 ## 程序包不存在
 
@@ -164,4 +165,7 @@ WebStorm
 1. ide本地会启动一个服务端，这服务端会从6942-6991端口范围内挑选一个可用的
 2. 将该端口占用的程序干掉
 
+## idea 启动多个org.jetbrains.jps.cmdline.Launcher 没有关闭
+
+可以在 File -> Settings -> Build, Execution, Deployment -> Compiler -> Shared build process VM options 中添加以下参数`-Djps.shutdown.force=true`
 
