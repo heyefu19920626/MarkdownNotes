@@ -19,6 +19,7 @@
   - [查看代码单元测试覆盖率](#查看代码单元测试覆盖率)
     - [关闭代码测试覆盖率的颜色](#关闭代码测试覆盖率的颜色)
   - [IDEA设置](#idea设置)
+  - [jrebel激活](#jrebel激活)
 
 ## Sublime Text3插件
 
@@ -201,3 +202,12 @@ Ctrl + Alt + F6
 1. 120宽度线显示
 2. Java代码格式化
 3. 新项目自动保存动作
+
+
+## jrebel激活
+
+1. 下载[ReverseProxy_windows_amd64](https://github.com/ilanyu/ReverseProxy/releases)程序
+2. 在对应的机器上启动程序
+3. 在jrebel设置中-change license-选择online licensing server
+4. 可以在这里[生成GUID](https://www.guidgen.com/)
+5. 输入虚拟机上的激活服务地址与邮箱，替换为自己的ip`http://192.168.50.128:8888/cec815d3-5770-4ef8-a8f2-0f77371be571`
