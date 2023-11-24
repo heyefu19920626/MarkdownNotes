@@ -9,9 +9,9 @@
     - [root配置](#root配置)
     - [alias配置](#alias配置)
     - [413 Request Entity Too Large](#413-request-entity-too-large)
-  - [localtion以及proxy_pass以/结尾的问题](#localtion以及proxy_pass以结尾的问题)
+  - [localtion以及proxy\_pass以/结尾的问题](#localtion以及proxy_pass以结尾的问题)
     - [location 结尾的/](#location-结尾的)
-    - [proxy_pass 结尾的/](#proxy_pass-结尾的)
+    - [proxy\_pass 结尾的/](#proxy_pass-结尾的)
   - [upstream](#upstream)
   - [log](#log)
     - [日志参数说明](#日志参数说明)
@@ -35,6 +35,17 @@
 
 需要的是
 > /mnt/upload/files/a.png  
+
+
+直接通过例子来理解：
+location ^~ /123/abc/ {
+root /data/www;
+}
+当请求http://blog.whsir.com/123/abc/logo.png时，将会返回服务器上的/data/www/123/abc/logo.png文件，即/data/www+/123/abc/
+location ^~ /123/abc/ {
+alias /data/www;
+}
+当请求http://blog.whsir.com/123/abc/logo.png时，将会返回服务器上的/data/www/logo.png文件，即/data/www
 
 ## 显示目录
 
