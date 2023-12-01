@@ -11,6 +11,7 @@
   - [maven编译级别设置](#maven编译级别设置)
   - [问题](#问题)
     - [was cached in the local repository](#was-cached-in-the-local-repository)
+  - [给jdk导入证书](#给jdk导入证书)
 
 ## maven package传参
 
@@ -374,4 +375,11 @@ maven命令后加-U，如`mvn package -U`
                 </snapshots>
         </repository>
 </repositories>
+```
+
+## 给jdk导入证书
+
+使用命令
+```cmd
+C:\tools\java\jdk-21\bin>keytool -import -keystore C:\tools\java\jdk-21\lib\security\cacerts -file D:\downloads\maven4.crt -alias maven4
 ```

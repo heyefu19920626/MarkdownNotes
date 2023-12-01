@@ -223,3 +223,67 @@ utf8_general_cs这个选项一般没有，所以只能用utf8_bin区分大小写
 /etc/init.d/apparmor restart
 /etc/init.d/mysql restart
 ```
+
+## 允许非localhost的root用户登录
+
+1. 查询当前host与用户对应情况
+```sql
+use mysql;
+select host,user from user;
+```
+2. 更新并刷新权限
+```sql
+update user set host='%' where user='root';
+flush privileges;
+```
+
+## only_full_group_by配置报错
+
+可以参考[MySql only_full_group_by配置，竟导致所有应用报错？](https://blog.csdn.net/zwwhnly/article/details/109022654)
+
+1. 在my.ini(win)中的[mysqld]下面增加字段`sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"`
+2. 或者修改对应的sql
+
+
+## mysql8安装
+
+### win
+
+可以参考[超详细MySQL下载安装教程（免费社区版）](https://zhuanlan.zhihu.com/p/663135517)
+
+
+1. 在[官网](https://dev.mysql.com/downloads/mysql/)下载对应的版本
+2. 下载解压（或安装后），在根目录下创建my.ini文件
+3. 将下面的内容写入my.ini
+```ini
+[mysqld]
+# 设置3306端口
+port=3306
+# 设置mysql的安装目录   ----------是你的文件路径-------------
+basedir=E:\mysql\mysql
+# 设置mysql数据库的数据的存放目录  ---------是你的文件路径data文件夹自行创建
+datadir=E:\mysql\mysql\data
+# 允许最大连接数
+max_connections=200
+# 允许连接失败的次数。
+max_connect_errors=10
+# 服务端使用的字符集默认为utf8mb4
+character-set-server=utf8mb4
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# 默认使用“mysql_native_password”插件认证
+#mysql_native_password
+default_authentication_plugin=mysql_native_password
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8mb4
+[client]
+# 设置mysql客户端连接服务端时默认使用的端口
+port=3306
+default-character-set=utf8mb4
+```
+4. 打开命令行，进入bin目录执行命令`mysqld --initialize --console`, 复制root@localhost:之后的密码，并保存到其他地方
+5. 使用命令`mysqld --install mysql`安装mysql服务
+6. 使用命令`net start mysql`启动mysql服务, 如果启动失败，可以在data目录下查看后缀为.err的文件查看报错
+7. 使用命令`mysql -uroot -P3306 -p`连接mysql
+8. 将bin目录配置到环境变量，让在任意命令行都可以使用
