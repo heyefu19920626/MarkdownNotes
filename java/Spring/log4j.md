@@ -2,6 +2,7 @@
 
 - [Log4j](#log4j)
   - [slf4j+log4j2](#slf4jlog4j2)
+  - [配置文件](#配置文件)
   - [错误](#错误)
     - [java.lang.NoSuchMethodError: org.slf4j.impl.StaticLoggerBinder.getSingleton](#javalangnosuchmethoderror-orgslf4jimplstaticloggerbindergetsingleton)
 
@@ -72,7 +73,12 @@ slf4j仅仅是一个为Java程序提供日志输出的统一接口，并不是�
 ```java
 // 通过slf4j接口创建Logger对象
 private static final Logger LOGGER = LoggerFactory.getLogger(logTest.class);
+
 ```
+
+## 配置文件
+
+可以参考[log4j2 配置详解小结](https://www.cnblogs.com/davis12/p/17843558.html), [官方PatternLayout地址](https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout)
 
 ##  错误
 
