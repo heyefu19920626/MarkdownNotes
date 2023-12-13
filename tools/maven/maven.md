@@ -11,6 +11,7 @@
   - [maven编译级别设置](#maven编译级别设置)
   - [问题](#问题)
     - [was cached in the local repository](#was-cached-in-the-local-repository)
+    - [java.lang.IllegalStateException: endPosTable already set](#javalangillegalstateexception-endpostable-already-set)
   - [给jdk导入证书](#给jdk导入证书)
 
 ## maven package传参
@@ -376,6 +377,10 @@ maven命令后加-U，如`mvn package -U`
         </repository>
 </repositories>
 ```
+
+### java.lang.IllegalStateException: endPosTable already set
+
+maven-compiler-plugin插件的问题, 升级插件到3.5.1+
 
 ## 给jdk导入证书
 
