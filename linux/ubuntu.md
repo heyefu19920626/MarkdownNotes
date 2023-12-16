@@ -2,11 +2,9 @@
 
 - [..](linux-catalog.md)
 
-
 - [Ubuntu](#ubuntu)
   - [切换国内源](#切换国内源)
   - [IDEA不能输入中文](#idea不能输入中文)
-  - [mysql忘记密码](#mysql忘记密码)
   - [snap安装软件太慢](#snap安装软件太慢)
   - [终端使用代理](#终端使用代理)
   - [SSH客户端](#ssh客户端)
@@ -31,10 +29,10 @@
   - [画图工具](#画图工具)
   - [中文输入法](#中文输入法)
   - [20.04没声音](#2004没声音)
+  - [安装v2ray](#安装v2ray)
 - [问题](#问题)
     - [解决server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none](#解决server-certificate-verification-failed-cafile-etcsslcertsca-certificatescrt-crlfile-none)
     - [curl: (60) SSL certificate problem忽略校验解决方法](#curl-60-ssl-certificate-problem忽略校验解决方法)
-
 
 ## 切换国内源
 
@@ -63,21 +61,6 @@ apt update
 
 其他如谷歌浏览器都能输入中文，但IDEA不能  
 在系统设置 -> 区域与语言 -> 输入源中添加中文并并放置到最顶层，重启IDEA
-
-## mysql忘记密码
-
-1. `sudo cat /etc/mysql/debian.cnf`查看`debian-sys-maint`的密码
-2. `mysql -u debian-sys-maint -p `输入刚才发现的密码进入
-3. 修改root的密码
-```sql
-use mysql;
-// 下面这句命令有点长，请注意。
-update mysql.user set authentication_string=password('root') where user='root' and Host ='localhost';
-update user set plugin="mysql_native_password"; 
-flush privileges;
-quit;
-```
-4. `sudo service mysql restart`重启mysql
 
 ## snap安装软件太慢
 

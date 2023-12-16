@@ -21,6 +21,11 @@
   - [创建新用户](#创建新用户)
   - [授权](#授权)
   - [修改文件存储位置](#修改文件存储位置)
+  - [允许非localhost的root用户登录](#允许非localhost的root用户登录)
+  - [only\_full\_group\_by配置报错](#only_full_group_by配置报错)
+  - [mysql忘记密码](#mysql忘记密码)
+  - [mysql8安装](#mysql8安装)
+    - [win](#win)
 
 ## update做了什么
 
@@ -244,6 +249,22 @@ flush privileges;
 1. 在my.ini(win)中的[mysqld]下面增加字段`sql_mode = "STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"`
 2. 或者修改对应的sql
 
+## mysql忘记密码
+
+1. `sudo cat /etc/mysql/debian.cnf`查看`debian-sys-maint`的密码
+2. `mysql -u debian-sys-maint -p `输入刚才发现的密码进入
+3. 修改root的密码
+```sql
+use mysql;
+// 下面这句命令有点长，请注意。
+update mysql.user set authentication_string=password('root') where user='root' and Host ='localhost';
+update user set plugin="mysql_native_password"; 
+flush privileges;
+quit;
+```
+4. `sudo service mysql restart`重启mysql
+
+
 
 ## mysql8安装
 
@@ -287,3 +308,4 @@ default-character-set=utf8mb4
 6. 使用命令`net start mysql`启动mysql服务, 如果启动失败，可以在data目录下查看后缀为.err的文件查看报错
 7. 使用命令`mysql -uroot -P3306 -p`连接mysql
 8. 将bin目录配置到环境变量，让在任意命令行都可以使用
+

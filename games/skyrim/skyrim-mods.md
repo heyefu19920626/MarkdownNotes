@@ -24,6 +24,7 @@
 ## 动作
 
 - [女性待机动作](http://www.9damaogames.com/thread-260156-1-1.html)
+- [第一人称动画全面改版](http://www.9damaogames.com/thread-281020-1-1.html)
 
 ## 身形
 
@@ -97,6 +98,7 @@
 - [Nezzar's Ultimate Lingerie Collection 2.0](http://www.9damaogames.com/thread-221841-1-1.html)
 - [Ranger NewCloth](http://www.9damaogames.com/thread-248593-1-1.html)
 - [Satan Maid Outfit](http://www.9damaogames.com/thread-187712-1-1.html)
+- [CutyBooty](http://www.9damaogames.com/thread-254053-1-1.html)
 
 ## NPC美化
 
