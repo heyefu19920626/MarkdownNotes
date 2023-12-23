@@ -16,6 +16,7 @@
   - [虚拟机](#虚拟机)
     - [Vmware Fusion](#vmware-fusion)
       - [mac主机获取虚拟机ip](#mac主机获取虚拟机ip)
+  - [v2ray](#v2ray)
 
 
 ## 允许安装任何来源
@@ -113,3 +114,10 @@ To install, execute
 
 1. 将虚拟机的网络适配器改为Nat模式（与mac共享）
 2. 进入虚拟机执行相关命令获取虚拟机的ip
+
+
+## v2ray
+
+[V2rayU](https://github.com/yanue/V2rayU)
+
+[全部客户端推荐](https://ssrvps.org/v2ray%E5%AE%A2%E6%88%B7%E7%AB%AF)
