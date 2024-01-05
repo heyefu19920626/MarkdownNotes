@@ -190,6 +190,11 @@ utf8_general_cs这个选项一般没有，所以只能用utf8_bin区分大小写
 4. 删除用户
 > drop user 'test1'@'localhost';
 
+或者
+
+1. `create user 'username'@'%' identified by 'password'`, 创建用户，%表示所有主机
+2. `grant all privileges on database_name.* to 'username'@'%'`, 赋予权限， database_name表示你要赋予的数据库的权限,all privileges表示所有权限
+
 ## 授权
 
 1. 授权`grant all privileges on *.* to 'test1'@'localhost' with grant option;`
