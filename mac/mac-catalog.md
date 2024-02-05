@@ -17,6 +17,9 @@
     - [Vmware Fusion](#vmware-fusion)
       - [mac主机获取虚拟机ip](#mac主机获取虚拟机ip)
   - [v2ray](#v2ray)
+  - [外接显示器](#外接显示器)
+    - [显示器分辨率不全](#显示器分辨率不全)
+    - [外接显示器显示字体太小](#外接显示器显示字体太小)
 
 
 ## 允许安装任何来源
@@ -121,3 +124,19 @@ To install, execute
 [V2rayU](https://github.com/yanue/V2rayU)
 
 [全部客户端推荐](https://ssrvps.org/v2ray%E5%AE%A2%E6%88%B7%E7%AB%AF)
+
+## 外接显示器
+
+### 显示器分辨率不全
+
+1. 换下typec接口，部分typec接口不支持4K等高分辨率
+2. 换下数据线，部分数据线不支持4K60hz传输
+
+### 外接显示器显示字体太小
+
+macbook外接4K显示器时，如果设置为4K分辨率，字体太小，如果设置为1080p分辨率，字体又太模糊，可以使用SwitchResX进行调整, 可以参考[外接4K显示器后字体很小](https://discussionschinese.apple.com/thread/252561125?sortBy=best) . 
+
+1. 从[官网](https://www.madrau.com/data/switchresx/SwitchResX4.zip)下载后安装
+2. 打开SwitchResX的设置，选择自己的外接显示器，如图设置后关闭(保存)设置界面![](pic/sitchresx-1.png)
+3. 重新插拔数据线
+4. 打开显示器设置, 选择比较小的分辨率即可![](pic/swithresx-2.png)
