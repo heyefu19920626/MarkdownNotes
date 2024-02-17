@@ -111,6 +111,7 @@
 - MyBatis Log Plugin: 把Mybatis输出的SQL日志还原成完整的SQL语句
 - Statistic: 一款代码统计工具，可以用来统计当前项目中代码的行数和大小
 - Codota: 代码提示工具，扫描你的代码后，根据你的敲击完美提示
+- Smart Input Source: 自动切换中英文
 
 ### 创建快捷方式
 
