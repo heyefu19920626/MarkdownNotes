@@ -10,6 +10,25 @@
   - [defer](#defer)
   - [Struct Tag](#struct-tag)
 
+## 编译
+
+1. 在Windows系统编译Linux上的可运行程序
+```go
+# cmd下执行
+SET CGO_ENABLED=0
+set GOARCH=amd64
+set GOOS=linux
+# 编译命令
+go build main.go
+ 
+# 编译成exe windows下默认exe
+SET CGO_ENABLED=1
+SET GOOS=windows
+SET GOARCH=amd64
+# 编译命令
+go build main.go
+```
+
 ## Go 函数
 
 定义
