@@ -15,6 +15,7 @@
   - [upstream](#upstream)
   - [log](#log)
     - [日志参数说明](#日志参数说明)
+  - [nginx配置前端路由](#nginx配置前端路由)
 
 ## 基本命令
 1. 启动`start nginx`
@@ -279,4 +280,24 @@ $sent_http_keep_alive
 $sent_http_last_modified
 $sent_http_location
 $sent_http_transfer_encoding
+```
+
+## nginx配置前端路由
+
+```bash
+server {
+    listen 80;
+    server_name example.com;
+
+    # 设置请求的根目录
+    root /var/www/example.com;
+
+    # 设置默认首页
+    index index.html;
+
+    location / {
+        # 先尝试匹配请求的文件路径，如果匹配成功则返回对应的文件，否则将请求转发到 index.html
+        try_files $uri $uri/ /index.html;
+    }
+}
 ```
