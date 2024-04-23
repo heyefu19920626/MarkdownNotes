@@ -9,6 +9,7 @@
 	- [win10添加项目右键VSCode打开](#win10添加项目右键vscode打开)
 	- [Microsoft软件保护平台服务](#microsoft软件保护平台服务)
 	- [如何查看激活](#如何查看激活)
+	- [怎么设置nginx开机启动](#怎么设置nginx开机启动)
 
 ## 启用或关闭Windows功能
 
@@ -99,3 +100,10 @@
 1. 管理员运行命令行
    1. `slmgr.vbs -xpr`可查看是否永久激活
    2. `slmgr.vbs -dlv`查看激活状态
+
+## 怎么设置nginx开机启动
+
+1. 按下 Win + R 组合键打开运行对话框
+2. 输入 shell:startup，然后点击确定，这将打开 Windows 的启动文件夹
+3. 在启动文件夹中，创建一个快捷方式，指向 Nginx 的安装目录中的 nginx.exe 文件
+4. 将该快捷方式移动到启动文件夹中
