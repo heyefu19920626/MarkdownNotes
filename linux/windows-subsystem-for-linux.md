@@ -44,9 +44,10 @@ wsl --set-version Uubuntu-20.04 2
 
 `\\wsl$`
 
-## 忘记密码
+## 忘记密码/使用root用户
 
 > wsl.exe --user root
+> passwd root 设置root密码
 
 ### 报错处理
 
