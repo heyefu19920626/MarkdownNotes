@@ -16,6 +16,7 @@
   - [log](#log)
     - [日志参数说明](#日志参数说明)
   - [nginx配置前端路由](#nginx配置前端路由)
+  - [win10下80端口被占用](#win10下80端口被占用)
 
 ## 基本命令
 1. 启动`start nginx`
@@ -301,3 +302,10 @@ server {
     }
 }
 ```
+
+## win10下80端口被占用
+
+可以参考[80端口被System占用如何解决](https://blog.csdn.net/qq_45086538/article/details/128013575)
+
+1. 命令行使用`net stop http`停止
+2. 如果仍然不行，使用 `Sc config http start=disabled`，之后重启
