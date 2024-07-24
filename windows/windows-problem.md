@@ -10,6 +10,7 @@
 	- [Microsoft软件保护平台服务](#microsoft软件保护平台服务)
 	- [如何查看激活](#如何查看激活)
 	- [怎么设置nginx开机启动](#怎么设置nginx开机启动)
+	- [cmd窗口中文乱码](#cmd窗口中文乱码)
 
 ## 启用或关闭Windows功能
 
@@ -107,3 +108,11 @@
 2. 输入 shell:startup，然后点击确定，这将打开 Windows 的启动文件夹
 3. 在启动文件夹中，创建一个快捷方式，指向 Nginx 的安装目录中的 nginx.exe 文件
 4. 将该快捷方式移动到启动文件夹中
+
+## cmd窗口中文乱码
+
+1. 临时解决，执行`chcp 65001`
+2. 永久解决
+   1. win+r运行,输入"regedit",找到HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Command Processor
+   2. 然后“右键-新建”，选择“字符串值”，“名称”列填写“autorun”, 数值数据填写“chcp 65001”
+3. 注意：这样解决了显示时的中文乱码问题，但cmd输入中文会乱码
