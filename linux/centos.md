@@ -65,7 +65,7 @@ DNS1=8.8.8.8 # DNS，否则ping不通网址
 
 1. 在虚拟机上挂载对应的ISO镜像
 2. 在/mnt目录下创建cdrom目录, `mkdir -p /mnt/cdrom`
-3. 使用`mount -t auto /dev/cdrom /mnt/cdrom`挂载
+3. 使用`mount -t auto /dev/cdrom /mnt/cdrom`挂载, 取消挂载使用`umount /mnt/cdrom`
 4. 查看是否挂载成功`ls /mnt/cdrom`
 5. 进入yum配置目录`cd /etc/yum.repos.d`
 6. 修改配置文件`vi CentOS-Base.repo`
