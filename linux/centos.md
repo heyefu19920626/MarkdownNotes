@@ -89,7 +89,6 @@ baseurl=file:///mnt/cdrom
 gpgcheck=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
-[centosplus]
 name=CentOS-$releasever - Plus
 baseurl=file:///mnt/cdrom
 gpgcheck=0
