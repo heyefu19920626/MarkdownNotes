@@ -98,3 +98,11 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 ```
 7. 清楚yum缓存`yum clean all`并缓存yum信息`yum makecache`
 8. 查看是否成功`yum list`
+
+## 进入单用户模式
+
+1. 在启动界面选中内核，然后按e
+2. 在linux/linux16开始的行尾添加init=/bin/bash或者single，根据提示按Ctrl+X启动
+3. `mount | grep ' / '`查询挂载模式，包含ro表示只读
+4. 使用`mount -o remount,rw /`重新挂载为可读写
+5. 之后就可以去修改配置文件等
