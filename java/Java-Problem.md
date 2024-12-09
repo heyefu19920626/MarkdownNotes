@@ -3,6 +3,7 @@
 - [..](java-catalog.md)
 
 - [问题](#问题)
+  - [泛型中的extends与super](#泛型中的extends与super)
   - [反射](#反射)
     - [获取类的三种方式](#获取类的三种方式)
     - [调用方法](#调用方法)
@@ -15,6 +16,13 @@
   - [查看内存占用](#查看内存占用)
   - [org.aspectj.apache.bcel.classfile.ClassFormatException: Invalid byte tag in constant pool: 15](#orgaspectjapachebcelclassfileclassformatexception-invalid-byte-tag-in-constant-pool-15)
   - [java.lang.ClassNotFoundException: javax.xml.bind.JAXBException](#javalangclassnotfoundexception-javaxxmlbindjaxbexception)
+
+
+## 泛型中的extends与super
+
+PECS法则：Producer Extends, Consumer Super, 为你提供数据->生产者， 接收你的数据->消费者  
+`<? extends T>` 只能读不能写, 因为读出来的都是T，但你确定写入的是T的哪个子类  
+`<? super T>` 智能写不能读，因为可以确认写进去的都是T，但不确定读出来的是T的哪个父类  
 
 ## 反射
 
