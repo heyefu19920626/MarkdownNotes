@@ -384,7 +384,7 @@ maven-compiler-plugin插件的问题, 升级插件到3.5.1+
 
 ## 给jdk导入证书
 
-使用命令
+使用命令,默认密码为changeit
 ```cmd
-C:\tools\java\jdk-21\bin>keytool -import -keystore C:\tools\java\jdk-21\lib\security\cacerts -file D:\downloads\maven4.crt -alias maven4
+C:\tools\java\jdk-21\bin\keytool -import -keystore C:\tools\java\jdk-21\lib\security\cacerts -file D:\downloads\maven4.crt -alias maven4
 ```
